@@ -7,8 +7,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class DungeonSpeleothemGrotto extends DungeonType{
 
-	public DungeonSpeleothemGrotto(String name) {
-		super(name);
+	public DungeonSpeleothemGrotto() {
+		super("SpeleothemGrotto");
 
 	}
 

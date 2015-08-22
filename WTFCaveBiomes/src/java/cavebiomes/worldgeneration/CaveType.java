@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration;
 
+import java.util.ArrayList;
 import java.util.Random;
 import cavebiomes.WTFCaveBiomesConfig;
 import cavebiomes.utilities.gencores.GenCoreProvider;
@@ -17,10 +18,10 @@ public class CaveType
 	protected int ceilingaddonchance;
 	protected int flooraddonchance;
 
-	private DungeonType[] dungeonList;
+	private ArrayList<DungeonType> dungeonList;
 	Random rand = new Random();
 
-	public CaveType(String name, int cavedepth, DungeonType[] dungeonlist)
+	public CaveType(String name, int cavedepth, ArrayList<DungeonType> dungeonlist)
 	{
 		this.name = name;
 		this.depth = cavedepth;
@@ -44,7 +45,6 @@ public class CaveType
 		{
 			this.generateCeilingAddons(world, random, x, ceiling - 1, z);
 		}
-
 	}
 
 	public void generateDungeon(World world, Random rand, int x, int y, int z, int ceiling, int floor){
@@ -64,7 +64,7 @@ public class CaveType
 	}
 
 	public DungeonType getDungeonType(World world, Random rand, int x, int y, int z){
-		DungeonType type = this.dungeonList[rand.nextInt(dungeonList.length)];
+		DungeonType type = this.dungeonList.get(rand.nextInt(dungeonList.size()));
 		return type;
 	}
 	public boolean shouldGenFloorAddon(){

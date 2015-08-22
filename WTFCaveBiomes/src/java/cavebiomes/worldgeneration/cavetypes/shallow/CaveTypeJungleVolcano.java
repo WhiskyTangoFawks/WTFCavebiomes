@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
+import java.util.ArrayList;
 import java.util.Random;
 import wtfcore.utilities.BlockSets;
 import net.minecraft.init.Blocks;
@@ -10,8 +11,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeJungleVolcano extends CaveType{
 
-	public CaveTypeJungleVolcano(String name, int cavedepth, DungeonType[] dungeonlist) {
-		super(name, cavedepth, dungeonlist);
+	public CaveTypeJungleVolcano(String name, int cavedepth, ArrayList<DungeonType> jungleList) {
+		super(name, cavedepth, jungleList);
 	}
 	BlockSets.Modifier[] stonemodifier = {BlockSets.Modifier.stoneMagmaCrust, BlockSets.Modifier.cobblestone};
 

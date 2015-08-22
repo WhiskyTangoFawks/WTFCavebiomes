@@ -12,8 +12,8 @@ import wtfcore.utilities.BlockSets;
 
 public class DungeonMagmaSlime extends DungeonType{
 
-	public DungeonMagmaSlime(String name) {
-		super(name);
+	public DungeonMagmaSlime() {
+		super("MagmaSlime");
 	}
 
 	BlockSets.Modifier[] blockarray = {null, BlockSets.Modifier.stoneMagmaCrust, BlockSets.Modifier.cobblestone};

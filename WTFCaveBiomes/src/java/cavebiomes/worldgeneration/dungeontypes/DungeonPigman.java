@@ -10,10 +10,8 @@ import net.minecraft.world.World;
 
 public class DungeonPigman extends DungeonType{
 
-
-	public DungeonPigman(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
+	public DungeonPigman() {
+		super("NetherZombiePigman");
 	}
 
 	@Override

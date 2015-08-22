@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration.cavetypes.deep;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.init.Blocks;
@@ -11,8 +12,8 @@ import wtfcore.utilities.BlockSets;
 
 public class CaveTypeDeepIce extends CaveType{
 
-		public CaveTypeDeepIce(String name, int cavedepth, DungeonType[] dungeonlist) {
-		super(name, cavedepth, dungeonlist);
+		public CaveTypeDeepIce(String name, int cavedepth, ArrayList<DungeonType> coldlist) {
+		super(name, cavedepth, coldlist);
 	}
 
 		@Override

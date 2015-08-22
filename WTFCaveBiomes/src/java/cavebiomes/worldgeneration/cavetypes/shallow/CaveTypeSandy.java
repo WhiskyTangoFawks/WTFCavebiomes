@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import cavebiomes.worldgeneration.CaveType;
@@ -10,8 +11,8 @@ import net.minecraft.world.World;
 
 public class CaveTypeSandy extends CaveType{
 
-	public CaveTypeSandy(String name, int cavedepth, DungeonType[] dungeonlist) {
-		super(name, cavedepth, dungeonlist);
+	public CaveTypeSandy(String name, int cavedepth, ArrayList<DungeonType> desertList) {
+		super(name, cavedepth, desertList);
 	}
 
 	@Override

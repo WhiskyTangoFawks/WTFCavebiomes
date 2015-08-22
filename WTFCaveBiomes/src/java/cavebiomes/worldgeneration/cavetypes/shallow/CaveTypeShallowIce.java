@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.world.World;
@@ -10,8 +11,8 @@ import cavebiomes.worldgeneration.DungeonType;
 public class CaveTypeShallowIce extends CaveType{
 
 	public CaveTypeShallowIce(String name, int cavedepth,
-			DungeonType[] dungeonlist) {
-		super(name, cavedepth, dungeonlist);
+			ArrayList<DungeonType> coldlist) {
+		super(name, cavedepth, coldlist);
 	}
 
 

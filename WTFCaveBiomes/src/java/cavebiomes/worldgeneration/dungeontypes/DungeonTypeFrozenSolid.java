@@ -8,8 +8,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class DungeonTypeFrozenSolid extends DungeonType{
 
-	public DungeonTypeFrozenSolid(String name) {
-		super(name);
+	public DungeonTypeFrozenSolid() {
+		super("FrozenSolid");
 	}
 
 	@Override

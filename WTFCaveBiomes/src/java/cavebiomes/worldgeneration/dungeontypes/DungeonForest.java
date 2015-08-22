@@ -7,9 +7,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
 public class DungeonForest extends DungeonType {
-	public DungeonForest(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
+	public DungeonForest() {
+		super("Forest");
 	}
 
 	int xMin = -7;

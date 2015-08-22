@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration.cavetypes.mid;
 
+import java.util.ArrayList;
 import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
@@ -10,8 +11,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeWetMid  extends CaveType{
 
-	public CaveTypeWetMid(String name, int cavedepth, DungeonType[] dungeonlist) {
-		super(name, cavedepth, dungeonlist);
+	public CaveTypeWetMid(String name, int cavedepth, ArrayList<DungeonType> wetlist) {
+		super(name, cavedepth, wetlist);
 	}
 	BlockSets.Modifier[] blockArray = {null, null, BlockSets.Modifier.cobblestone};
 

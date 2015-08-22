@@ -8,8 +8,8 @@ import cavebiomes.blocks.customplants.CinderShroom;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class DungeonTypeCinderShroom extends DungeonType {
-	public DungeonTypeCinderShroom(String name) {
-		super(name);
+	public DungeonTypeCinderShroom() {
+		super("Condershroom");
 	}
 
 	int xMin = -7;

@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration.cavetypes.mid;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.init.Blocks;
@@ -9,8 +10,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeMidIce extends CaveType{
 
-	public CaveTypeMidIce(String name, int cavedepth, DungeonType[] dungeonlist) {
-		super(name, cavedepth, dungeonlist);
+	public CaveTypeMidIce(String name, int cavedepth, ArrayList<DungeonType> coldlist) {
+		super(name, cavedepth, coldlist);
 	}
 
 	@Override

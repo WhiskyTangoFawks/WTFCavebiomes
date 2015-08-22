@@ -12,8 +12,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class DungeonBlaze extends DungeonType{
 
-	public DungeonBlaze(String name) {
-		super(name);
+	public DungeonBlaze() {
+		super("ClassicBlaze");
 		// TODO Auto-generated constructor stub
 	}
 

@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
+import java.util.ArrayList;
 import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
@@ -11,8 +12,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeForest extends CaveType{
 
-	public CaveTypeForest(String name, int cavedepth, DungeonType[] dungeonlist) {
-		super(name, cavedepth, dungeonlist);
+	public CaveTypeForest(String name, int cavedepth, ArrayList<DungeonType> forestlist) {
+		super(name, cavedepth, forestlist);
 	}
 
 	BlockSets.Modifier[] blockarray = {null, null, null, BlockSets.Modifier.MossyStone, BlockSets.Modifier.mossy_cobblestone};

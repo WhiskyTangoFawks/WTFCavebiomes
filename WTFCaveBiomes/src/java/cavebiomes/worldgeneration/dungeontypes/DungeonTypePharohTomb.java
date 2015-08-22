@@ -10,8 +10,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class DungeonTypePharohTomb extends DungeonType{
 
-	public DungeonTypePharohTomb(String name) {
-		super(name);
+	public DungeonTypePharohTomb() {
+		super("Pharoh'sTomb");
 	}
 
 	@Override

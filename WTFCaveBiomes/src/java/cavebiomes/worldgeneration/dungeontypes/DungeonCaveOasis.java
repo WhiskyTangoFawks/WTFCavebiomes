@@ -7,9 +7,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class DungeonCaveOasis extends DungeonType{
 
-	public DungeonCaveOasis(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
+	public DungeonCaveOasis() {
+		super("Oasis");
 	}
 
 	int xMin = -7;

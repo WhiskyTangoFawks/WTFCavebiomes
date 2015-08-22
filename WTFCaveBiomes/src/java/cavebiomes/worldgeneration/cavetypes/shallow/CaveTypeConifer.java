@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.init.Blocks;
@@ -10,8 +11,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeConifer extends CaveType{
 
-	public CaveTypeConifer(String name, int cavedepth, DungeonType[] dungeonlist) {
-		super(name, cavedepth, dungeonlist);
+	public CaveTypeConifer(String name, int cavedepth, ArrayList<DungeonType> forestlist) {
+		super(name, cavedepth, forestlist);
 	}
 
 	@Override

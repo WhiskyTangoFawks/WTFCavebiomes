@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
+import java.util.ArrayList;
 import java.util.Random;
 import net.minecraft.world.World;
 import wtfcore.utilities.BlockSets;
@@ -8,8 +9,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeMountain extends CaveType{
 
-	public CaveTypeMountain(String name, int cavedepth,	DungeonType[] dungeonlist) {
-		super(name, cavedepth, dungeonlist);
+	public CaveTypeMountain(String name, int cavedepth,	ArrayList<DungeonType> defaultlist) {
+		super(name, cavedepth, defaultlist);
 	}
 
 	@Override

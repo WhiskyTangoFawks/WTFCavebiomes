@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.init.Blocks;
@@ -10,8 +11,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeFungal extends CaveType{
 
-	public CaveTypeFungal(String name, int cavedepth, DungeonType[] dungeonlist) {
-		super(name, cavedepth, dungeonlist);
+	public CaveTypeFungal(String name, int cavedepth, ArrayList<DungeonType> swamplist) {
+		super(name, cavedepth, swamplist);
 	}
 
 	@Override

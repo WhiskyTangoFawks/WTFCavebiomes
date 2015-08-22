@@ -10,8 +10,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class DungeonClassicSpider extends DungeonType{
 
-	public DungeonClassicSpider(String name) {
-		super(name);
+	public DungeonClassicSpider() {
+		super("ClassicSpider");
 	}
 
 	BlockSets.Modifier[] swampBlock = {BlockSets.Modifier.mossy_cobblestone, BlockSets.Modifier.cobblestone, BlockSets.Modifier.MossyStone};

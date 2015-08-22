@@ -11,9 +11,8 @@ import net.minecraft.world.World;
 
 public class DungeonSlime extends DungeonType{
 
-	public DungeonSlime(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
+	public DungeonSlime() {
+		super("Slime");
 	}
 
 	@Override

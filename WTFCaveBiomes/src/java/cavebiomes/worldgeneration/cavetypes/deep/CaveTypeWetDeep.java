@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration.cavetypes.deep;
 
+import java.util.ArrayList;
 import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -9,8 +10,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeWetDeep extends CaveType{
 
-	public CaveTypeWetDeep(String name, int cavedepth, DungeonType[] dungeonlist) {
-		super(name, cavedepth, dungeonlist);
+	public CaveTypeWetDeep(String name, int cavedepth, ArrayList<DungeonType> wetlist) {
+		super(name, cavedepth, wetlist);
 	}
 
 	BlockSets.Modifier[] blockArray = {null, null, BlockSets.Modifier.cobblestone};

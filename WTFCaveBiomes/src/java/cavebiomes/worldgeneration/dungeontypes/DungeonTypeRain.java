@@ -9,8 +9,8 @@ import cavebiomes.worldgeneration.DungeonType;
 public class DungeonTypeRain extends DungeonType{
 
 
-		public DungeonTypeRain(String name) {
-		super(name);
+		public DungeonTypeRain() {
+		super("Rainstone");
 	}
 
 		int xMin = -7;

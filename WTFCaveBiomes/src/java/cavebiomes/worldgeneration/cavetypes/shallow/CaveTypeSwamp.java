@@ -1,5 +1,6 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
+import java.util.ArrayList;
 import java.util.Random;
 import wtfcore.utilities.BlockSets;
 import net.minecraft.init.Blocks;
@@ -11,8 +12,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeSwamp extends CaveType {
 
-	public CaveTypeSwamp(String name, int cavedepth, DungeonType[] dungeonlist) {
-		super(name, cavedepth, dungeonlist);
+	public CaveTypeSwamp(String name, int cavedepth, ArrayList<DungeonType> swamplist) {
+		super(name, cavedepth, swamplist);
 	}
 
 

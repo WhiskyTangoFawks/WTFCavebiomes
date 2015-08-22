@@ -9,11 +9,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class DungeonClassicSkeleton extends DungeonType{
 
-
-
-	public DungeonClassicSkeleton(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
+	public DungeonClassicSkeleton() {
+		super("ClassicSkeleton");
 	}
 
 	@Override

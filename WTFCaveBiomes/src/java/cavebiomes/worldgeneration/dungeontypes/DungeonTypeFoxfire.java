@@ -7,9 +7,8 @@ import cavebiomes.blocks.customplants.Foxfire;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class DungeonTypeFoxfire extends DungeonType {
-	public DungeonTypeFoxfire(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
+	public DungeonTypeFoxfire() {
+		super("Foxfire");
 	}
 
 	int xMin = -7;

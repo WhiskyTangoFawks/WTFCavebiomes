@@ -9,8 +9,8 @@ import cavebiomes.worldgeneration.DungeonType;
 
 public class DungeonTypeCaveIn extends DungeonType {
 
-	public DungeonTypeCaveIn(String name) {
-		super(name);
+	public DungeonTypeCaveIn() {
+		super("CaveIn");
 	}
 
 		Block cobblestone;

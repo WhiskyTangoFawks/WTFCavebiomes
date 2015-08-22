@@ -14,8 +14,8 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 public class DungeonClassicZombie extends DungeonType{
 
 
-	public DungeonClassicZombie(String name) {
-		super(name);
+	public DungeonClassicZombie() {
+		super("ClassicZombie");
 	}
 
 	@Override
