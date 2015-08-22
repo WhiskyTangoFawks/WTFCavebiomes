@@ -138,24 +138,28 @@ public class DungeonType{
 		}
 	}
 
+	/**
+	 * Generates blocks for the ceiling
+	 */
+	public void generateCeiling(World world, Random rand, int x, int y, int z){	}
 
-	public void generateCeiling(World world, Random rand, int x, int y, int z){
+	/**
+	 * generates blocks on the floor
+	 */
+	public void generateFloor(World world, Random rand, int x, int y, int z){}
+/**
+ *  generates blocks on the wall
+ */
+	public void generateWalls(World world, Random rand, int x, int y, int z){}
 
-	}
+	/**
+	 * called once, at the center of the dungeon, used to generate mob spawners and the like
+	 */
+	public void generateCenter(World world, Random rand, int x, int y, int z, int ceiling, int floor){}
 
-	public void generateFloor(World world, Random rand, int x, int y, int z){
-
-	}
-
-	public void generateWalls(World world, Random rand, int x, int y, int z){
-
-	}
-
-	public void generateCenter(World world, Random rand, int x, int y, int z, int ceiling, int floor)
-	{
-
-	}
-
+	/**
+	 * generates fill blocks- used by cave in and frozen dungeons, to replace all air blocks within the dungeon with whatever is supplied.
+	 **/
 	public void generateFill(World world, Random rand, int x, int y, int z){
 
 	}
