@@ -69,8 +69,8 @@ public class CaveTypeRegister {
 			cavetype = cavebiomemap.get(biomeandheight);
 			
 		}
-		//return cavetype;
-		return  normalShallow;
+		return cavetype;
+		//return  normalShallow;
 	}
 
 
