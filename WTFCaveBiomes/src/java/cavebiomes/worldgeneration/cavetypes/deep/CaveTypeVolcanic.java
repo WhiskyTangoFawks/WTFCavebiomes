@@ -7,12 +7,13 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import wtfcore.utilities.BlockSets;
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeVolcanic extends CaveType{
 
-	public CaveTypeVolcanic(String name, int cavedepth,	ArrayList<DungeonType> volcaniclist) {
-		super(name, cavedepth, volcaniclist);
+	public CaveTypeVolcanic(String name, int cavedepth,	DungeonSet volcanicSet) {
+		super(name, cavedepth, volcanicSet);
 	}
 
 	BlockSets.Modifier[] blockarray = {BlockSets.Modifier.stoneMagmaCrust, BlockSets.Modifier.cobblestone};

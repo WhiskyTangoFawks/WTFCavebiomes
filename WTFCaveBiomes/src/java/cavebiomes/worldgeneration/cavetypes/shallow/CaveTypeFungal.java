@@ -7,12 +7,13 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeFungal extends CaveType{
 
-	public CaveTypeFungal(String name, int cavedepth, ArrayList<DungeonType> swamplist) {
-		super(name, cavedepth, swamplist);
+	public CaveTypeFungal(String name, int cavedepth, DungeonSet swampSet) {
+		super(name, cavedepth, swampSet);
 	}
 
 	@Override

@@ -7,13 +7,14 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 import wtfcore.utilities.BlockSets;
 
 public class CaveTypeDeepIce extends CaveType{
 
-		public CaveTypeDeepIce(String name, int cavedepth, ArrayList<DungeonType> coldlist) {
-		super(name, cavedepth, coldlist);
+		public CaveTypeDeepIce(String name, int cavedepth, DungeonSet coldSet) {
+		super(name, cavedepth, coldSet);
 	}
 
 		@Override

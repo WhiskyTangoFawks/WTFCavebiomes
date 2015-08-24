@@ -7,13 +7,14 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeDesertMid extends CaveType{
 
 	public CaveTypeDesertMid(String name, int cavedepth,
-			ArrayList<DungeonType> deepdesertlist) {
-		super(name, cavedepth, deepdesertlist);
+			DungeonSet desertSet) {
+		super(name, cavedepth, desertSet);
 	}
 
 	@Override

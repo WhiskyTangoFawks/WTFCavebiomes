@@ -6,12 +6,13 @@ import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeMidIce extends CaveType{
 
-	public CaveTypeMidIce(String name, int cavedepth, ArrayList<DungeonType> coldlist) {
-		super(name, cavedepth, coldlist);
+	public CaveTypeMidIce(String name, int cavedepth, DungeonSet coldSet) {
+		super(name, cavedepth, coldSet);
 	}
 
 	@Override

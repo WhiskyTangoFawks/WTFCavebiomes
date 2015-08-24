@@ -8,12 +8,13 @@ import net.minecraft.world.World;
 import wtfcore.utilities.BlockSets;
 import cavebiomes.blocks.UBCMossyStone;
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeForest extends CaveType{
 
-	public CaveTypeForest(String name, int cavedepth, ArrayList<DungeonType> forestlist) {
-		super(name, cavedepth, forestlist);
+	public CaveTypeForest(String name, int cavedepth, DungeonSet forestSet) {
+		super(name, cavedepth, forestSet);
 	}
 
 	BlockSets.Modifier[] blockarray = {null, null, null, BlockSets.Modifier.MossyStone, BlockSets.Modifier.mossy_cobblestone};

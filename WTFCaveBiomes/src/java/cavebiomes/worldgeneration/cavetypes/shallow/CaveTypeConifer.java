@@ -7,12 +7,13 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeConifer extends CaveType{
 
-	public CaveTypeConifer(String name, int cavedepth, ArrayList<DungeonType> forestlist) {
-		super(name, cavedepth, forestlist);
+	public CaveTypeConifer(String name, int cavedepth, DungeonSet forestSet) {
+		super(name, cavedepth, forestSet);
 	}
 
 	@Override

@@ -7,12 +7,13 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypePlains extends CaveType{
 
-	public CaveTypePlains(String name, int cavedepth, ArrayList<DungeonType> defaultlist) {
-		super(name, cavedepth, defaultlist);
+	public CaveTypePlains(String name, int cavedepth, DungeonSet defaultSet) {
+		super(name, cavedepth, defaultSet);
 	}
 
 

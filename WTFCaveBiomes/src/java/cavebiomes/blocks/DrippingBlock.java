@@ -72,7 +72,7 @@ public class DrippingBlock extends ChildBlockCarryMetadata{
 		Block blockToRegister = new DrippingBlock(block, numSubBlocks, fluid, frequency ).setBlockName(name);
 		GameRegistry.registerBlock(blockToRegister, ItemMetadataSubblock.class, name);
 		for (int loop = 0; loop < 8; loop ++){
-			BlockSets.floorBlock.put(new BlockInfo(block, loop, fluid), blockToRegister);
+			BlockSets.blockTransformer.put(new BlockInfo(block, loop, fluid), blockToRegister);
 		}
 	}
 

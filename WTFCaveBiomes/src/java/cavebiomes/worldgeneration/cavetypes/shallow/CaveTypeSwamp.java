@@ -8,12 +8,13 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cavebiomes.blocks.CaveBlocks;
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeSwamp extends CaveType {
 
-	public CaveTypeSwamp(String name, int cavedepth, ArrayList<DungeonType> swamplist) {
-		super(name, cavedepth, swamplist);
+	public CaveTypeSwamp(String name, int cavedepth, DungeonSet swampSet) {
+		super(name, cavedepth, swampSet);
 	}
 
 

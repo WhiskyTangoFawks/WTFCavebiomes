@@ -1,16 +1,15 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.DungeonType;
+import cavebiomes.worldgeneration.DungeonSet;
 import net.minecraft.world.World;
 
 public class CaveTypeNormalShallow extends CaveType{
 
-	public CaveTypeNormalShallow(String name, int cavedepth, ArrayList<DungeonType> defaultlist) {
-		super(name, cavedepth, defaultlist);
+	public CaveTypeNormalShallow(String name, int cavedepth, DungeonSet defaultSet) {
+		super(name, cavedepth, defaultSet);
 	}
 
 	protected float	ceilingAddonWeight	= 0.3F;

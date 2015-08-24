@@ -1,8 +1,6 @@
 package cavebiomes.worldgeneration;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-
 import cavebiomes.utilities.BiomeAndHeight;
 import cavebiomes.worldgeneration.cavetypes.deep.CaveTypeDeepIce;
 import cavebiomes.worldgeneration.cavetypes.deep.CaveTypeVolcanic;
@@ -23,23 +21,6 @@ import cavebiomes.worldgeneration.cavetypes.shallow.CaveTypeSandy;
 import cavebiomes.worldgeneration.cavetypes.shallow.CaveTypeShallowIce;
 import cavebiomes.worldgeneration.cavetypes.shallow.CaveTypeSwamp;
 import cavebiomes.worldgeneration.cavetypes.shallow.CaveTypeWetShallow;
-import cavebiomes.worldgeneration.dungeontypes.DungeonBlaze;
-import cavebiomes.worldgeneration.dungeontypes.DungeonCaveOasis;
-import cavebiomes.worldgeneration.dungeontypes.DungeonClassicSkeleton;
-import cavebiomes.worldgeneration.dungeontypes.DungeonClassicSpider;
-import cavebiomes.worldgeneration.dungeontypes.DungeonClassicZombie;
-import cavebiomes.worldgeneration.dungeontypes.DungeonForest;
-import cavebiomes.worldgeneration.dungeontypes.DungeonMagmaSlime;
-import cavebiomes.worldgeneration.dungeontypes.DungeonPigman;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSlime;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSpeleothemGrotto;
-import cavebiomes.worldgeneration.dungeontypes.DungeonTypeCaveIn;
-import cavebiomes.worldgeneration.dungeontypes.DungeonTypeCinderShroom;
-import cavebiomes.worldgeneration.dungeontypes.DungeonTypeFoxfire;
-import cavebiomes.worldgeneration.dungeontypes.DungeonTypeFrozenSolid;
-import cavebiomes.worldgeneration.dungeontypes.DungeonTypeMummysTomb;
-import cavebiomes.worldgeneration.dungeontypes.DungeonTypePharohTomb;
-import cavebiomes.worldgeneration.dungeontypes.DungeonTypeRain;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -48,66 +29,36 @@ public class CaveTypeRegister {
 
 	public static HashMap<BiomeAndHeight, CaveType> cavebiomemap = new HashMap <BiomeAndHeight, CaveType>();
 
-	private static DungeonType[] defaultDungeons = {new DungeonTypeCaveIn(), new DungeonSpeleothemGrotto(), new DungeonClassicSpider(), new DungeonClassicSkeleton(), new DungeonClassicZombie()};
-	private static DungeonType[] forestDungeons= {new DungeonForest(), new DungeonTypeFoxfire()};
-	private static DungeonType[] coldDungeons = {new DungeonTypeFrozenSolid()};
-	private static DungeonType[] wetDungeons= {new DungeonTypeRain(), new DungeonSlime()};
-	private static DungeonType[] volcanicDungeons= {new DungeonMagmaSlime(), new DungeonTypeCinderShroom()};
-	private static DungeonType[] desertDungeons= {new DungeonCaveOasis(), new DungeonTypeMummysTomb(), new DungeonTypePharohTomb()};
-	private static DungeonType[] netherDungeons= {new DungeonPigman(), new DungeonBlaze()};
-
-	public static ArrayList<DungeonType> defaultlist;// = dungeonList(defaultDungeons);
-	public static ArrayList<DungeonType> forestlist;// = dungeonList(defaultDungeons, forestDungeons);
-	public static ArrayList<DungeonType> wetlist;// = dungeonList(defaultDungeons, wetDungeons);
-	public static ArrayList<DungeonType> swamplist;// = dungeonList(defaultDungeons, wetDungeons, forestDungeons);
-	public static ArrayList<DungeonType> desertlist;// = dungeonList(defaultDungeons, desertDungeons);
-	public static ArrayList<DungeonType> junglelist;// = dungeonList(defaultDungeons, volcanicDungeons);
-	public static ArrayList<DungeonType> coldlist;// = dungeonList(defaultDungeons, coldDungeons);
-	public static ArrayList<DungeonType> volcaniclist;// = dungeonList(netherDungeons, volcanicDungeons);
-	public static ArrayList<DungeonType> deepdesertlist;// = dungeonList(volcanicDungeons, netherDungeons, desertDungeons);
-	
-	public static void addDungeonTypes(){
-
-		defaultlist = dungeonList(defaultDungeons);
-		forestlist = dungeonList(defaultDungeons, forestDungeons);
-		wetlist = dungeonList(defaultDungeons, wetDungeons);
-		swamplist = dungeonList(defaultDungeons, wetDungeons, forestDungeons);
-		desertlist = dungeonList(defaultDungeons, desertDungeons);
-		junglelist = dungeonList(defaultDungeons, volcanicDungeons);
-		coldlist = dungeonList(defaultDungeons, coldDungeons);
-		volcaniclist = dungeonList(netherDungeons, volcanicDungeons);
-		deepdesertlist = dungeonList(volcanicDungeons, netherDungeons, desertDungeons);
-	}
 
 	//jacko lantern
 	//mineshaft, nether portal, mushroom, cave in,
 	//carved stone, carved sandstone
 
 	//shallow caves
-	public static CaveType normalShallow = new CaveTypeNormalShallow("Normal", 1, defaultlist);
-	public static CaveType wetShallow =new CaveTypeWetShallow ("WetShallow", 1, wetlist);
-	public static CaveType swamp = new CaveTypeSwamp ("Swamp", 1, swamplist);
-	public static CaveType sandyShallow = new CaveTypeSandy ("Sandy",1, desertlist);
-	public static CaveType jungleVolcano = new CaveTypeJungleVolcano ("Overgrown",1, junglelist);
-	public static CaveType mountains = new CaveTypeMountain ("Mountains",1, defaultlist);
-	public static CaveType iceMountain = new CaveTypeIceMountain ("IceMountains",1, coldlist);
-	public static CaveType iceShallow = new CaveTypeShallowIce ("Ice",1, coldlist);
-	public static CaveType fungal = new CaveTypeFungal ("Fungal",1, swamplist);
-	public static CaveType plains = new CaveTypePlains ("Plains",1, defaultlist);
-	public static CaveType coniferous = new CaveTypeConifer ("Coniferous",1, forestlist);
-	public static CaveType forest = new CaveTypeForest("Forest", 1, forestlist);
+	public static CaveType normalShallow = new CaveTypeNormalShallow("Normal", 1, DungeonTypeRegister.defaultSet);
+	public static CaveType wetShallow =new CaveTypeWetShallow ("WetShallow", 1, DungeonTypeRegister.wetSet);
+	public static CaveType swamp = new CaveTypeSwamp ("Swamp", 1, DungeonTypeRegister.swampSet);
+	public static CaveType sandyShallow = new CaveTypeSandy ("Sandy",1, DungeonTypeRegister.desertSet);
+	public static CaveType jungleVolcano = new CaveTypeJungleVolcano ("Jungle",1, DungeonTypeRegister.jungleSet);
+	public static CaveType mountains = new CaveTypeMountain ("Mountains",1, DungeonTypeRegister.defaultSet);
+	public static CaveType iceMountain = new CaveTypeIceMountain ("IceMountains",1, DungeonTypeRegister.coldSet);
+	public static CaveType iceShallow = new CaveTypeShallowIce ("Ice",1, DungeonTypeRegister.coldSet);
+	public static CaveType fungal = new CaveTypeFungal ("Fungal",1, DungeonTypeRegister.swampSet);
+	public static CaveType plains = new CaveTypePlains ("Plains",1, DungeonTypeRegister.defaultSet);
+	public static CaveType coniferous = new CaveTypeConifer ("Coniferous",1, DungeonTypeRegister.forestSet);
+	public static CaveType forest = new CaveTypeForest("Forest", 1, DungeonTypeRegister.forestSet);
 
 	// mid caves
-	public static CaveType normalMid = new CaveTypeNormalMid("NormalMid", 2, defaultlist);
-	public static CaveType wetMid = new CaveTypeWetMid ("WetMid", 2, wetlist);
-	public static CaveType iceMid = new CaveTypeMidIce ("MidIce", 2, coldlist);
-	public static CaveType desertMid = new CaveTypeDesertMid ("DesertMid", 2, deepdesertlist);
+	public static CaveType normalMid = new CaveTypeNormalMid("NormalMid", 2, DungeonTypeRegister.defaultSet);
+	public static CaveType wetMid = new CaveTypeWetMid ("WetMid", 2, DungeonTypeRegister.wetSet);
+	public static CaveType iceMid = new CaveTypeMidIce ("MidIce", 2, DungeonTypeRegister.coldSet);
+	public static CaveType desertMid = new CaveTypeDesertMid ("DesertMid", 2, DungeonTypeRegister.desertSet);
 
 	//Deep caves
-	public static CaveType wetDeep = new CaveTypeWetDeep ("WetDeep", 3, wetlist);
-	public static CaveType iceDeep = new CaveTypeDeepIce ("DeepIce", 3, coldlist);
+	public static CaveType wetDeep = new CaveTypeWetDeep ("WetDeep", 3, DungeonTypeRegister.wetSet);
+	public static CaveType iceDeep = new CaveTypeDeepIce ("DeepIce", 3, DungeonTypeRegister.coldSet);
 	//public static CaveType desertDeep = new CaveTypeDesertDeep ("DesertDeep", 3, volcaniclist);
-	public static CaveType volcanic = new CaveTypeVolcanic ("Volcanic", 3, volcaniclist);
+	public static CaveType volcanic = new CaveTypeVolcanic ("Volcanic", 3,DungeonTypeRegister. volcanicSet);
 
 
 
@@ -118,8 +69,8 @@ public class CaveTypeRegister {
 			cavetype = cavebiomemap.get(biomeandheight);
 			
 		}
-		return cavetype;
-		//return  forest;
+		//return cavetype;
+		return  normalShallow;
 	}
 
 
@@ -197,35 +148,5 @@ public class CaveTypeRegister {
 		}
 	}
 
-	public static ArrayList<DungeonType> dungeonList(DungeonType[] dungeonlist){
-		ArrayList<DungeonType> arraylist = new ArrayList<DungeonType>();
-		for (int loop = 0; loop < dungeonlist.length; loop++){
-			arraylist.add(dungeonlist[loop]);
-		}
-		return arraylist;
-	}
-	public static ArrayList<DungeonType> dungeonList(DungeonType[] dungeonlist1, DungeonType[] dungeonlist2){
-		ArrayList<DungeonType> arraylist = new ArrayList<DungeonType>();
-		for (int loop = 0; loop < dungeonlist1.length; loop++){
-			arraylist.add(dungeonlist1[loop]);
-		}
-		for (int loop = 0; loop < dungeonlist2.length; loop++){
-			arraylist.add(dungeonlist2[loop]);
-		}
-		return arraylist;
-	}
-	public static ArrayList<DungeonType> dungeonList(DungeonType[] dungeonlist1, DungeonType[] dungeonlist2, DungeonType[] dungeonlist3){
-		ArrayList<DungeonType> arraylist = new ArrayList<DungeonType>();
-		for (int loop = 0; loop < dungeonlist1.length; loop++){
-			arraylist.add(dungeonlist1[loop]);
-		}
-		for (int loop = 0; loop < dungeonlist2.length; loop++){
-			arraylist.add(dungeonlist2[loop]);
-		}
-		for (int loop = 0; loop < dungeonlist3.length; loop++){
-			arraylist.add(dungeonlist3[loop]);
-		}
-		return arraylist;
-	}
-
+	
 }

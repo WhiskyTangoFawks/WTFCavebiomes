@@ -76,7 +76,7 @@ public class UBCMossyStone extends ChildBlockCarryMetadata implements IAlphaMask
 		String name = "mossy_"+stoneGeoType;
 		blockToRegister = new UBCMossyStone(block, stoneNames, domain).setBlockName(name);
 		GameRegistry.registerBlock(blockToRegister, ItemMetadataSubblock.class, name);
-		BlockSets.floorBlock.put(new BlockInfo(block, 0, BlockSets.Modifier.MossyStone), blockToRegister);
+		BlockSets.blockTransformer.put(new BlockInfo(block, 0, BlockSets.Modifier.MossyStone), blockToRegister);
 
 		return blockToRegister;
 	}
@@ -85,7 +85,7 @@ public class UBCMossyStone extends ChildBlockCarryMetadata implements IAlphaMask
 		String name = "mossy_"+stoneGeoType;
 		blockToRegister = new UBCMossyStone(block, stoneNames, domain).setBlockName(name);
 		GameRegistry.registerBlock(blockToRegister, ItemMetadataSubblock.class, name);
-		BlockSets.floorBlock.put(new BlockInfo(block, 0, BlockSets.Modifier.mossy_cobblestone), blockToRegister);
+		BlockSets.blockTransformer.put(new BlockInfo(block, 0, BlockSets.Modifier.mossy_cobblestone), blockToRegister);
 
 		return blockToRegister;
 	}

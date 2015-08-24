@@ -8,13 +8,14 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import wtfcore.utilities.BlockSets;
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeWetShallow extends CaveType {
 
 	public CaveTypeWetShallow(String name, int cavedepth,
-			ArrayList<DungeonType> wetlist) {
-		super(name, cavedepth, wetlist);
+			DungeonSet wetSet) {
+		super(name, cavedepth, wetSet);
 	}
 
 	@Override

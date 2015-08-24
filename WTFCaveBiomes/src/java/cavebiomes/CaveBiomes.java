@@ -5,6 +5,7 @@ import cavebiomes.entities.Entities;
 import cavebiomes.proxy.CommonProxy;
 import cavebiomes.worldgeneration.CaveBiomesWorldScanner;
 import cavebiomes.worldgeneration.CaveTypeRegister;
+import cavebiomes.worldgeneration.DungeonTypeRegister;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -64,7 +65,7 @@ public class CaveBiomes {
 		MinecraftForge.EVENT_BUS.register(new EventListener());
 		//I was using this to generate magma crust as an ore, but I've now disabled it
 		//GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
-		CaveTypeRegister.addDungeonTypes();
+		DungeonTypeRegister.AddDungeonTypes();
 
 
 		//recipes

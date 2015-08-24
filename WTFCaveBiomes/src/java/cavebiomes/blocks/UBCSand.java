@@ -45,7 +45,7 @@ public class UBCSand extends BlockGravel{
 			GameRegistry.registerBlock(sedimentarySand, ItemMetadataSubblock.class, "sedimentarySand");
 			
 			BlockSets.addStoneBlock(UBCblocks.SedimentaryStone, UBCSand.sedimentarySand, 8);
-			BlockSets.floorBlock.put(new BlockInfo(UBCblocks.SedimentaryStone, 0, BlockSets.Modifier.cobblestone), UBCSand.sedimentarySand);
+			BlockSets.blockTransformer.put(new BlockInfo(UBCblocks.SedimentaryStone, 0, BlockSets.Modifier.cobblestone), UBCSand.sedimentarySand);
 			
 			//recipes
 			for (int loop = 0; loop < 8; loop++){

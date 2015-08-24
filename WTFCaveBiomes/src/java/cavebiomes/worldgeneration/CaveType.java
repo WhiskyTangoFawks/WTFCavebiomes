@@ -1,11 +1,11 @@
 package cavebiomes.worldgeneration;
 
-import java.util.ArrayList;
 import java.util.Random;
 import cavebiomes.WTFCaveBiomesConfig;
 import cavebiomes.utilities.gencores.GenCoreProvider;
 import cavebiomes.utilities.gencores.VanillaGen;
 import net.minecraft.world.World;
+import wtfcore.WTFCore;
 
 public class CaveType
 {
@@ -18,16 +18,17 @@ public class CaveType
 	protected int ceilingaddonchance;
 	protected int flooraddonchance;
 
-	private ArrayList<DungeonType> dungeonList;
+	protected DungeonSet dungeons;
 	Random rand = new Random();
 
-	public CaveType(String name, int cavedepth, ArrayList<DungeonType> dungeonlist)
+	public CaveType(String name, int cavedepth,  DungeonSet dungeonset)
 	{
 		this.name = name;
 		this.depth = cavedepth;
 		this.ceilingaddonchance = WTFCaveBiomesConfig.ceilingAddonChance * cavedepth;
 		this.flooraddonchance = WTFCaveBiomesConfig.floorAddonChance * depth;
-		this.dungeonList = dungeonlist;
+		this.dungeons = dungeonset;
+
 		CaveType.gen = GenCoreProvider.getGenCore();
 	}
 
@@ -58,7 +59,10 @@ public class CaveType
 	public void generateDungeon(World world, Random rand, int x, int y, int z, int ceiling, int floor){
 		DungeonType type = this.getDungeonType(world, rand, x, y, z);
 		if (type != null){
+			WTFCore.log.info("Spawning "+ type.name);
 			type.SpawnDungeon(world, rand, x, y, z, ceiling, floor);
+		}
+		else { WTFCore.log.info("DungeonMap is Empty");
 		}
 	}
 
@@ -83,8 +87,9 @@ public class CaveType
 
 
 	private DungeonType getDungeonType(World world, Random rand, int x, int y, int z){
-		DungeonType type = this.dungeonList.get(rand.nextInt(dungeonList.size()));
-		return type;
+		if(dungeons==null){
+			WTFCore.log.info("NULL WARNING");}
+		return (dungeons.getRandomDungeon(rand));	
 	}
 	protected boolean shouldGenFloorAddon(){
 		return rand.nextInt(100) < this.flooraddonchance;

@@ -4,40 +4,58 @@ import cavebiomes.utilities.BiomeAndHeight;
 import cavebiomes.worldgeneration.CaveType;
 import cavebiomes.worldgeneration.CaveTypeRegister;
 import cavebiomes.worldgeneration.DungeonType;
+import cavebiomes.worldgeneration.DungeonTypeRegister;
 import net.minecraft.world.biome.BiomeGenBase;
+import wtfcore.WTFCore;
 
 public class CaveBiomesAPI {
 
+	/**
+	 * Use this to add new custom cave types to the generator.
+	 * @param cavetype
+	 * @param biome 
+	 * @param depth : The depth at which the cave should spawn, must be 1 (shallow) 2 (mid) or 3 (deep)
+	 */
 	public static void addCaveType(CaveType cavetype, BiomeGenBase biome, int depth){
-		CaveTypeRegister.cavebiomemap.put(new BiomeAndHeight(biome, depth), cavetype);
+		if (depth >0 && depth < 4){
+			CaveTypeRegister.cavebiomemap.put(new BiomeAndHeight(biome, depth), cavetype);
+		}
+		else {
+			WTFCore.log.info("CaveBiomesAPI: CaveType had depth outside acceptable range " + cavetype.name);
+		}
 	}
 	
-	public enum DungeonCategory {DEFAULT, FOREST, WET, SWAMP, DESERT, JUNGLE, COLD, VOLCANIC};
+	public enum DungeonBiomeType {DEFAULT, FOREST, WET, SWAMP, DESERT, JUNGLE, COLD, VOLCANIC};
 	
-	public static void addDungeon(DungeonType dungeon, DungeonCategory category){
-		if (category == DungeonCategory.DEFAULT){
-			CaveTypeRegister.defaultlist.add(dungeon);
+	/**
+	 * Adds a custom dungeon to the generator
+	 * @param dungeon
+	 * @param biometype: the type of biome you wish it to spawn in
+	 */
+	public static void addDungeon(DungeonType dungeon, DungeonBiomeType biometype){
+		if (biometype == DungeonBiomeType.DEFAULT){
+			DungeonTypeRegister.defaultSet.addDungeon(dungeon);
 		}
-		else if (category == DungeonCategory.FOREST){
-			CaveTypeRegister.forestlist.add(dungeon);
+		else if (biometype == DungeonBiomeType.FOREST){
+			DungeonTypeRegister.forestSet.addDungeon(dungeon);
 		}
-		else if (category == DungeonCategory.WET){
-			CaveTypeRegister.wetlist.add(dungeon);
+		else if (biometype == DungeonBiomeType.WET){
+			DungeonTypeRegister.wetSet.addDungeon(dungeon);
 		}
-		else if (category == DungeonCategory.SWAMP){
-			CaveTypeRegister.swamplist.add(dungeon);
+		else if (biometype == DungeonBiomeType.SWAMP){
+			DungeonTypeRegister.swampSet.addDungeon(dungeon);
 		}
-		else if (category == DungeonCategory.DESERT){
-			CaveTypeRegister.desertlist.add(dungeon);
+		else if (biometype == DungeonBiomeType.DESERT){
+			DungeonTypeRegister.desertSet.addDungeon(dungeon);
 		}
-		else if (category == DungeonCategory.JUNGLE){
-			CaveTypeRegister.junglelist.add(dungeon);
+		else if (biometype == DungeonBiomeType.JUNGLE){
+			DungeonTypeRegister.jungleSet.addDungeon(dungeon);
 		}
-		else if (category == DungeonCategory.COLD){
-			CaveTypeRegister.coldlist.add(dungeon);
+		else if (biometype == DungeonBiomeType.COLD){
+			DungeonTypeRegister.coldSet.addDungeon(dungeon);
 		}
-		else if (category == DungeonCategory.VOLCANIC){
-			CaveTypeRegister.volcaniclist.add(dungeon);
+		else if (biometype == DungeonBiomeType.VOLCANIC){
+			DungeonTypeRegister.volcanicSet.addDungeon(dungeon);
 		}
 	}
 	

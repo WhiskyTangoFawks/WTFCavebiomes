@@ -56,7 +56,7 @@ public class BlockMagmaCrust extends ChildBlockCarryMetadata implements IAlphaMa
 		Block blockToRegister = new BlockMagmaCrust(block, subblocks).setBlockName(name);
 		GameRegistry.registerBlock(blockToRegister, ItemMetadataSubblock.class, name);
 		
-		BlockSets.floorBlock.put(new BlockInfo(block, 0, Modifier.stoneMagmaCrust), blockToRegister);
+		BlockSets.blockTransformer.put(new BlockInfo(block, 0, Modifier.stoneMagmaCrust), blockToRegister);
 		BlockSets.meltBlocks.add(blockToRegister);
 				
 		return blockToRegister;

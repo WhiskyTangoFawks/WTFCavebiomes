@@ -6,12 +6,13 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import wtfcore.utilities.BlockSets;
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeWetDeep extends CaveType{
 
-	public CaveTypeWetDeep(String name, int cavedepth, ArrayList<DungeonType> wetlist) {
-		super(name, cavedepth, wetlist);
+	public CaveTypeWetDeep(String name, int cavedepth, DungeonSet wetSet) {
+		super(name, cavedepth, wetSet);
 	}
 
 	BlockSets.Modifier[] blockArray = {null, null, BlockSets.Modifier.cobblestone};

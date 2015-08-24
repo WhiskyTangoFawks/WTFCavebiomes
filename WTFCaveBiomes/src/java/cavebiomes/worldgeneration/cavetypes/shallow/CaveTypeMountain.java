@@ -5,12 +5,13 @@ import java.util.Random;
 import net.minecraft.world.World;
 import wtfcore.utilities.BlockSets;
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 
 public class CaveTypeMountain extends CaveType{
 
-	public CaveTypeMountain(String name, int cavedepth,	ArrayList<DungeonType> defaultlist) {
-		super(name, cavedepth, defaultlist);
+	public CaveTypeMountain(String name, int cavedepth,	DungeonSet defaultSet) {
+		super(name, cavedepth, defaultSet);
 	}
 
 	@Override

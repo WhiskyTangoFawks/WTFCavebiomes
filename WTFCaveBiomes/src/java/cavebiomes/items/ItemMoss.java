@@ -40,12 +40,12 @@ public class ItemMoss extends Item{
 	@Override
 	public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
     {
-		Block blockToSet = BlockSets.floorBlock.get(new BlockInfo(world.getBlock(x,y,z), world.getBlockMetadata(x,y,z), BlockSets.Modifier.MossyStone));
+		Block blockToSet = BlockSets.blockTransformer.get(new BlockInfo(world.getBlock(x,y,z), world.getBlockMetadata(x,y,z), BlockSets.Modifier.MossyStone));
 		if (blockToSet != null){
 			world.setBlock(x, y, z, blockToSet, world.getBlockMetadata(x,y,z), 3);
 			return true;
 		}
-		blockToSet = BlockSets.floorBlock.get(new BlockInfo(world.getBlock(x,y,z), world.getBlockMetadata(x,y,z), BlockSets.Modifier.mossy_cobblestone));
+		blockToSet = BlockSets.blockTransformer.get(new BlockInfo(world.getBlock(x,y,z), world.getBlockMetadata(x,y,z), BlockSets.Modifier.mossy_cobblestone));
 		if (blockToSet != null){
 			world.setBlock(x, y, z, blockToSet, world.getBlockMetadata(x,y,z), 3);
 			return true;

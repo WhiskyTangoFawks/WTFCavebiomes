@@ -33,7 +33,7 @@ public class VanillaGen {
 	 **/
 	public void transformBlock(World world, int x, int y, int z, BlockSets.Modifier modifier){
 		BlockInfo blockandmeta = getBlockToReplace(world, x, y, z);
-		Block blockToSet = BlockSets.floorBlock.get(new BlockInfo(blockandmeta.block, blockandmeta.meta, modifier));
+		Block blockToSet = BlockSets.blockTransformer.get(new BlockInfo(blockandmeta.block, blockandmeta.meta, modifier));
 		if (blockToSet != null){
 			setBlockWithoutNotify(world, x, y, z, blockToSet, blockandmeta.meta);
 		}
@@ -51,7 +51,7 @@ public class VanillaGen {
 	 **/
 	public void setStoneAddon(World world, int x, int y, int z, BlockSets.Modifier modifier){
 		BlockInfo blockandmeta = getBlockToReplace(world, x, y, z);
-		Block blockToSet = BlockSets.floorBlock.get(new BlockInfo(blockandmeta.block, blockandmeta.meta, modifier));
+		Block blockToSet = BlockSets.blockTransformer.get(new BlockInfo(blockandmeta.block, blockandmeta.meta, modifier));
 		if (blockToSet != null){
 			setBlockWithoutNotify(world, x, y+1, z, blockToSet, blockandmeta.meta);
 		}

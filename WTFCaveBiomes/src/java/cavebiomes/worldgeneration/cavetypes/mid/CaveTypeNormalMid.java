@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import cavebiomes.worldgeneration.CaveType;
+import cavebiomes.worldgeneration.DungeonSet;
 import cavebiomes.worldgeneration.DungeonType;
 import net.minecraft.world.World;
 
 public class CaveTypeNormalMid extends CaveType{
 
-	public CaveTypeNormalMid(String name, int cavedepth, ArrayList<DungeonType> defaultlist) {
-		super(name, cavedepth, defaultlist);
+	public CaveTypeNormalMid(String name, int cavedepth, DungeonSet defaultSet) {
+		super(name, cavedepth, defaultSet);
 	}
 
 
