@@ -110,9 +110,9 @@ public class UBCMossyStone extends ChildBlockCarryMetadata implements IAlphaMask
 		BlockSets.addStoneBlock(UBCMossyStone.MossyMetamorphic, UBCMossyStone.MossyMetamorphicCobble, 8);
 		BlockSets.addStoneBlock(UBCMossyStone.MossySedimentary, UBCSand.sedimentarySand);
 
-		BlockSets.addFallingBlock(UBCMossyStone.MossyIgneousCobble, 1, 8);
-		BlockSets.addFallingBlock(UBCMossyStone.MossyMetamorphicCobble, 1, 8);
-		BlockSets.addFallingBlock(UBCMossyStone.MossyDirt, 1);
+		BlockSets.addDefaultFallingBlock(UBCMossyStone.MossyIgneousCobble, 1);
+		BlockSets.addDefaultFallingBlock(UBCMossyStone.MossyMetamorphicCobble, 1);
+		BlockSets.addDefaultFallingBlock(UBCMossyStone.MossyDirt, 1);
 		
 	}
 

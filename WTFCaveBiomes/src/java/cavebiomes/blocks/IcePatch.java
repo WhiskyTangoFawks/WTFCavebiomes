@@ -52,7 +52,7 @@ public class IcePatch extends BlockPackedIce{
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{
-		if (!world.getBlock(x, y-1, z).isOpaqueCube()){return false;}
+		if (!world.getBlock(x, y-1, z).renderAsNormalBlock()){return false;}
 		if (BlockSets.meltBlocks.contains(world.getBlock(x+1, y, z))){return false;}
 		if (BlockSets.meltBlocks.contains(world.getBlock(x-1, y, z))){return false;}
 		if (BlockSets.meltBlocks.contains(world.getBlock(x, y, z+1))){return false;}

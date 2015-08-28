@@ -70,7 +70,7 @@ public class CaveTypeRegister {
 			
 		}
 		return cavetype;
-		//return  normalShallow;
+		//return  iceShallow;
 	}
 
 
