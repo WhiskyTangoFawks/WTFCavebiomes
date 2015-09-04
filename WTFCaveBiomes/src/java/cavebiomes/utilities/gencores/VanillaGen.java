@@ -28,6 +28,8 @@ public class VanillaGen {
 		}
 	}
 
+	
+	
 	/**
 	 **Used to set a block, based on a modifier and the block at the given location
 	 **/
@@ -133,7 +135,7 @@ public class VanillaGen {
 		BlockInfo blockandmetadata= this.getBlockToReplace(world, x, y, z);
 		Block block = blockandmetadata.block;
 		int metadata = blockandmetadata.meta;
-		if (!(CaveBlocks.StoneTypeHashSet.contains(block))){return;}
+		if (!(CaveBlocks.speleothemMap.containsKey(block))){return;}
 		y++;
 		Block [] speleothemSet = CaveBlocks.getSpeleothemSet(block, modifier);
 
@@ -201,7 +203,7 @@ public class VanillaGen {
 
 		Block[] speleothemSet = CaveBlocks.getSpeleothemSet(base, modifier);
 
-		if (CaveBlocks.StoneTypeHashSet.contains(base)){
+		if (CaveBlocks.speleothemMap.containsKey(base)){
 			for (int i = 0; i < size; i++){
 				down1 = world.getBlock(x, (y-i-1), z);
 

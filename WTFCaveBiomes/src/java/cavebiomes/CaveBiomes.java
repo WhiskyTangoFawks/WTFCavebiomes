@@ -4,7 +4,6 @@ import cavebiomes.blocks.CaveBlocks;
 import cavebiomes.entities.Entities;
 import cavebiomes.proxy.CommonProxy;
 import cavebiomes.worldgeneration.CaveBiomesWorldScanner;
-import cavebiomes.worldgeneration.CaveTypeRegister;
 import cavebiomes.worldgeneration.DungeonTypeRegister;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -22,7 +21,7 @@ import wtfcore.WTFCore;
 import wtfcore.WorldGenListener;
 
 
-@Mod(modid = CaveBiomes.modid, name = "WhiskyTangoFox's Cave Biomes", version = "1.31", dependencies = "after:UndergroundBiomes;required-after:WTFCore@[1.51,)")
+@Mod(modid = CaveBiomes.modid, name = "WhiskyTangoFox's Cave Biomes", version = "1.32", dependencies = "after:UndergroundBiomes;required-after:WTFCore@[1.52,)")
 
 
 public class CaveBiomes {
@@ -66,10 +65,7 @@ public class CaveBiomes {
 		//I was using this to generate magma crust as an ore, but I've now disabled it
 		//GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
 		DungeonTypeRegister.AddDungeonTypes();
-
-
 		//recipes
-
 
 	}
 	@EventHandler

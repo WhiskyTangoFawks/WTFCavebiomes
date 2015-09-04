@@ -8,6 +8,7 @@ public class ZombiePharoh extends ZombieMummy{
 
 	public ZombiePharoh(World world) {
 		super(world);
+		addRandomArmor();
 	}
 
 	@Override

@@ -7,12 +7,12 @@ import cavebiomes.WTFCaveBiomesConfig;
 import net.minecraft.world.World;
 import wtfcore.WorldGenListener;
 import wtfcore.utilities.CavePosition;
-import wtfcore.worldgen.WorldScanner;
+import wtfcore.worldgen.OverworldScanner;
 
-public class CaveBiomesWorldScanner extends WorldScanner{
+public class CaveBiomesWorldScanner extends OverworldScanner{
 
 	@Override
-	public void generateSurface(World world, Random rand, int chunkX, int chunkZ)
+	public void generate(World world, Random rand, int chunkX, int chunkZ)
 	{		
 		ArrayList<CavePosition> cavepositions = new ArrayList<CavePosition>();
 		ArrayList<CavePosition> dungeonposition = new ArrayList<CavePosition>();

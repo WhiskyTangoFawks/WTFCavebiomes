@@ -3,6 +3,7 @@ package cavebiomes.entities;
 import java.util.Random;
 
 import cavebiomes.CaveBiomes;
+import cavebiomes.blocks.IcePatch;
 import cavebiomes.entities.skeleton.SkeletonIce;
 import cavebiomes.entities.skeleton.SkeletonKnight;
 import cavebiomes.entities.skeleton.SkeletonLava;
@@ -10,10 +11,13 @@ import cavebiomes.entities.skeleton.SkeletonMage;
 import cavebiomes.entities.zombie.ZombieFrozen;
 import cavebiomes.entities.zombie.ZombieMummy;
 import cavebiomes.entities.zombie.ZombiePharoh;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityList;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class Entities {
+	public static Block spawner;
 	public static void RegisterEntityList()
 	{
 		registerEntity(ZombieMummy.class, "ZombieMummy", true);
@@ -25,7 +29,8 @@ public class Entities {
 		registerEntity(SkeletonMage.class, "SkeletonMage", true);
 		registerEntity(CustomWolf.class, "HellHound", true);
 
-
+		spawner = new SpawnerBlock().setBlockName("WTFspawner");
+		GameRegistry.registerBlock(spawner, "WTFspawner");
 
 	}
 

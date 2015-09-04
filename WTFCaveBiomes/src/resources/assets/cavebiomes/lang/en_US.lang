@@ -1,4 +1,4 @@
-
+item.moss.name=Moss
 tile.CinderShroom.name=CinderShroom
 tile.foxfire.name=Foxfire
 tile.hanging_foxfire.name=Hanging Foxfire
@@ -584,13 +584,11 @@ tile.frozen_sedimentary_stalagmite_small.7.name=Icy Chert Stalagmite
 tile.frozen_sedimentary_stalagmite_base.7.name=Icy Chert Stalagmite
 tile.frozen_sedimentary_stalagmite_tip.7.name=Icy Chert Stalagmite
 
-tile.sedimentarySand.limestoneSand.name=Limestone Sand
-tile.sedimentarySand.chalkSand.name=Chalk Sand
-tile.sedimentarySand.shaleSand.name=Shale Sand
-tile.sedimentarySand.siltstoneSand.name=Siltstone Sand
-tile.sedimentarySand.ligniteBlockSand.name=Lignite Sand
-tile.sedimentarySand.limestoneSand.name=Limestone Sand
-tile.sedimentarySand.dolomiteSand.name=Dolomite Sand
-tile.sedimentarySand.greywackeSand.name=Greywacke Sand
-tile.sedimentarySand.chertSand.name=Chert Sand
-
+tile.sedimentarySand.0.limestoneSand.name=Limestone Sand
+tile.sedimentarySand.1.chalkSand.name=Chalk Sand
+tile.sedimentarySand.2.shaleSand.name=Shale Sand
+tile.sedimentarySand.3.siltstoneSand.name=Siltstone Sand
+tile.sedimentarySand.4.ligniteBlockSand.name=Lignite Sand
+tile.sedimentarySand.5.dolomiteSand.name=Dolomite Sand
+tile.sedimentarySand.6.greywackeSand.name=Greywacke Sand
+tile.sedimentarySand.7.chertSand.name=Chert Sand

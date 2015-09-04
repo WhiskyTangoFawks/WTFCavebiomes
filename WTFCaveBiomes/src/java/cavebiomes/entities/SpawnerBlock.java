@@ -11,14 +11,14 @@ public class SpawnerBlock extends Block implements ITileEntityProvider{
 
 	protected Entity mob;
 
-	protected SpawnerBlock(Entity entity) {
-		super(Material.rock);
-		this.mob = entity;
+	protected SpawnerBlock() {
+		super(Material.air);
+
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-		return new SpawnerBlockEntity(mob);
+		return new SpawnerBlockEntity();
 	}
 
 }

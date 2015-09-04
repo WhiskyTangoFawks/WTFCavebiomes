@@ -43,6 +43,8 @@ public class ItemMoss extends Item{
 		Block blockToSet = BlockSets.blockTransformer.get(new BlockInfo(world.getBlock(x,y,z), world.getBlockMetadata(x,y,z), BlockSets.Modifier.MossyStone));
 		if (blockToSet != null){
 			world.setBlock(x, y, z, blockToSet, world.getBlockMetadata(x,y,z), 3);
+			//ItemStack heldItem = player.getHeldItem();
+			player.inventory.consumeInventoryItem(moss);
 			return true;
 		}
 		blockToSet = BlockSets.blockTransformer.get(new BlockInfo(world.getBlock(x,y,z), world.getBlockMetadata(x,y,z), BlockSets.Modifier.mossy_cobblestone));

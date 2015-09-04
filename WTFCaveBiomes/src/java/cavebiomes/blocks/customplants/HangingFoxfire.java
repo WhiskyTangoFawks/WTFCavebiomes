@@ -56,7 +56,7 @@ public class HangingFoxfire extends Foxfire implements ILightDarkBlock{
 		if (rand.nextInt(25) == 0)
 		{
 			System.out.println("try to grow");
-			ArrayList arraylist = new ArrayList();
+			ArrayList<ChunkPosition> arraylist = new ArrayList<ChunkPosition>();
 			for (int xloop = -4; xloop < 5; xloop++){
 				for (int zloop = -4; zloop < 5; zloop++){
 					for (int yloop = -3; yloop < 3 || world.isAirBlock(xloop, y+yloop, z); yloop++){

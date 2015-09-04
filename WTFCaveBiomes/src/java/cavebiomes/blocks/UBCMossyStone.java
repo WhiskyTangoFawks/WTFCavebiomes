@@ -105,10 +105,7 @@ public class UBCMossyStone extends ChildBlockCarryMetadata implements IAlphaMask
 			MossySedimentary = registerMossyBlock(UBCblocks.SedimentaryStone, "sedimentary_stone", UBCblocks.SedimentaryStoneList, "undergroundbiomes");
 		}
 		
-		BlockSets.addStoneBlock(UBCMossyStone.MossyStone, Blocks.mossy_cobblestone);
-		BlockSets.addStoneBlock(UBCMossyStone.MossyIgneous, UBCMossyStone.MossyIgneousCobble, 8);
-		BlockSets.addStoneBlock(UBCMossyStone.MossyMetamorphic, UBCMossyStone.MossyMetamorphicCobble, 8);
-		BlockSets.addStoneBlock(UBCMossyStone.MossySedimentary, UBCSand.sedimentarySand);
+
 
 		BlockSets.addDefaultFallingBlock(UBCMossyStone.MossyIgneousCobble, 1);
 		BlockSets.addDefaultFallingBlock(UBCMossyStone.MossyMetamorphicCobble, 1);
