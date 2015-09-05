@@ -1,4 +1,4 @@
-package cavebiomes.worldgeneration;
+package cavebiomes.worldgeneration.dungeontypes;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -39,7 +39,7 @@ public class DungeonSet {
 	
 	public void addDungeon(DungeonType newdungeon){
 		dungeonMap.put(listSize, newdungeon);
-		WTFCore.log.info("Adding dungeon " + newdungeon.name);
+		//WTFCore.log.info("Adding dungeon " + newdungeon.name);
 		listSize++;
 	}
 	

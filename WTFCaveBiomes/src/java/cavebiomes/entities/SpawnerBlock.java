@@ -1,24 +1,27 @@
 package cavebiomes.entities;
 
-import net.minecraft.block.Block;
+import cavebiomes.CaveBiomes;
+import net.minecraft.block.BlockAir;
 import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class SpawnerBlock extends Block implements ITileEntityProvider{
+public class SpawnerBlock extends BlockAir implements ITileEntityProvider{
 
-	protected Entity mob;
-
-	protected SpawnerBlock() {
-		super(Material.air);
+	public String entityName;
+	protected SpawnerBlock(String entityName) {
+		super();
+		this.entityName = entityName;
+		this.setCreativeTab(CaveBiomes.tabCaveDecorations);
 
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-		return new SpawnerBlockEntity();
+	public TileEntity createNewTileEntity(World world, int p_149915_2_) {
+		 
+		//spawner.setMob();
+		return new SpawnerBlockEntity(entityName); 
+		
 	}
 
 }

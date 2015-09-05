@@ -1,9 +1,9 @@
-package cavebiomes.worldgeneration.dungeontypes;
+package cavebiomes.worldgeneration.dungeontypes.mob;
 
 import java.util.Random;
 
 import cavebiomes.WTFCaveBiomesConfig;
-import cavebiomes.worldgeneration.DungeonType;
+import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityMobSpawner;

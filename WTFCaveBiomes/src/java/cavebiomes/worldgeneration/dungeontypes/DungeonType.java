@@ -1,4 +1,4 @@
-package cavebiomes.worldgeneration;
+package cavebiomes.worldgeneration.dungeontypes;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -28,6 +28,7 @@ public class DungeonType{
 	protected Random random = new Random();
 
 	protected Block modifier;
+	protected int spawncounter;
 
 	//private int spawnHeight;
 	public String name;
@@ -42,6 +43,8 @@ public class DungeonType{
 
 	public void SpawnDungeon(World world, Random rand, int x, int y, int z, int ceiling, int floor)
 	{
+		if (!canSpawnHere(world, x, y, z, ceiling, floor)){return;}
+		
 		if (BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(x, z), Type.SNOWY)){modifier =  Blocks.ice;}
 		else {modifier=null;}
 
@@ -136,6 +139,14 @@ public class DungeonType{
 
 
 		}
+		spawncounter = 0;
+	}
+
+	/**
+	 * Checks for special conditions
+	 */
+	public boolean canSpawnHere(World world, int x, int y, int z, int ceiling, int floor) {
+		return true;
 	}
 
 	/**

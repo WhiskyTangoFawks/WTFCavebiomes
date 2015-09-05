@@ -1,34 +1,31 @@
-package cavebiomes.worldgeneration.dungeontypes;
+package cavebiomes.worldgeneration.dungeontypes.mob;
 
 import java.util.Random;
-
-import cavebiomes.WTFCaveBiomesConfig;
-import cavebiomes.worldgeneration.DungeonType;
 import net.minecraft.init.Blocks;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
+import cavebiomes.WTFCaveBiomesConfig;
+import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
-public class DungeonSlime extends DungeonType{
+public class DungeonClassicSkeleton extends DungeonType{
 
-	public DungeonSlime() {
-		super("Slime");
+	public DungeonClassicSkeleton() {
+		super("ClassicSkeleton");
 	}
 
 	@Override
 	public void generateCeiling(World world, Random rand, int x, int y, int z){
-		world.setBlock( x, y, z, Blocks.stonebrick, 2, 0);
+		gen.setBlockWithoutNotify(world, x, y, z, Blocks.stonebrick,0);
 	}
 
 	@Override
 	public void generateFloor(World world, Random rand, int x, int y, int z){
-
-		gen.setBlockWithoutNotify(world, x, y, z, Blocks.stonebrick, 2);
+		gen.setBlockWithoutNotify(world, x, y, z, Blocks.stonebrick,0);
 	}
 
 	@Override
 	public void generateWalls(World world, Random rand, int x, int y, int z){
-		gen.setBlockWithoutNotify(world, x, y, z, Blocks.stonebrick, 2);
+		gen.setBlockWithoutNotify(world, x, y, z, Blocks.stonebrick,0);
 	}
 
 	@Override
@@ -38,13 +35,7 @@ public class DungeonSlime extends DungeonType{
 			while (world.isAirBlock(x,  y-1,  z)){y--;}
 			world.setBlock(x, y, z, Blocks.mob_spawner, 0, 2);
 			TileEntityMobSpawner spawner = (TileEntityMobSpawner)world.getTileEntity(x, y, z);
-			spawner.func_145881_a().setEntityName("Slime");
-			NBTTagCompound nbt = new NBTTagCompound();
-			spawner.writeToNBT(nbt);
-			nbt.setShort("spawnCount",(short)1);
-			nbt.setShort("MinSpawnDelay",(short)2000);
-			nbt.setShort("MaxSpawnDelay",(short)16000);
-			spawner.readFromNBT(nbt);
+			spawner.func_145881_a().setEntityName("Skeleton");
 		}
 	}
 

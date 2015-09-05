@@ -1,4 +1,4 @@
-package cavebiomes.worldgeneration.dungeontypes;
+package cavebiomes.worldgeneration.dungeontypes.mob;
 
 import java.util.Random;
 import net.minecraft.init.Blocks;
@@ -6,7 +6,7 @@ import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
 import wtfcore.utilities.BlockSets;
 import cavebiomes.WTFCaveBiomesConfig;
-import cavebiomes.worldgeneration.DungeonType;
+import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
 public class DungeonClassicSpider extends DungeonType{
 

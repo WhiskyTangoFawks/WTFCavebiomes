@@ -1,4 +1,4 @@
-package cavebiomes.worldgeneration.dungeontypes;
+package cavebiomes.worldgeneration.dungeontypes.mob;
 
 import java.util.Random;
 import net.minecraft.init.Blocks;
@@ -7,7 +7,7 @@ import cavebiomes.WTFCaveBiomesConfig;
 import cavebiomes.entities.Entities;
 import cavebiomes.entities.SpawnerBlockEntity;
 import cavebiomes.entities.zombie.ZombiePharoh;
-import cavebiomes.worldgeneration.DungeonType;
+import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
 public class DungeonTypePharohTomb extends DungeonType{
 
@@ -36,9 +36,8 @@ public class DungeonTypePharohTomb extends DungeonType{
 		if (WTFCaveBiomesConfig.EnableMobSpawners){
 			if (WTFCaveBiomesConfig.EnableMobSpawners){
 				while (world.isAirBlock(x,  y-1,  z)){y--;}
-				world.setBlock(x, y, z, Entities.spawner, 0, 2);
-				SpawnerBlockEntity spawner = (SpawnerBlockEntity)world.getTileEntity(x, y, z);
-				spawner.setMob(new ZombiePharoh(world));
+				world.setBlock(x, y, z, Entities.spawners.get("ZombiePharoh"), 0, 2);
+				
 			}
 
 

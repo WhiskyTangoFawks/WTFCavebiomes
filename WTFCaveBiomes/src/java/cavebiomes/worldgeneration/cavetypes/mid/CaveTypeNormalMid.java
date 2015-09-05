@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.DungeonSet;
-import cavebiomes.worldgeneration.DungeonType;
+import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
+import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 import net.minecraft.world.World;
 
 public class CaveTypeNormalMid extends CaveType{

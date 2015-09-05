@@ -1,11 +1,11 @@
-package cavebiomes.worldgeneration.dungeontypes;
+package cavebiomes.worldgeneration.dungeontypes.ambient;
 
 import java.util.Random;
 
 import net.minecraft.world.World;
 import wtfcore.utilities.BlockSets;
 import cavebiomes.blocks.customplants.CinderShroom;
-import cavebiomes.worldgeneration.DungeonType;
+import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
 public class DungeonTypeCinderShroom extends DungeonType {
 	public DungeonTypeCinderShroom() {

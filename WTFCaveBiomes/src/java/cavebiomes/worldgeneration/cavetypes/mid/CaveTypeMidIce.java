@@ -6,8 +6,8 @@ import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.DungeonSet;
-import cavebiomes.worldgeneration.DungeonType;
+import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
+import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
 public class CaveTypeMidIce extends CaveType{
 

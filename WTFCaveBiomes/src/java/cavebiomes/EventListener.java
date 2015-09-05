@@ -3,13 +3,7 @@ package cavebiomes;
 import java.util.Random;
 
 import cavebiomes.blocks.UBCSand;
-import cavebiomes.entities.skeleton.SkeletonIce;
-import cavebiomes.entities.skeleton.SkeletonKnight;
-import cavebiomes.entities.skeleton.SkeletonLava;
-import cavebiomes.entities.skeleton.SkeletonMage;
-import cavebiomes.entities.zombie.ZombieFrozen;
-import cavebiomes.entities.zombie.ZombieMummy;
-import cavebiomes.entities.zombie.ZombiePharoh;
+import cavebiomes.entities.SpawnHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.Entity;
@@ -17,14 +11,9 @@ import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
-import wtfcore.WTFCore;
 import wtfcore.utilities.UBCblocks;
 
 
@@ -45,49 +34,11 @@ public class EventListener {
 	public void SpawnReplacer (LivingSpawnEvent event)
 	{
 		if (WTFCaveBiomesConfig.customMobs && !event.world.isRemote){
-
-			//Zombies
 			if (event.entityLiving instanceof EntityZombie){
-				EntityZombie oldentity = (EntityZombie) event.entityLiving;
-				BiomeGenBase biome = event.world.getBiomeGenForCoords(MathHelper.floor_float(event.x), MathHelper.floor_float(event.z));
-				if (oldentity.getCanSpawnHere())
-				{
-					if (BiomeDictionary.isBiomeOfType(biome, Type.SANDY)){
-						if (event.y < 32 && random.nextInt(50)==0){
-							replaceEntity(oldentity, new ZombiePharoh(event.world));
-						} else {
-							replaceEntity(oldentity, new ZombieMummy(event.world));
-						}
-					}
-					else if (BiomeDictionary.isBiomeOfType(biome, Type.SNOWY)){
-						replaceEntity(event.entity, new ZombieFrozen(event.world));
-					}
-				}
+				SpawnHandler.zombieSpawn(event);
 			}
-			//Skeletons
-			if (event.entityLiving instanceof EntitySkeleton){
-				EntitySkeleton oldentity = (EntitySkeleton) event.entityLiving;
-
-
-				BiomeGenBase biome = event.world.getBiomeGenForCoords(MathHelper.floor_float(event.x), MathHelper.floor_float(event.z));
-				if (oldentity.getCanSpawnHere()){
-
-					if (event.y < 32  && random.nextInt(50) == 0){
-						replaceEntity(oldentity, new SkeletonMage(event.world));
-					}
-					if (event.y < 32  && random.nextInt(25) == 0){
-						replaceEntity(oldentity, new SkeletonKnight(event.world));
-					}
-
-
-					if (BiomeDictionary.isBiomeOfType(biome, Type.SNOWY) && event.y <40){
-						replaceEntity(event.entity, new SkeletonIce(event.world));
-					}
-					else if (event.y < 32 && random.nextBoolean()){
-						replaceEntity(event.entity, new SkeletonLava(event.world));
-
-					}
-				}
+			else if (event.entityLiving instanceof EntitySkeleton){
+				SpawnHandler.skeletonSpawn(event);
 			}
 		}
 

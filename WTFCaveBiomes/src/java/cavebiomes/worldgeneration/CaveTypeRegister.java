@@ -21,6 +21,7 @@ import cavebiomes.worldgeneration.cavetypes.shallow.CaveTypeSandy;
 import cavebiomes.worldgeneration.cavetypes.shallow.CaveTypeShallowIce;
 import cavebiomes.worldgeneration.cavetypes.shallow.CaveTypeSwamp;
 import cavebiomes.worldgeneration.cavetypes.shallow.CaveTypeWetShallow;
+import cavebiomes.worldgeneration.dungeontypes.DungeonTypeRegister;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -40,8 +41,8 @@ public class CaveTypeRegister {
 	public static CaveType swamp = new CaveTypeSwamp ("Swamp", 1, DungeonTypeRegister.swampSet);
 	public static CaveType sandyShallow = new CaveTypeSandy ("Sandy",1, DungeonTypeRegister.desertSet);
 	public static CaveType jungleVolcano = new CaveTypeJungleVolcano ("Jungle",1, DungeonTypeRegister.jungleSet);
-	public static CaveType mountains = new CaveTypeMountain ("Mountains",1, DungeonTypeRegister.defaultSet);
-	public static CaveType iceMountain = new CaveTypeIceMountain ("IceMountains",1, DungeonTypeRegister.coldSet);
+	public static CaveType mountains = new CaveTypeMountain ("Mountains",1, DungeonTypeRegister.mountainSet);
+	public static CaveType iceMountain = new CaveTypeIceMountain ("IceMountains",1, DungeonTypeRegister.icemountainSet);
 	public static CaveType iceShallow = new CaveTypeShallowIce ("Ice",1, DungeonTypeRegister.coldSet);
 	public static CaveType fungal = new CaveTypeFungal ("Fungal",1, DungeonTypeRegister.swampSet);
 	public static CaveType plains = new CaveTypePlains ("Plains",1, DungeonTypeRegister.defaultSet);

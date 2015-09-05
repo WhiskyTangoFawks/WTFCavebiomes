@@ -1,55 +1,55 @@
 package cavebiomes.entities;
 
-import java.util.Random;
+import java.util.HashMap;
 
 import cavebiomes.CaveBiomes;
-import cavebiomes.blocks.IcePatch;
 import cavebiomes.entities.skeleton.SkeletonIce;
 import cavebiomes.entities.skeleton.SkeletonKnight;
 import cavebiomes.entities.skeleton.SkeletonLava;
 import cavebiomes.entities.skeleton.SkeletonMage;
+import cavebiomes.entities.skeleton.SkeletonMiner;
 import cavebiomes.entities.zombie.ZombieFrozen;
+import cavebiomes.entities.zombie.ZombieMiner;
 import cavebiomes.entities.zombie.ZombieMummy;
 import cavebiomes.entities.zombie.ZombiePharoh;
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityList;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class Entities {
-	public static Block spawner;
+	
+	public static HashMap<String, Block> spawners = new HashMap<String, Block>();
+	static int counter = 1;
+	
 	public static void RegisterEntityList()
-	{
-		registerEntity(ZombieMummy.class, "ZombieMummy", true);
-		registerEntity(ZombieFrozen.class, "ZombieFrozen", true);
-		registerEntity(ZombiePharoh.class, "ZombiePharoh",true);
-		registerEntity(SkeletonLava.class, "SkeletonLava", true);
-		registerEntity(SkeletonIce.class, "SkeletonIce", true);
-		registerEntity(SkeletonKnight.class, "SkeletonKnight", true);
-		registerEntity(SkeletonMage.class, "SkeletonMage", true);
-		registerEntity(CustomWolf.class, "HellHound", true);
+	{	
+		registerEntity(ZombieMummy.class, "ZombieMummy");
+		registerEntity(ZombieFrozen.class, "ZombieFrozen");
+		registerEntity(ZombiePharoh.class, "ZombiePharoh");
+		registerEntity(ZombieMiner.class, "ZombieMiner");
+		registerEntity(SkeletonLava.class, "SkeletonLava");
+		registerEntity(SkeletonIce.class, "SkeletonIce");
+		registerEntity(SkeletonKnight.class, "SkeletonKnight");
+		registerEntity(SkeletonMage.class, "SkeletonMage");
+		registerEntity(SkeletonMiner.class, "SkeletonMiner");
+		//registerEntity(CustomWolf.class, "HellHound");
+		registerEntity(CustomIronGolem.class, "DerangedGolem");
 
-		spawner = new SpawnerBlock().setBlockName("WTFspawner");
-		GameRegistry.registerBlock(spawner, "WTFspawner");
+
 
 	}
 
-	public static void registerEntity(Class entityClass, String name, Boolean doEgg)
+	public static void registerEntity(Class entityClass, String name)
 	{
-		int entityId = EntityRegistry.findGlobalUniqueEntityId();
-		long x = name.hashCode();
-		Random random = new Random(x);
-		int mainColor = random.nextInt() * 16777215;
-		int subColor = random.nextInt() * 16777215;
-
-		EntityRegistry.registerGlobalEntityID(entityClass, name, entityId);
+		int entityId = counter;
+		counter++;
 		EntityRegistry.registerModEntity(entityClass, name, entityId, CaveBiomes.instance, 64, 1, true);
-		if (doEgg)
-		{
-			EntityList.entityEggs.put(Integer.valueOf(entityId), new EntityList.EntityEggInfo(entityId, mainColor, subColor));
-		}
+		
+		Block spawner = new SpawnerBlock(name).setBlockName(name+"Spawner");
+		GameRegistry.registerBlock(spawner, name+"Spawner");
+		spawners.put(name, spawner);
+		
 	}
-
 
 
 }

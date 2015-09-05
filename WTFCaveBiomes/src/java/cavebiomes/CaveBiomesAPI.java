@@ -3,10 +3,13 @@ package cavebiomes;
 import cavebiomes.utilities.BiomeAndHeight;
 import cavebiomes.worldgeneration.CaveType;
 import cavebiomes.worldgeneration.CaveTypeRegister;
-import cavebiomes.worldgeneration.DungeonType;
-import cavebiomes.worldgeneration.DungeonTypeRegister;
+import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import cavebiomes.worldgeneration.dungeontypes.DungeonTypeRegister;
+import net.minecraft.block.Block;
 import net.minecraft.world.biome.BiomeGenBase;
 import wtfcore.WTFCore;
+import wtfcore.utilities.BlockInfo;
+import wtfcore.utilities.BlockSets;
 
 public class CaveBiomesAPI {
 
@@ -57,6 +60,15 @@ public class CaveBiomesAPI {
 		else if (biometype == DungeonBiomeType.VOLCANIC){
 			DungeonTypeRegister.volcanicSet.addDungeon(dungeon);
 		}
+	}
+	/**
+	 * Adds a Stone+Cobblestone pairing to the blockTransformer, allowing cavebiomes to use it for generation
+	 * @param dungeon
+	 * @param biometype: the type of biome you wish it to spawn in
+	 */
+	public static void addStoneAndCobble(Block stone, Block cobblestone){
+		BlockSets.blockTransformer.put(new BlockInfo(stone, 0, BlockSets.Modifier.cobblestone), cobblestone);
+		BlockSets.ReplaceHashset.add(stone);
 	}
 	
 }

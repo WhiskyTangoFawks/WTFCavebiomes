@@ -3,7 +3,7 @@ package cavebiomes.worldgeneration.cavetypes.shallow;
 import java.util.Random;
 
 import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.DungeonSet;
+import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
 import net.minecraft.world.World;
 
 public class CaveTypeNormalShallow extends CaveType{

@@ -1,10 +1,12 @@
 package cavebiomes;
 
+import java.util.Iterator;
+
 import cavebiomes.blocks.CaveBlocks;
 import cavebiomes.entities.Entities;
 import cavebiomes.proxy.CommonProxy;
 import cavebiomes.worldgeneration.CaveBiomesWorldScanner;
-import cavebiomes.worldgeneration.DungeonTypeRegister;
+import cavebiomes.worldgeneration.dungeontypes.DungeonTypeRegister;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -18,10 +20,12 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import wtfcore.WTFCore;
+import wtfcore.WTFCoreConfig;
 import wtfcore.WorldGenListener;
 
 
-@Mod(modid = CaveBiomes.modid, name = "WhiskyTangoFox's Cave Biomes", version = "1.32", dependencies = "after:UndergroundBiomes;required-after:WTFCore@[1.52,)")
+
+@Mod(modid = CaveBiomes.modid, name = "WhiskyTangoFox's Cave Biomes", version = "1.34", dependencies = "after:UndergroundBiomes;required-after:WTFCore@[1.6,)")
 
 
 public class CaveBiomes {
@@ -72,9 +76,13 @@ public class CaveBiomes {
 	public void PostInit(FMLPostInitializationEvent postEvent){
 
 		//add a config option to allow users to place a the thing in another dimension
-		WorldGenListener.GetScanner.put(0, new CaveBiomesWorldScanner());
-		
-
+		Iterator<Integer> iterator = WTFCoreConfig.overworlds.iterator();
+		while (iterator.hasNext()){
+			int dimensionID = iterator.next();
+			WorldGenListener.GetScanner.put(dimensionID, new CaveBiomesWorldScanner());
+			WTFCore.log.info("Adding CaveBiomes Overworld scanner for dimension " + dimensionID);
+		}
+		//Once I do a nether decorator, it goes here
 	}
 
 

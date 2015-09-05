@@ -1,10 +1,10 @@
-package cavebiomes.worldgeneration.dungeontypes;
+package cavebiomes.worldgeneration.dungeontypes.ambient;
 
 import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import cavebiomes.blocks.CaveBlocks;
-import cavebiomes.worldgeneration.DungeonType;
+import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
 public class DungeonTypeFrozenSolid extends DungeonType{
 

@@ -8,8 +8,8 @@ import net.minecraft.world.World;
 import wtfcore.utilities.BlockSets;
 import cavebiomes.blocks.UBCMossyStone;
 import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.DungeonSet;
-import cavebiomes.worldgeneration.DungeonType;
+import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
+import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
 public class CaveTypeForest extends CaveType{
 

@@ -4,6 +4,8 @@ import java.util.Random;
 import cavebiomes.WTFCaveBiomesConfig;
 import cavebiomes.utilities.gencores.GenCoreProvider;
 import cavebiomes.utilities.gencores.VanillaGen;
+import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
+import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 import net.minecraft.world.World;
 import wtfcore.WTFCore;
 

@@ -7,8 +7,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.DungeonSet;
-import cavebiomes.worldgeneration.DungeonType;
+import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
+import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 import wtfcore.utilities.BlockSets;
 
 public class CaveTypeDeepIce extends CaveType{

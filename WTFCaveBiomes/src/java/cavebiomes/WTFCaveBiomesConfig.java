@@ -33,12 +33,13 @@ public class WTFCaveBiomesConfig {
 		Configuration config = new Configuration(new File("config/WTFCaveBiomesConfig.cfg"));
 
 		config.load();
-		EnableMobSpawners = config.get("Cave Subtype Generation", "EnableMobSpawners", true).getBoolean();
-		dungeonChance = config.get("Cave Subtype Generation", "Subtype rarity- Set higher for fewer cave subtypes, lower for more", 4096).getInt();
-		logDungeons=config.get("Cave Subtype Generation", "Log subtypes in chat", false).getBoolean();
+		String dungeonOptions = "Cave Subtype and Dungeon Generation";
+		EnableMobSpawners = config.get(dungeonOptions, "EnableMobSpawners", true).getBoolean();
+		dungeonChance = config.get(dungeonOptions, "Subtype rarity- Set higher for fewer cave subtypes, lower for more", 4096).getInt();
+		logDungeons=config.get(dungeonOptions, "Log subtypes in chat", false).getBoolean();
 
 		ceilingAddonChance = config.get("Cave Generation Options", "base frequency of stalactites, and other ceiling addons", 5).getInt();
-		floorAddonChance = config.get("CaveGeneration Options", "base frequency of stalagmite, and other floor addons", 5).getInt();
+		floorAddonChance = config.get("Cave Generation Options", "base frequency of stalagmite, and other floor addons", 5).getInt();
 
 		enableMossyStone = config.get("Block Options", "Enable Additional Mossy Stone Blocks", true).getBoolean();
 		enableDrippingBlocks = config.get("Block Options", "Enable modded dripping blocks", true).getBoolean();
