@@ -32,17 +32,7 @@ public class DungeonMagmaSlime extends DungeonType{
 	@Override
 	public void generateCenter(World world, Random rand, int x, int y, int z, int ceiling, int floor)
 	{
-		if (WTFCaveBiomesConfig.EnableMobSpawners){
-			while (world.isAirBlock(x,  y-1,  z)){y--;}
-			world.setBlock(x, y, z, Blocks.mob_spawner, 0, 2);
-			TileEntityMobSpawner spawner = (TileEntityMobSpawner)world.getTileEntity(x, y, z);
-			spawner.func_145881_a().setEntityName("LavaSlime");
-			NBTTagCompound nbt = new NBTTagCompound();
-			spawner.writeToNBT(nbt);
-			nbt.setShort("spawnCount",(short)2);
-			nbt.setShort("MinSpawnDelay",(short)600);
-			spawner.readFromNBT(nbt);
-		}
+		gen.spawnRareVanillaSpawner(world, x, floor+1, z, "LavaSlime");
 
 	}
 }

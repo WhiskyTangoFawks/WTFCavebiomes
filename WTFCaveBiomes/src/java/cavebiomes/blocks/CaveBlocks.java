@@ -39,7 +39,7 @@ public class CaveBlocks
 		BlockRoots.registerRoots();
 		Foxfire.register();
 		ItemMoss.register();
-		caveLilyPad = Blocks.waterlily;
+	
 
 		IcePatch = new IcePatch().setBlockName("ice_patch");
 		GameRegistry.registerBlock(IcePatch, "ice_patch");

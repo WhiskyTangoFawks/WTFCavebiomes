@@ -2,6 +2,7 @@ package cavebiomes.utilities.gencores;
 
 import java.util.Random;
 
+import cavebiomes.WTFCaveBiomesConfig;
 import cavebiomes.blocks.BlockIcicle;
 import cavebiomes.blocks.BlockSpeleothems;
 import cavebiomes.blocks.CaveBlocks;
@@ -10,6 +11,8 @@ import wtfcore.utilities.BlockSets;
 import cpw.mods.fml.common.Loader;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 
@@ -298,6 +301,30 @@ public class VanillaGen {
 	public BlockInfo getBlockToReplace(World world, int x, int y, int z){
 		return new BlockInfo(world.getBlock(x,y,z), world.getBlockMetadata(x,y,z) );
 	}
+
+	/**
+	 **Checks if spawners are enabled, and then generates a mob spawner
+	 **/
+	public void spawnVanillaSpawner(World world, int x, int y, int z, String entityName){
+		if (WTFCaveBiomesConfig.EnableMobSpawners){
+			world.setBlock(x, y, z, Blocks.mob_spawner, 0, 2);
+			TileEntityMobSpawner spawner = (TileEntityMobSpawner)world.getTileEntity(x, y, z);
+			spawner.func_145881_a().setEntityName(entityName);
+		}
+	}
+	public void spawnRareVanillaSpawner(World world, int x, int y, int z, String entityName){
+		if (WTFCaveBiomesConfig.EnableMobSpawners){
+			world.setBlock(x, y, z, Blocks.mob_spawner, 0, 2);
+			TileEntityMobSpawner spawner = (TileEntityMobSpawner)world.getTileEntity(x, y, z);
+			spawner.func_145881_a().setEntityName(entityName);
+			NBTTagCompound nbt = new NBTTagCompound();
+			spawner.writeToNBT(nbt);
+			nbt.setShort("spawnCount",(short)2);
+			nbt.setShort("MinSpawnDelay",(short)600);
+			spawner.readFromNBT(nbt);
+		}
+	}
+
 
 	/**
 	 **Use instead of world.setBlock, when you don't want it to update adjacent blocks.  non-fluid blocks placed during world generation should use this method.

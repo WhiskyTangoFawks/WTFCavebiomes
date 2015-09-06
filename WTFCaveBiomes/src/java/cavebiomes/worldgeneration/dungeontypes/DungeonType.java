@@ -3,15 +3,12 @@ package cavebiomes.worldgeneration.dungeontypes;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
-
-import cavebiomes.EventListener;
 import cavebiomes.WTFCaveBiomesConfig;
 import cavebiomes.utilities.gencores.VanillaGen;
 import wtfcore.WTFCore;
 import wtfcore.utilities.DungeonBlockPosition;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary;
@@ -29,8 +26,13 @@ public class DungeonType{
 
 	protected Block modifier;
 	protected int spawncounter;
+	protected int wallStripe;
+	
+	//These are the required dimensions for generation- to make a larger area required, override these
+	public int xClearance = 6;
+	public int yClearance = 4;
+	public int zClearance = 6;
 
-	//private int spawnHeight;
 	public String name;
 
 	protected static VanillaGen gen;
@@ -41,16 +43,59 @@ public class DungeonType{
 	}
 
 
-	public void SpawnDungeon(World world, Random rand, int x, int y, int z, int ceiling, int floor)
+	public void SpawnDungeon(World world, Random rand, int x, int y, int z)
 	{
+		//This is a routine which scans out in each direction, to find the center of a large clear area
+		
+		//Get X
+		int xpos = x+1;
+		for (int loop = 0; world.isAirBlock(xpos, y, z) && loop < 8; loop++){
+			xpos++;
+		}
+		int xneg = x-1;
+		for (int loop = 0;world.isAirBlock(xneg, y, z) && loop < 8; loop++){
+			xneg--;
+		}
+		int xrange = (xpos-xneg);
+		if (xrange < xClearance){return;}
+		x=xneg+xrange/2;
+		
+		//Get z
+		int zpos = z+1;
+		for (int loop = 0; world.isAirBlock(x, y, zpos) && loop < 8; loop++){
+			zpos++;
+		}
+		int zneg = z-1;
+		for (int loop = 0;world.isAirBlock(x, y, zneg) && loop < 8; loop++){
+			zneg--;
+		}
+		int zrange = (zpos-zneg);
+		if (zrange < zClearance){return;}
+		z=zneg+zrange/2;
+		//get Y
+		int ypos = y+1;
+		for (int loop = 0; world.isAirBlock(x, ypos, z) && loop < 8; loop++){
+			ypos++;
+		}
+		int yneg = y-1;
+		for (int loop = 0;world.isAirBlock(x, yneg, z) && loop < 8; loop++){
+			yneg--;
+		}
+		int yrange = (ypos-yneg);
+		if (yrange < yClearance){return;}
+		y=yneg+yrange/2;
+		int floor = yneg;
+		int ceiling = ypos;
+		this.wallStripe = ceiling -1;
+		
 		if (!canSpawnHere(world, x, y, z, ceiling, floor)){return;}
 		
 		if (BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(x, z), Type.SNOWY)){modifier =  Blocks.ice;}
 		else {modifier=null;}
 
 		if(WTFCaveBiomesConfig.logDungeons){
-			EventListener.thePlayer.addChatMessage(new ChatComponentText("Spawning " + this.name + " @ " + x + " " + y + " " + z));
-			WTFCore.log.info("Spawning " + this.name + " @ " + x + " " + y + " " + z);
+			//EventListener.thePlayer.addChatMessage(new ChatComponentText("Spawning " + this.name + " @ " + x + " " + y + " " + z));
+			WTFCore.log.info("Spawning " + this.name + " @ " + x + " " + floor + " " + z);
 		}
 
 
@@ -72,7 +117,7 @@ public class DungeonType{
 
 						//origin
 						double currentX = x + 0.5;
-						double currentY = y + 0.5;
+						double currentY =floor + (ceiling - floor)/2;
 						double currentZ = z + 0.5;
 
 						float vectorStr = radius;
@@ -121,7 +166,13 @@ public class DungeonType{
 				this.generateCeiling(world, rand, i, j, k);
 			}
 			else {
-				this.generateWalls(world, rand, i, j, k);
+				
+				if (y == wallStripe && generateWallStripe(world, rand, i, j, k)){
+					//the generator is called as a boolean- to make sure that if a dungeontype doesn't have a stripe, it doesn't skip that part of the wall
+				}
+				else {
+					this.generateWalls(world, rand, i, j, k);
+				}
 			}
 		}
 
@@ -140,14 +191,21 @@ public class DungeonType{
 
 		}
 		spawncounter = 0;
+
 	}
 
 	/**
-	 * Checks for special conditions
+	 * Checks for special conditions- if you're using blocks from other mods, you should add a check here for the mod being installed to prevent null crashes
 	 */
 	public boolean canSpawnHere(World world, int x, int y, int z, int ceiling, int floor) {
+		//I could really use something that makes a bubble, then finds the center of it
+		//I can probably do this with just x-y-z loops that go out in each direction
+		//until they hit not air
+		//then, find the center of it
 		return true;
+		
 	}
+
 
 	/**
 	 * Generates blocks for the ceiling
@@ -174,7 +232,12 @@ public class DungeonType{
 	public void generateFill(World world, Random rand, int x, int y, int z){
 
 	}
-
+	/**
+	 * generates a stripe along the wall, 1 block below the ceiling
+	 **/
+	public boolean generateWallStripe(World world, Random rand, int x, int y, int z){
+		return false;
+	}
 
 
 

@@ -50,8 +50,8 @@ public class CaveTypeSwamp extends CaveType {
 		if (height < 9 ){
 			if (IsBlockSurrounded(world, x, y, z)){
 				gen.setFluid(world, x, y, z, Blocks.water, addonblock);
-				if (random.nextInt(8)==0 && CaveBlocks.caveLilyPad.canBlockStay(world,  x,  y+1,  z)){
-					gen.setBlockWithoutNotify(world, x, y+1, z, CaveBlocks.caveLilyPad, 0);
+				if (random.nextInt(8)==0 && Blocks.waterlily.canBlockStay(world,  x,  y+1,  z)){
+					gen.setBlockWithoutNotify(world, x, y+1, z, Blocks.waterlily, 0);
 				}
 			}
 		}

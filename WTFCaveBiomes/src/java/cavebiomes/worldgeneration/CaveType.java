@@ -61,8 +61,7 @@ public class CaveType
 	public void generateDungeon(World world, Random rand, int x, int y, int z, int ceiling, int floor){
 		DungeonType type = this.getDungeonType(world, rand, x, y, z);
 		if (type != null){
-			WTFCore.log.info("Spawning "+ type.name);
-			type.SpawnDungeon(world, rand, x, y, z, ceiling, floor);
+			type.SpawnDungeon(world, rand, x, floor+(ceiling-floor)/2, z);
 		}
 		else { WTFCore.log.info("DungeonMap is Empty");
 		}

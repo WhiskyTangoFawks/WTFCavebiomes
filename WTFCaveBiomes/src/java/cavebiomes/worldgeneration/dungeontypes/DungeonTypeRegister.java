@@ -24,7 +24,6 @@ import cavebiomes.worldgeneration.dungeontypes.mob.DungeonTypeSkeletonKnight;
 
 public class DungeonTypeRegister {
 	
-	
 	public static DungeonType CaveIn = new DungeonTypeCaveIn();
 	public static DungeonType Grotto = new DungeonSpeleothemGrotto();
 	private static DungeonType Spider = new DungeonClassicSpider();

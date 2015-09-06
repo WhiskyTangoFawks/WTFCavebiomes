@@ -2,10 +2,8 @@ package cavebiomes.worldgeneration.dungeontypes.mob;
 
 import java.util.Random;
 import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
 import wtfcore.utilities.BlockSets;
-import cavebiomes.WTFCaveBiomesConfig;
 import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
 public class DungeonClassicSpider extends DungeonType{
@@ -31,12 +29,7 @@ public class DungeonClassicSpider extends DungeonType{
 	@Override
 	public void generateCenter(World world, Random rand, int x, int y, int z, int ceiling, int floor)
 	{
-		if (WTFCaveBiomesConfig.EnableMobSpawners){
-			while (world.isAirBlock(x,  y-1,  z)){y--;}
-			world.setBlock(x, y, z, Blocks.mob_spawner, 0, 2);
-			TileEntityMobSpawner spawner = (TileEntityMobSpawner)world.getTileEntity(x, y, z);
-			spawner.func_145881_a().setEntityName("Spider");
-		}
+		gen.spawnVanillaSpawner(world, x, floor+1, z, "Spider");
 	}
 
 

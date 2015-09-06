@@ -36,17 +36,13 @@ public class DungeonClassicZombie extends DungeonType{
 	@Override
 	public void generateCenter(World world, Random rand, int x, int y, int z, int ceiling, int floor)
 	{
-		if (WTFCaveBiomesConfig.EnableMobSpawners){
-			while (world.isAirBlock(x,  y-1,  z)){y--;}
-			world.setBlock(x, y, z, Blocks.mob_spawner, 0, 2);
-			TileEntityMobSpawner spawner = (TileEntityMobSpawner)world.getTileEntity(x, y, z);
-			BiomeGenBase biome = world.getBiomeGenForCoords(x, z);
-			if (BiomeDictionary.isBiomeOfType(biome, Type.SNOWY)){
-				spawner.func_145881_a().setEntityName("ZombieFrozen");
-			}
-			else {
-				spawner.func_145881_a().setEntityName("Zombie");
-			}
+		BiomeGenBase biome = world.getBiomeGenForCoords(x, z);
+		if (BiomeDictionary.isBiomeOfType(biome, Type.SNOWY)){
+			gen.spawnVanillaSpawner(world, x, floor+1, z, "Zombie");
+		}
+		else {
+			gen.spawnVanillaSpawner(world, x, floor+1, z, "Zombie");
+
 		}
 	}
 }

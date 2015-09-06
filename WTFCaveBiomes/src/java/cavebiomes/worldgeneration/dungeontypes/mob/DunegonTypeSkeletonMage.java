@@ -32,6 +32,11 @@ public class DunegonTypeSkeletonMage extends DungeonType{
 		gen.setBlockWithoutNotify(world, x,  y,  z, Blocks.obsidian, 0);
 	}
 
+	public boolean generateWallStripe(World world, Random rand, int x, int y, int z){
+		gen.setBlockWithoutNotify(world, x,  y,  z, Blocks.bookshelf, 0);
+		return true;
+	}
+	
 	@Override
 	public void generateCenter(World world, Random rand, int x, int y, int z, int ceiling, int floor)
 	{

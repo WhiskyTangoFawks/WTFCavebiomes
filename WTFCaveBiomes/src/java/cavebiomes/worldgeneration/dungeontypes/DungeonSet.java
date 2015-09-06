@@ -3,8 +3,6 @@ package cavebiomes.worldgeneration.dungeontypes;
 import java.util.HashMap;
 import java.util.Random;
 
-import wtfcore.WTFCore;
-
 public class DungeonSet {
 
 	private HashMap<Integer, DungeonType> dungeonMap = new HashMap<Integer, DungeonType>();
@@ -32,7 +30,7 @@ public class DungeonSet {
 			addDungeon(list2[loop]);
 		}
 		for (int loop=0;loop<list3.length;loop++){
-			addDungeon(list2[loop]);
+			addDungeon(list3[loop]);
 		}
 	}
 	
