@@ -6,6 +6,7 @@ import java.util.Random;
 import cavebiomes.CaveBiomes;
 import cavebiomes.WTFCaveBiomesConfig;
 import cavebiomes.proxy.CBClientProxy;
+import cavebiomes.renderers.RenderRegisterer;
 import cavebiomes.utilities.ILightDarkBlock;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -146,7 +147,7 @@ public class Foxfire extends BlockBush implements ILightDarkBlock
     @Override
     public int getRenderType()
     {
-         return CBClientProxy.LightDarkRenderType;
+         return RenderRegisterer.LightDarkRenderType;
     }
 
 	@Override

@@ -1,6 +1,8 @@
 package cavebiomes.blocks;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import wtfcore.items.ItemMetadataSubblock;
 import wtfcore.utilities.BlockInfo;
@@ -11,6 +13,10 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import exterminatorJeff.undergroundBiomes.api.NamedVanillaItem;
+import exterminatorJeff.undergroundBiomes.api.UBIDs;
+import exterminatorJeff.undergroundBiomes.common.UndergroundBiomes;
+import exterminatorJeff.undergroundBiomes.common.item.ItemFossilPiece;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGravel;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -18,19 +24,23 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 
 public class UBCSand extends BlockGravel{
 
-	private Block parentBlock;
-	private int parentMeta;
+	//private Block parentBlock;
+	//private int parentMeta;
 	private IIcon[] textures;
 	public static Block sedimentarySand;
 
 
-	protected void UBCsand(Block block, int meta) {
-		this.parentMeta = meta;
-		this.parentBlock = block;
+	public UBCSand() {
+		//this.parentMeta = meta;
+		//this.parentBlock = block;
 		this.setCreativeTab(CaveBiomes.tabCaveDecorations);
+		this.blockHardness = 0.5F;
+		this.setStepSound(soundTypeGravel);
+
 	}
 
 	@Override
@@ -53,6 +63,51 @@ public class UBCSand extends BlockGravel{
 		}
 	}
 
+    @Override
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune){
+        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+
+        int count = 1;
+        ItemStack stack = itemDropped(metadata, world.rand, fortune, y);
+
+        if ((fortune != 0) && (UndergroundBiomes.fortuneAffected.contains(stack.getItem().getUnlocalizedName())))
+        {
+            // Fortune III gives up to 4 items
+            int j = world.rand.nextInt(fortune + 2);
+            count = (j < 1) ? 1 : j;
+        }
+        for(int i = 0; i < count; i++){
+            ret.add(stack);
+        }
+        return ret;
+    }
+	
+    public ItemStack itemDropped(int metadata, Random random, int fortune, int y)
+    {
+        // Rare drops
+        if ((metadata < 8) && (random.nextInt(64) <= fortune))
+        {
+            // Shale drops clay
+            if (metadata == 2)
+            {
+                return new ItemStack(NamedVanillaItem.clay.cachedItem(), 1, 0);
+            }
+            // Limestone, chalk, siltstone, lignite and dolomite drop fossil pieces
+            if (metadata == 0 || metadata == 1 || metadata == 3 || metadata == 4 || metadata == 5)
+            {
+                return new ItemStack(UBIDs.fossilPieceName.cachedItem(), 1, random.nextInt(ItemFossilPiece.TYPES));
+            }
+            // Chert drops flint item
+            if (metadata == 7)
+            {
+                return new ItemStack(NamedVanillaItem.flint.cachedItem(), 1, 0);
+            }
+        }
+        if ((metadata & 7) == 4) return new ItemStack(UBIDs.ligniteCoalName.cachedItem(), 1, 0);
+        return new ItemStack(this, 1, metadata & 7);
+    }
+
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List list)

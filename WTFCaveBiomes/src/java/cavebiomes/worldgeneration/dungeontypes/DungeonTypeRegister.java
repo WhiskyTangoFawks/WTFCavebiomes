@@ -7,6 +7,8 @@ import cavebiomes.worldgeneration.dungeontypes.ambient.DungeonTypeCaveIn;
 import cavebiomes.worldgeneration.dungeontypes.ambient.DungeonTypeCinderShroom;
 import cavebiomes.worldgeneration.dungeontypes.ambient.DungeonTypeFoxfire;
 import cavebiomes.worldgeneration.dungeontypes.ambient.DungeonTypeFrozenSolid;
+import cavebiomes.worldgeneration.dungeontypes.ambient.DungeonTypeNetherPortal;
+import cavebiomes.worldgeneration.dungeontypes.ambient.DungeonTypePrismarine;
 import cavebiomes.worldgeneration.dungeontypes.ambient.DungeonTypeRain;
 import cavebiomes.worldgeneration.dungeontypes.ambient.DungeonTypeSoulsand;
 import cavebiomes.worldgeneration.dungeontypes.mob.DunegonTypeSkeletonMage;
@@ -45,14 +47,17 @@ public class DungeonTypeRegister {
 	private static DungeonType Soulsand = new DungeonTypeSoulsand();
 	private static DungeonType SkeletonKnight = new DungeonTypeSkeletonKnight();
 	private static DungeonType SkeletonMage = new DunegonTypeSkeletonMage();
-	
+	private static DungeonType Prismarine = new DungeonTypePrismarine();
+	private static DungeonType Witch = new DungeonTypeWitch();
+	private static DungeonType NetherPortal = new DungeonTypeNetherPortal();
+	//
 	private static DungeonType[] defaultlist= {CaveIn, Grotto, Skeleton, Zombie};
-	private static DungeonType[] forestlist = {Forest, Foxfire, Spider};
+	private static DungeonType[] forestlist = {Forest, Foxfire, Spider, Witch};
 	private static DungeonType[] coldlist = {Frozen};
-	private static DungeonType[] wetlist = {Rainstone, Slime};
+	private static DungeonType[] wetlist = {Rainstone, Slime, Prismarine};
 	private static DungeonType[] volcaniclist = {MagmaSlime, Cindershroom};
 	private static DungeonType[] desertlist = {Mummy, Pharoh, Oasis, Soulsand};
-	private static DungeonType[] netherlist = {Pigman, Blaze, SkeletonKnight, SkeletonMage};
+	private static DungeonType[] netherlist = {Pigman, Blaze, SkeletonKnight, SkeletonMage, NetherPortal};
 	private static DungeonType[] mountainlist = {Golem};
 	
 	

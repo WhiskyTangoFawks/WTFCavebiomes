@@ -40,6 +40,6 @@ public class DunegonTypeSkeletonMage extends DungeonType{
 	@Override
 	public void generateCenter(World world, Random rand, int x, int y, int z, int ceiling, int floor)
 	{
-		gen.setBlockWithoutNotify(world, x, y, z, Blocks.enchanting_table, 0);
+		gen.setBlockWithoutNotify(world, x, floor+1, z, Blocks.enchanting_table, 0);
 	}
 }

@@ -17,20 +17,9 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 public class CBClientProxy extends CommonProxy {
 
 	public static int renderPass;
-	public static int MagmaCrustRenderType;
-	public static int FrozenBlockRenderType;;
-	public static int LightDarkRenderType;
-
+	
 	@Override
 	public void registerRenderers() {
-		MagmaCrustRenderType = RenderingRegistry.getNextAvailableRenderId();
-		RenderingRegistry.registerBlockHandler(new cavebiomes.renderers.MagmaCrustRenderer());
-
-		FrozenBlockRenderType = RenderingRegistry.getNextAvailableRenderId();
-		RenderingRegistry.registerBlockHandler(new cavebiomes.renderers.FrozenBlockRenderer());
-
-		LightDarkRenderType = RenderingRegistry.getNextAvailableRenderId();
-		RenderingRegistry.registerBlockHandler(new cavebiomes.renderers.LightDarkRenderer());
 
 		RenderingRegistry.registerEntityRenderingHandler(ZombieMummy.class, new RenderCustomZombie());
 		RenderingRegistry.registerEntityRenderingHandler(ZombiePharoh.class, new RenderCustomZombie());

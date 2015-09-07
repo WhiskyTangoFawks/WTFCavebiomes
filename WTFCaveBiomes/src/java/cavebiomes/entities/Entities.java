@@ -35,7 +35,7 @@ public class Entities {
 		//registerEntity(CustomWolf.class, "HellHound");
 		registerEntity(CustomIronGolem.class, "DerangedGolem");
 
-
+		registerSpawner("Witch");
 
 	}
 
@@ -44,11 +44,13 @@ public class Entities {
 		int entityId = counter;
 		counter++;
 		EntityRegistry.registerModEntity(entityClass, name, entityId, CaveBiomes.instance, 64, 1, true);
-		
+		registerSpawner(name);
+	}
+	
+	public static void registerSpawner(String name){
 		Block spawner = new SpawnerBlock(name).setBlockName(name+"Spawner");
 		GameRegistry.registerBlock(spawner, name+"Spawner");
 		spawners.put(name, spawner);
-		
 	}
 
 

@@ -1,7 +1,5 @@
 package cavebiomes.blocks;
 import java.util.List;
-import java.util.Random;
-
 import wtfcore.blocks.IAlphaMaskedBlock;
 import wtfcore.blocks.ChildBlockCarryMetadata;
 import wtfcore.items.ItemMetadataSubblock;
@@ -19,7 +17,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cavebiomes.CaveBiomes;
-import cavebiomes.WTFCaveBiomesConfig;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -49,9 +46,9 @@ public class BlockSpeleothems extends ChildBlockCarryMetadata implements IAlphaM
 	public static final int stalagmitelargetip = 6;
 
 	public static String[] formationList ={"stalactite_small", "stalactite_base", "stalactite_tip", "column", "stalagmite_small", "stalagmite_base", "stalagmite_tip"};
-	public static String[] vanillaStone = {"stone"};
-	public static String[] vanillaSandstone = {"sand"};
-	public static String[] vanillaRedstone = {"redstone_block"};
+	//public static String[] vanillaStone = {"stone"};
+	//public static String[] vanillaSandstone = {"sand"};
+	
 
 
 	protected BlockSpeleothems(Block block,int type, String[] stoneNames, String domain) {
@@ -64,14 +61,14 @@ public class BlockSpeleothems extends ChildBlockCarryMetadata implements IAlphaM
 
 
 
-	public static void registerSpeleothemSet(Block block, String stoneGeoType, String[] stoneNames, String domain){
+	public static void registerSpeleothemSet(Block block, String unlocalisedName, String[] stoneNames, String domain){
 
 		BlockSpeleothems[] blockArray = new BlockSpeleothems[8];
 		FrozenBlock[] frozenblockArray = new FrozenBlock[8];
 
 		for (int formationTypeLoop = 0; formationTypeLoop < formationList.length; formationTypeLoop++){
 
-			String name = stoneGeoType+"_"+formationList[formationTypeLoop];
+			String name = unlocalisedName+"_"+formationList[formationTypeLoop];
 			blockToRegister = new BlockSpeleothems(block, formationTypeLoop, stoneNames, domain).setBlockName(name);
 			GameRegistry.registerBlock(blockToRegister, ItemMetadataSubblock.class, name);
 
@@ -95,21 +92,6 @@ public class BlockSpeleothems extends ChildBlockCarryMetadata implements IAlphaM
 		CaveBlocks.speleothemMap.put(block, blockArray);
 		CaveBlocks.frozenspeleothemMap.put(block, frozenblockArray);
 
-	}
-
-
-	public static void register(){
-
-		registerSpeleothemSet(Blocks.stone, "stone", vanillaStone, "minecraft");
-		registerSpeleothemSet(Blocks.sandstone, "sandstone", vanillaSandstone, "minecraft");
-		RedstoneSpeleothem.registerSpeleothemSet(Blocks.redstone_ore, "redstone_block", vanillaRedstone, "minecraft");
-		RedstoneSpeleothem.registerSpeleothemSet(Blocks.lit_redstone_ore, "redstone_block", vanillaRedstone, "minecraft");
-
-		if (Loader.isModLoaded("UndergroundBiomes")){
-				registerSpeleothemSet(UBCblocks.IgneousStone, "igneous", UBCblocks.IgneousStoneList, "undergroundbiomes");
-				registerSpeleothemSet(UBCblocks.MetamorphicStone, "metamorphic", UBCblocks.MetamorphicStoneList, "undergroundbiomes");
-				registerSpeleothemSet(UBCblocks.SedimentaryStone, "sedimentary", UBCblocks.SedimentaryStoneList, "undergroundbiomes");
-		}
 	}
 
 	public void loadTextureStrings(String[] stoneNames, String domain){

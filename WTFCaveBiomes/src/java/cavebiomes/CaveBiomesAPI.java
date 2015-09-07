@@ -28,7 +28,7 @@ public class CaveBiomesAPI {
 		}
 	}
 	
-	public enum DungeonBiomeType {DEFAULT, FOREST, WET, SWAMP, DESERT, JUNGLE, COLD, VOLCANIC};
+	public enum DungeonBiomeType {DEFAULT, FOREST, WET, SWAMP, DESERT, JUNGLE, COLD, VOLCANIC, MOUNTAIN};
 	
 	/**
 	 * Adds a custom dungeon to the generator
@@ -60,15 +60,20 @@ public class CaveBiomesAPI {
 		else if (biometype == DungeonBiomeType.VOLCANIC){
 			DungeonTypeRegister.volcanicSet.addDungeon(dungeon);
 		}
+		else if (biometype == DungeonBiomeType.MOUNTAIN){
+			DungeonTypeRegister.mountainSet.addDungeon(dungeon);
+		}
+
 	}
 	/**
-	 * Adds a Stone+Cobblestone pairing to the blockTransformer, allowing cavebiomes to use it for generation
+	 * Adds a stone-cobblestone pairing, which generates all subsequent blocks, and adds them to the requisite hashmaps
 	 * @param dungeon
 	 * @param biometype: the type of biome you wish it to spawn in
 	 */
-	public static void addStoneAndCobble(Block stone, Block cobblestone){
-		BlockSets.blockTransformer.put(new BlockInfo(stone, 0, BlockSets.Modifier.cobblestone), cobblestone);
-		BlockSets.ReplaceHashset.add(stone);
+	public static void addStoneAndCobble(Block stone, Block cobblestone, String stoneGeoType, String[] stoneNames, String domain){
+
 	}
+
+	
 	
 }

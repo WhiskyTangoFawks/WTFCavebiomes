@@ -15,13 +15,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 
 public class DungeonType{
-	int xmin = -5;
-	int xmax = 5;
-	int ymin = -5;
-	int ymax = 5;
-	int zmin = -5;
-	int zmax = 5;
-	float radius = 6;
+
 	protected Random random = new Random();
 
 	protected Block modifier;
@@ -32,6 +26,8 @@ public class DungeonType{
 	public int xClearance = 6;
 	public int yClearance = 4;
 	public int zClearance = 6;
+	
+	int dungeonMaxSize = 6;
 
 	public String name;
 
@@ -45,15 +41,15 @@ public class DungeonType{
 
 	public void SpawnDungeon(World world, Random rand, int x, int y, int z)
 	{
-		//This is a routine which scans out in each direction, to find the center of a large clear area
+		//Step1: loop outwards, and find a rough center of the open space
 		
 		//Get X
 		int xpos = x+1;
-		for (int loop = 0; world.isAirBlock(xpos, y, z) && loop < 8; loop++){
+		for (int loop = 0; world.isAirBlock(xpos, y, z) && loop < dungeonMaxSize ; loop++){
 			xpos++;
 		}
 		int xneg = x-1;
-		for (int loop = 0;world.isAirBlock(xneg, y, z) && loop < 8; loop++){
+		for (int loop = 0;world.isAirBlock(xneg, y, z) && loop < dungeonMaxSize; loop++){
 			xneg--;
 		}
 		int xrange = (xpos-xneg);
@@ -62,11 +58,11 @@ public class DungeonType{
 		
 		//Get z
 		int zpos = z+1;
-		for (int loop = 0; world.isAirBlock(x, y, zpos) && loop < 8; loop++){
+		for (int loop = 0; world.isAirBlock(x, y, zpos) && loop < dungeonMaxSize; loop++){
 			zpos++;
 		}
 		int zneg = z-1;
-		for (int loop = 0;world.isAirBlock(x, y, zneg) && loop < 8; loop++){
+		for (int loop = 0;world.isAirBlock(x, y, zneg) && loop < dungeonMaxSize; loop++){
 			zneg--;
 		}
 		int zrange = (zpos-zneg);
@@ -74,20 +70,22 @@ public class DungeonType{
 		z=zneg+zrange/2;
 		//get Y
 		int ypos = y+1;
-		for (int loop = 0; world.isAirBlock(x, ypos, z) && loop < 8; loop++){
+		for (int loop = 0; world.isAirBlock(x, ypos, z) && loop < dungeonMaxSize; loop++){
 			ypos++;
 		}
 		int yneg = y-1;
-		for (int loop = 0;world.isAirBlock(x, yneg, z) && loop < 8; loop++){
+		while (world.isAirBlock(x, yneg, z)){
 			yneg--;
 		}
 		int yrange = (ypos-yneg);
-		if (yrange < yClearance){return;}
+		if (yrange < yClearance || yrange > 2*yClearance){return;}
 		y=yneg+yrange/2;
 		int floor = yneg;
 		int ceiling = ypos;
-		this.wallStripe = ceiling -1;
+		this.wallStripe =y+1;
 		
+		//WTFCore.log.info("Size = " + xrange + " " + yrange + " " +zrange);
+
 		if (!canSpawnHere(world, x, y, z, ceiling, floor)){return;}
 		
 		if (BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(x, z), Type.SNOWY)){modifier =  Blocks.ice;}
@@ -98,55 +96,66 @@ public class DungeonType{
 			WTFCore.log.info("Spawning " + this.name + " @ " + x + " " + floor + " " + z);
 		}
 
-
+		//so, it finds all the walls, then draws a box that big to make it's explosion
+		//can I instead add all the blocks to a hashset, and then draw a ray to all the solid ones?
 		HashSet<DungeonBlockPosition> hashset = new HashSet<DungeonBlockPosition>();
 		HashSet<DungeonBlockPosition> air = new HashSet<DungeonBlockPosition>();
 
+		int xmin = (0-xrange)/2;
+		int xmax = xrange/2;
+		int ymin = (0-yrange)/2;
+		int ymax = yrange/2;
+		int zmin = (0-zrange)/2;
+		int zmax = zrange/2;
+		
+		double oriX = x + 0.5;
+		double oriY = floor + (ceiling - floor)/2;
+		double oriZ = z + 0.5;
+		
 		for (int xloop = xmin; xloop < xmax+1; ++xloop) {
 			for (int yloop = ymin; yloop < ymax+1; ++yloop) {
 				for (int zloop = zmin; zloop < zmax+1; ++zloop) {
 					if (xloop==xmin || xloop==xmax || yloop==ymin || yloop==ymax || zloop==zmin || zloop == zmax){
-						double d3 = (0 + xloop);
-						double d4 = (0 + yloop);
-						double d5 = (0 + zloop);
 
-						double vectorLength = Math.sqrt(d3 * d3 + d4 * d4 + d5 * d5);
-						d3 /= (vectorLength);
-						d4 /= (vectorLength);
-						d5 /= (vectorLength);
+						
+						//the values to increment along the ray each loop
+						double incX = (0 + xloop);
+						double incY = (0 + yloop);
+						double incZ = (0 + zloop);
 
+						//length of the vector
+						double vectorLength = Math.sqrt(incX * incX + incY * incY + incZ * incZ);
+						
+						
+						//setting the values
+						incX /= (vectorLength);
+						incY /= (vectorLength);
+						incZ /= (vectorLength);
+						
 						//origin
-						double currentX = x + 0.5;
-						double currentY =floor + (ceiling - floor)/2;
-						double currentZ = z + 0.5;
-
-						float vectorStr = radius;
-						Boolean cont = true;
-
-						for (float f2 = 0.3F; vectorStr > 0.0F && cont; vectorStr -= f2 * 0.75F){
-							int i = MathHelper.floor_double(currentX);
-							int j = MathHelper.floor_double(currentY);
-							int k = MathHelper.floor_double(currentZ);
-
-							if (!world.isAirBlock(i, j, k)){
-								hashset.add(new DungeonBlockPosition(i, j, k, false));
-								cont = false;
-							}
-							else {
-								air.add(new DungeonBlockPosition(i, j, k, false));
-							}
-
-							vectorStr -= 0.3F;
-							currentX += d3 * f2;
-							currentY += d4 * f2;
-							currentZ += d5 * f2;
+		
+						
+						int i = MathHelper.floor_double(oriX);
+						int j = MathHelper.floor_double(oriY);
+						int k = MathHelper.floor_double(oriZ);
+						
+						//problem: this is potentially running after stalactite generation
+						for (int loop = 1; world.isAirBlock(i, j, k) && loop < vectorLength+1; loop++){
+							air.add(new DungeonBlockPosition(i, j, k, false));
+							i = MathHelper.floor_double(oriX+(incX*loop));
+							j = MathHelper.floor_double(oriY+(incY*loop));
+							k = MathHelper.floor_double(oriZ+(incZ*loop));
+							
+						}
+		
+						if (!world.isAirBlock(i, j, k)){
+							hashset.add(new DungeonBlockPosition(i, j, k, false));
 						}
 
 					}
 				}
 			}
 		}
-
 
 		Iterator<DungeonBlockPosition> iterator= hashset.iterator();
 
@@ -157,23 +166,29 @@ public class DungeonType{
 			int j = chunkposition.chunkPosY;
 			int k = chunkposition.chunkPosZ;
 
-
-			if (j < y && !world.getBlock(i, j+1, k).renderAsNormalBlock())
+			//gen.setBlockWithoutNotify(world, i, j, k, Blocks.gold_block, 0);
+			
+			
+			if (j < oriY && !world.getBlock(i, j+1, k).renderAsNormalBlock())
 			{
+				//gen.setBlockWithoutNotify(world,i, j, k, Blocks.redstone_block, 0);
 				this.generateFloor(world, rand, i, j, k);
 			}
-			else if ( j > y && !world.getBlock(i,  j-1, k).renderAsNormalBlock()){
+			else if ( j > oriY && !world.getBlock(i,  j-1, k).renderAsNormalBlock()){
 				this.generateCeiling(world, rand, i, j, k);
+				//gen.setBlockWithoutNotify(world, i, j, k, Blocks.gold_block, 0);
 			}
 			else {
 				
-				if (y == wallStripe && generateWallStripe(world, rand, i, j, k)){
+				if (j == wallStripe && generateWallStripe(world, rand, i, j, k)){
 					//the generator is called as a boolean- to make sure that if a dungeontype doesn't have a stripe, it doesn't skip that part of the wall
 				}
 				else {
+					//gen.setBlockWithoutNotify(world, i, j, k, Blocks.iron_block, 0);
 					this.generateWalls(world, rand, i, j, k);
 				}
 			}
+
 		}
 
 		this.generateCenter(world, rand, x, y, z, ceiling, floor);
@@ -185,25 +200,16 @@ public class DungeonType{
 			int j = chunkposition.chunkPosY;
 			int k = chunkposition.chunkPosZ;
 
-
 			this.generateFill(world, rand, i,j,k);
-
-
 		}
 		spawncounter = 0;
-
 	}
 
 	/**
 	 * Checks for special conditions- if you're using blocks from other mods, you should add a check here for the mod being installed to prevent null crashes
 	 */
 	public boolean canSpawnHere(World world, int x, int y, int z, int ceiling, int floor) {
-		//I could really use something that makes a bubble, then finds the center of it
-		//I can probably do this with just x-y-z loops that go out in each direction
-		//until they hit not air
-		//then, find the center of it
 		return true;
-		
 	}
 
 

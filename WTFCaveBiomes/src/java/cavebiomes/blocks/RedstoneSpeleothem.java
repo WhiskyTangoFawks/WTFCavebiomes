@@ -28,7 +28,7 @@ public class RedstoneSpeleothem extends BlockSpeleothems implements IAlphaMasked
 	}
 
 
-	public static void registerSpeleothemSet(Block block, String stoneGeoType, String[] stoneNames, String domain){
+	public static void registerSpeleothemSet(Block block, String unlocalisedName, String[] stoneNames, String domain){
 
 		BlockSpeleothems[] blockArray = new BlockSpeleothems[8];
 		FrozenBlock[] frozenblockArray = new FrozenBlock[8];

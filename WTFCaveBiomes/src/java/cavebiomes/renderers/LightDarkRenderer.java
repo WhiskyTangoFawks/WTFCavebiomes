@@ -51,7 +51,7 @@ public class LightDarkRenderer implements ISimpleBlockRenderingHandler{
 	@Override
 	public int getRenderId() {
 		// TODO Auto-generated method stub
-		return CBClientProxy.LightDarkRenderType;
+		return RenderRegisterer.LightDarkRenderType;
 	}
 	/**
 	 * Renders any block requiring crossed squares such as reeds, flowers, and mushrooms

@@ -17,6 +17,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
+import wtfcore.utilities.BlockInfo;
+import wtfcore.utilities.BlockSets;
+import wtfcore.utilities.BlockSets.Modifier;
 
 public class CinderShroom extends BlockBush{
 
@@ -99,7 +102,7 @@ public class CinderShroom extends BlockBush{
 
 				if (arraylist.size() >0){
 					ChunkPosition chunkposition = (ChunkPosition) arraylist.get(rand.nextInt(arraylist.size()));
-					world.setBlock(chunkposition.chunkPosX, chunkposition.chunkPosY, chunkposition.chunkPosZ, BlockMagmaCrust.stoneMagmaCrust, 0, 2);
+					world.setBlock(chunkposition.chunkPosX, chunkposition.chunkPosY, chunkposition.chunkPosZ, BlockSets.blockTransformer.get(new BlockInfo(Blocks.stone, 0, Modifier.stoneMagmaCrust)), 0, 2);
 				//	maybe set a detector for UBC magma crust setting here
 					world.setBlock(chunkposition.chunkPosX, chunkposition.chunkPosY, chunkposition.chunkPosZ, this, 0, 2);
 				}

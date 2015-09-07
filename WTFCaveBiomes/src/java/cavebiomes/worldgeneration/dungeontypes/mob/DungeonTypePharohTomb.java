@@ -9,14 +9,14 @@ import cavebiomes.WTFCaveBiomesConfig;
 import cavebiomes.entities.Entities;
 import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 import cpw.mods.fml.common.Loader;
-//import ganymedes01.etfuturum.ModBlocks;
+import ganymedes01.etfuturum.ModBlocks;
 
 public class DungeonTypePharohTomb extends DungeonType{
 
 	public DungeonTypePharohTomb() {
 		super("Pharoh'sTomb");
 		if (Loader.isModLoaded("etfuturum")){
-			//this.sandstone = ModBlocks.red_sandstone;
+			this.sandstone = ModBlocks.red_sandstone;
 		}
 		else {
 			this.sandstone = Blocks.sandstone;
@@ -37,12 +37,12 @@ public class DungeonTypePharohTomb extends DungeonType{
 
 	@Override
 	public void generateWalls(World world, Random rand, int x, int y, int z){
-		gen.setBlockWithoutNotify(world, x, y, z, sandstone, 0);
+		gen.setBlockWithoutNotify(world, x, y, z, sandstone, 1);
 	}
 
 	@Override
 	public boolean generateWallStripe(World world, Random rand, int x, int y, int z){
-		gen.setBlockWithoutNotify(world, x, y, z, sandstone, 1);
+		gen.setBlockWithoutNotify(world, x, y, z, Blocks.gold_block, 0);
 		return true;
 	}
 	

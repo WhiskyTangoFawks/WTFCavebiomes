@@ -26,8 +26,6 @@ public class DungeonForest extends DungeonType {
 
 	@Override
 	public void generateFloor(World world, Random rand, int x, int y, int z){
-
-
 		gen.setBlockWithoutNotify(world, x, y, z, Blocks.grass, 0);
 
 		int spawn = rand.nextInt(10);

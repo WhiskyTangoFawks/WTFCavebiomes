@@ -21,11 +21,6 @@ public class DungeonPigman extends DungeonType{
 
 	@Override
 	public void generateFloor(World world, Random rand, int x, int y, int z){
-		gen.setBlockWithoutNotify(world, x, y, z, Blocks.netherrack, 0);
-	}
-
-	@Override
-	public void generateWalls(World world, Random rand, int x, int y, int z){
 		int height = 2*MathHelper.abs_int((MathHelper.abs_int(x/2+z) % 10) -5) + (random.nextInt(3)-6);
 
 		if (height < -1 ){
@@ -39,6 +34,12 @@ public class DungeonPigman extends DungeonType{
 			}
 
 		}
+		
+	}
+
+	@Override
+	public void generateWalls(World world, Random rand, int x, int y, int z){
+		gen.setBlockWithoutNotify(world, x, y, z, Blocks.netherrack, 0);
 	}
 
 	@Override

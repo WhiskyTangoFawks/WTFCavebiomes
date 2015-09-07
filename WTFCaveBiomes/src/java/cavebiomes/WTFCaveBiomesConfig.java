@@ -12,7 +12,7 @@ public class WTFCaveBiomesConfig {
 	public static boolean enableDrippingBlocks;
 	public static int ceilingAddonChance;
 	public static int floorAddonChance;
-	public static boolean enableMossyStone;
+	//public static boolean enableMossyStone;
 	public static int dungeonChance;
 
 	public static int magmaCrustGenRate;
@@ -27,33 +27,40 @@ public class WTFCaveBiomesConfig {
 	public static boolean generateCaveSubtypes;
 	public static boolean logDungeons;
 	public static boolean customMobs;
-
+	public static boolean enableUBCSand;
+	
 	public static void customConfig() {
 
 		Configuration config = new Configuration(new File("config/WTFCaveBiomesConfig.cfg"));
 
 		config.load();
-		String dungeonOptions = "Cave Subtype and Dungeon Generation";
-		EnableMobSpawners = config.get(dungeonOptions, "EnableMobSpawners", true).getBoolean();
-		dungeonChance = config.get(dungeonOptions, "Subtype rarity- Set higher for fewer cave subtypes, lower for more", 4096).getInt();
-		logDungeons=config.get(dungeonOptions, "Log subtypes in chat", false).getBoolean();
+		String section1 = "Cave Subtype and Dungeon Generation";
+		EnableMobSpawners = config.get(section1, "EnableMobSpawners", true).getBoolean();
+		dungeonChance = config.get(section1, "Subtype rarity- Set higher for fewer cave subtypes, lower for more", 1000).getInt();
+		logDungeons=config.get(section1, "Log subtypes in chat", false).getBoolean();
 
-		ceilingAddonChance = config.get("Cave Generation Options", "base frequency of stalactites, and other ceiling addons", 5).getInt();
-		floorAddonChance = config.get("Cave Generation Options", "base frequency of stalagmite, and other floor addons", 5).getInt();
+		String section2 = "Cave Generation Options";
+		ceilingAddonChance = config.get(section2, "base frequency of stalactites, and other ceiling addons", 5).getInt();
+		floorAddonChance = config.get(section2, "base frequency of stalagmite, and other floor addons", 5).getInt();
 
-		enableMossyStone = config.get("Block Options", "Enable Additional Mossy Stone Blocks", true).getBoolean();
-		enableDrippingBlocks = config.get("Block Options", "Enable modded dripping blocks", true).getBoolean();
-		foxfireGlow = config.get("Block Options", "Enable foxfire glowing", true).getBoolean();
-		foxfireAnimations = config.get("Block Options", "Enable foxfire animations", true).getBoolean();
-		cindershroomGlow = config.get("Block Options", "Enable cindershroom glowing", true).getBoolean();
-		cindershroomAnimations = config.get("Block Options", "Enable cindershroom animations", true).getBoolean();
-		lavacrustGlow = config.get("Block Options", "Enable Lava Crust Glows", true).getBoolean();
-		lavacrustAnimations = config.get("Block Options", "Enable Lava Crust Animations", true).getBoolean();
+		String section3 = "Block Options";
+		//enableMossyStone = config.get(section3, "Enable Additional Mossy Stone Blocks", true).getBoolean();
+		enableDrippingBlocks = config.get(section3, "Enable modded dripping blocks", true).getBoolean();
+		foxfireGlow = config.get(section3, "Enable foxfire glowing", true).getBoolean();
+		foxfireAnimations = config.get(section3, "Enable foxfire animations", true).getBoolean();
+		cindershroomGlow = config.get(section3, "Enable cindershroom glowing", true).getBoolean();
+		cindershroomAnimations = config.get(section3, "Enable cindershroom animations", true).getBoolean();
+		lavacrustGlow = config.get(section3, "Enable Lava Crust Glows", true).getBoolean();
+		lavacrustAnimations = config.get(section3, "Enable Lava Crust Animations", true).getBoolean();
+		enableUBCSand = config.get(section3, "Enable sand for UBC Sedimentary Stones", true).getBoolean();
 
 		//magmaCrustGenRate =  config.get("Ore style generation", "Generation rate of magma crust as ore- to disable set to 0", 15).getInt();
 
-		generateCaveSubtypes = config.get("Cave Subtype Generation", "Generate Cave Subtypes", true).getBoolean();
-		customMobs = config.get("Mobs Settings", "Enable replacement of zombies and skeletons with biome specific versions", false).getBoolean();
+		String section4 = "Cave Subtype and Dungeon Generation";
+		generateCaveSubtypes = config.get(section4, "Generate Cave Subtypes and dungeons", true).getBoolean();
+		
+		String section5 = "Entity Settings";
+		customMobs = config.get(section5, "Enable replacement of zombies and skeletons with biome specific versions", false).getBoolean();
 
 		config.save();
 	}

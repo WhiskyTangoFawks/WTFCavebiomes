@@ -23,7 +23,7 @@ public class SpawnerBlockEntity extends TileEntity{
 	{
 		return this.worldObj.getClosestPlayer(this.xCoord + 0.5D, this.yCoord + 0.5D, this.zCoord + 0.5D, activatingRangeFromPlayer) != null;
 	}
-	
+
 	@Override
 	public void updateEntity()
 	{
@@ -37,27 +37,29 @@ public class SpawnerBlockEntity extends TileEntity{
 			}
 		}
 	}
-	
-	 public void spawnEntity()
-	    {
-	         String entityToSpawnNameFull = CaveBiomes.modid+"."+entityName;
-	            if (EntityList.stringToClassMapping.containsKey(entityToSpawnNameFull))
-	            {
-	               EntityLiving entityToSpawn = (EntityLiving) EntityList.createEntityByName(entityToSpawnNameFull, worldObj);
-	                entityToSpawn.setLocationAndAngles(this.xCoord+0.5, this.yCoord, this.zCoord+0.5, MathHelper.wrapAngleTo180_float(this.worldObj.rand.nextFloat()*360.0F), 0.0F);
-	                worldObj.spawnEntityInWorld(entityToSpawn);
-	                entityToSpawn.onSpawnWithEgg((IEntityLivingData)null);
-	                entityToSpawn.playLivingSound();
-	            }
-	            else
-	            {
-	                //DEBUG
-	                System.out.println("Entity not found "+entityToSpawnNameFull);
-	            }
-	        
-	      
-	        //return entityToSpawn;
-	    }
+
+	public void spawnEntity()
+	{
+		String entityToSpawnNameFull = CaveBiomes.modid+"."+entityName;
+		if (EntityList.stringToClassMapping.containsKey(entityToSpawnNameFull))
+		{
+			EntityLiving entityToSpawn = (EntityLiving) EntityList.createEntityByName(entityToSpawnNameFull, worldObj);
+			if 	(entityToSpawn != null){
+				entityToSpawn.setLocationAndAngles(this.xCoord+0.5, this.yCoord, this.zCoord+0.5, MathHelper.wrapAngleTo180_float(this.worldObj.rand.nextFloat()*360.0F), 0.0F);
+				worldObj.spawnEntityInWorld(entityToSpawn);
+				entityToSpawn.onSpawnWithEgg((IEntityLivingData)null);
+				entityToSpawn.playLivingSound();
+			}
+		}
+		else
+		{
+			//DEBUG
+			System.out.println("Entity not found "+entityToSpawnNameFull);
+		}
+
+
+		//return entityToSpawn;
+	}
 
 
 }

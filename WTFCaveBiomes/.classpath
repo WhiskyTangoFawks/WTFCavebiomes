@@ -6,5 +6,6 @@
 	<classpathentry kind="src" path="/Forge"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/WTFCore"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/UBC"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Et-Futurum-master"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

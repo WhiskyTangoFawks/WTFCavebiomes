@@ -41,7 +41,7 @@ public class FrozenBlockRenderer implements ISimpleBlockRenderingHandler {
 	@Override
 	public int getRenderId() {
 		// TODO Auto-generated method stub
-		return CBClientProxy.FrozenBlockRenderType;
+		return RenderRegisterer.FrozenBlockRenderType;
 	}
 
 }

@@ -3,6 +3,7 @@ package cavebiomes.blocks;
 import java.util.List;
 import java.util.Random;
 import cavebiomes.proxy.CBClientProxy;
+import cavebiomes.renderers.RenderRegisterer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -115,7 +116,7 @@ public class FrozenBlock extends BlockPackedIce// implements AlphaMaskedBlock
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int getRenderType(){
-		return CBClientProxy.FrozenBlockRenderType;
+		return RenderRegisterer.FrozenBlockRenderType;
 	}
 
 	@Override

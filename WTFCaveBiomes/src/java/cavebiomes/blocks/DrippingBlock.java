@@ -43,30 +43,20 @@ public class DrippingBlock extends ChildBlockCarryMetadata{
 		this.setCreativeTab(CaveBiomes.tabCaveDecorations);
 	}
 
-	public static void register(){
-		registerDrippingBlock(Blocks.stone, 0, BlockSets.Modifier.waterDrippingStone, 1, "dripping_water_stone");
-		registerDrippingBlock(Blocks.dirt, 0, BlockSets.Modifier.waterDrippingStone,1, "dripping_water_dirt" );
-		registerDrippingBlock(Blocks.stone, 0, BlockSets.Modifier.WaterRainStone, 20, "raining_water_stone");
-		registerDrippingBlock(Blocks.stone, 0, BlockSets.Modifier.lavaDrippinStone, 1, "dripping_lava_stone");
-		registerDrippingBlock(Blocks.stone, 0, BlockSets.Modifier.LavaRainStone, 20, "raining_lava_stone");
-
-		if (Loader.isModLoaded("UndergroundBiomes")){
-			registerDrippingBlock(UBCblocks.IgneousStone, 7, BlockSets.Modifier.waterDrippingStone,1, "dripping_water_igneous_stone");
-			registerDrippingBlock(UBCblocks.MetamorphicStone, 7, BlockSets.Modifier.waterDrippingStone,1, "dripping_water_metamorphic_stone");
-			registerDrippingBlock(UBCblocks.SedimentaryStone, 7, BlockSets.Modifier.waterDrippingStone,1, "dripping_water_sedimentary_stone" );
-
-			registerDrippingBlock(UBCblocks.IgneousStone, 7, BlockSets.Modifier.WaterRainStone, 20, "raining_water_igneous-stone");
-			registerDrippingBlock(UBCblocks.MetamorphicStone, 7, BlockSets.Modifier.WaterRainStone, 20, "raining_water_metamorphic_stone");
-			registerDrippingBlock(UBCblocks.SedimentaryStone, 7, BlockSets.Modifier.WaterRainStone, 20, "raining_water_sedimentary_stone");
-
-			registerDrippingBlock(UBCblocks.IgneousStone, 7, BlockSets.Modifier.lavaDrippinStone, 1, "dripping_lava_igneous_stone");
-			registerDrippingBlock(UBCblocks.MetamorphicStone, 7, BlockSets.Modifier.lavaDrippinStone, 1, "dripping_lava_metamorphic_stone" );
-
-			registerDrippingBlock(UBCblocks.IgneousStone, 7, BlockSets.Modifier.LavaRainStone, 20, "raining_lava_igneous_stone");
-			registerDrippingBlock(UBCblocks.MetamorphicStone, 7, BlockSets.Modifier.LavaRainStone, 20, "raining_lava_metamorphic_stone");
-			}
+	public static void registerDrippingStoneSet(Block block, String name, int subBlocks, boolean water, boolean lava){
+		if (!name.endsWith("stone")){
+			name=name+"_stone";
 		}
-
+		if (water){
+			registerDrippingBlock(block, subBlocks, BlockSets.Modifier.waterDrippingStone, 1, "dripping_water_"+name);
+			registerDrippingBlock(block, subBlocks, BlockSets.Modifier.WaterRainStone, 20, "raining_water_"+name);
+		}
+		if (lava){
+			registerDrippingBlock(block, subBlocks, BlockSets.Modifier.lavaDrippinStone, 1, "dripping_lava_"+name);
+			registerDrippingBlock(block, subBlocks, BlockSets.Modifier.LavaRainStone, 20, "raining_lava_"+name);	
+		}
+	}
+	
 	public static void registerDrippingBlock(Block block, int numSubBlocks, BlockSets.Modifier fluid, int frequency, String name){
 
 		Block blockToRegister = new DrippingBlock(block, numSubBlocks, fluid, frequency ).setBlockName(name);

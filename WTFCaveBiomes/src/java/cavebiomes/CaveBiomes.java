@@ -5,6 +5,7 @@ import java.util.Iterator;
 import cavebiomes.blocks.CaveBlocks;
 import cavebiomes.entities.Entities;
 import cavebiomes.proxy.CommonProxy;
+import cavebiomes.renderers.RenderRegisterer;
 import cavebiomes.worldgeneration.CaveBiomesWorldScanner;
 import cavebiomes.worldgeneration.dungeontypes.DungeonTypeRegister;
 import cpw.mods.fml.common.Mod;
@@ -40,8 +41,6 @@ public class CaveBiomes {
 	public static String alphaMaskDomain = "cavebiomes:textures/blocks/alphamasks/";
 	public static String overlayDomain =   "cavebiomes:textures/blocks/overlays/";
 
-
-
 	public static CreativeTabs tabCaveDecorations = new CreativeTabs("CaveDecorations")
 	{
 
@@ -60,6 +59,7 @@ public class CaveBiomes {
 		WTFCaveBiomesConfig.customConfig();
 		Entities.RegisterEntityList();
 		proxy.registerRenderers();
+		RenderRegisterer.RegisterCustomRenderers();
 	}
 	@EventHandler public void load(FMLInitializationEvent event)
 	{

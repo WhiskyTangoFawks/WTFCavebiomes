@@ -53,7 +53,7 @@ public static void replaceEntity(Entity oldentity, Entity newentity){
 
 @SubscribeEvent
 public void yourPlayerHarvestEvent(HarvestDropsEvent event){
-	if (Loader.isModLoaded("UndergroundBiomes") && event.block == UBCblocks.SedimentaryStone && event.blockMetadata != 4 && event.blockMetadata != 12)
+	if (WTFCaveBiomesConfig.enableUBCSand && Loader.isModLoaded("UndergroundBiomes") && event.block == UBCblocks.SedimentaryStone && event.blockMetadata != 4 && event.blockMetadata != 12)
 	{
 		event.drops.clear();
 		int metadata = event.blockMetadata;

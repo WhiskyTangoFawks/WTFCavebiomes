@@ -8,6 +8,10 @@ import cavebiomes.blocks.customplants.PlantsCavePlants;
 import cavebiomes.items.ItemMoss;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import wtfcore.utilities.BlockInfo;
+import wtfcore.utilities.BlockSets;
+import wtfcore.utilities.UBCblocks;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CaveBlocks
@@ -16,6 +20,9 @@ public class CaveBlocks
 	public static HashMap<Block, FrozenBlock[]> frozenspeleothemMap = new HashMap<Block, FrozenBlock[]>();
 	public static String[] formationType ={"StalactiteSmall", "StalactiteLargeBase", "StalactiteLargeTip", "LargeColumn", "StalagmiteSmall", "StalagmiteLargeBase", "StalagmiteLargeTip"};
 
+	public static String[] vanillaDirt = {"dirt", "coarse_dirt", "dirt_podzol_top"};
+	public static String[] vanillaRedstone = {"redstone_block"};
+	
 	public static Block IcePatch;
 	public static Block GlowstoneStalactite;
 	public static Block Roots;
@@ -23,19 +30,17 @@ public class CaveBlocks
 	public static Block caveLilyPad;
 	public static Block PlantMoss;
 	public static Block frozenRoots;
+	public static Block MossyDirt;
 
 	//Method to call registry of Blocks
 	public static void BlockRegister()
 	{
 		BlockIcicle.register();
-		BlockSpeleothems.register();
+		
 		UBCSand.register();
-		BlockMagmaCrust.register();
+		
 		CinderShroom.register();
-		DrippingBlock.register();
-		if (WTFCaveBiomesConfig.enableMossyStone){
-			UBCMossyStone.register();
-		}
+
 		BlockRoots.registerRoots();
 		Foxfire.register();
 		ItemMoss.register();
@@ -51,8 +56,50 @@ public class CaveBlocks
 
 		CaveOrchid = new PlantsCavePlants().setBlockName("cave_orchid");
 		GameRegistry.registerBlock(CaveOrchid, "cave_orchid");
+		
+		MossyDirt = MossyStone.registerMossyBlock(Blocks.dirt, "dirt", vanillaDirt, "minecraft");
+		
+		RedstoneSpeleothem.registerSpeleothemSet(Blocks.redstone_ore, "redstone_block", vanillaRedstone, "minecraft");
+		RedstoneSpeleothem.registerSpeleothemSet(Blocks.lit_redstone_ore, "redstone_block", vanillaRedstone, "minecraft");
+		
+		DrippingBlock.registerDrippingBlock(Blocks.dirt, 0, BlockSets.Modifier.waterDrippingStone,1, "dripping_water_dirt" );
+		
+		StoneRegister stone = getStoneRegister(Blocks.stone, Blocks.cobblestone, "stone", "stone", "minecraft");
+		stone.mossyCobble = false;
+		stone.register();
+		
+		StoneRegister sand = getStoneRegister(Blocks.sandstone, Blocks.sand, "sandstone", "sand", "minecraft");
+		sand.mossyStone=false;
+		sand.mossyCobble=false;
+		sand.lavacrust=false;
+		sand.drippingWater=false;
+		sand.drippingLava=false;
+		sand.register();
+		
+		if (Loader.isModLoaded("UndergroundBiomes")){
+			
+			StoneRegister igneous = getStoneRegister(UBCblocks.IgneousStone, UBCblocks.IgneousCobblestone, "igneous", UBCblocks.IgneousStoneList, "undergroundbiomes");
+			igneous.register();
+			
+			StoneRegister metamorphic = getStoneRegister(UBCblocks.MetamorphicStone, UBCblocks.MetamorphicCobblestone, "metamorphic", UBCblocks.MetamorphicStoneList, "undergroundbiomes");
+			metamorphic.register();
+			
+			StoneRegister sedimentary = getStoneRegister(UBCblocks.SedimentaryStone, UBCSand.sedimentarySand, "sedimentary", UBCblocks.SedimentaryStoneList, "undergroundbiomes");
+			sedimentary.lavacrust = false;
+			sedimentary.drippingLava=false;
+			sedimentary.register();
+		}
+		
 	}
-
+	
+	public static StoneRegister getStoneRegister(Block stone, Block cobblestone, String unlocalisedName, String[] stoneNames, String domain){
+		return new StoneRegister(stone, cobblestone, unlocalisedName, stoneNames, domain);
+	}
+	public static StoneRegister getStoneRegister(Block stone, Block cobblestone, String unlocalisedName, String stoneNames, String domain){
+		return new StoneRegister(stone, cobblestone, unlocalisedName, stoneNames, domain);
+	}
+	
+	
 	public static Block[] getSpeleothemSet(Block block, Block modifier){
 		if (modifier == null){
 			return speleothemMap.get(block);

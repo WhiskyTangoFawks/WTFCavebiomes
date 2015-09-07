@@ -6,7 +6,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import wtfcore.utilities.BlockSets;
-import cavebiomes.blocks.UBCMossyStone;
+import cavebiomes.blocks.CaveBlocks;
+import cavebiomes.blocks.MossyStone;
 import cavebiomes.worldgeneration.CaveType;
 import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
 import cavebiomes.worldgeneration.dungeontypes.DungeonType;
@@ -33,7 +34,7 @@ public class CaveTypeForest extends CaveType{
 		if (height >= 10)
 		{
 			if(random.nextBoolean()){
-				gen.replaceBlock(world, x, y, z, UBCMossyStone.MossyDirt, 0);
+				gen.replaceBlock(world, x, y, z, CaveBlocks.MossyDirt, 0);
 			}
 			else{
 				gen.replaceBlock(world, x, y, z, Blocks.dirt, 0);

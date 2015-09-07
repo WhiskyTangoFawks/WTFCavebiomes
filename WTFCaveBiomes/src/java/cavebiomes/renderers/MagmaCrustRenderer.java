@@ -40,7 +40,7 @@ public class MagmaCrustRenderer implements ISimpleBlockRenderingHandler{
 
 	@Override
 	public int getRenderId() {
-		return CBClientProxy.MagmaCrustRenderType;
+		return RenderRegisterer.MagmaCrustRenderType;
 	}
 
 

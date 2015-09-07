@@ -3,22 +3,19 @@ package cavebiomes.blocks;
 
 import java.util.List;
 import java.util.Random;
-
 import wtfcore.blocks.IAlphaMaskedBlock;
 import wtfcore.blocks.ChildBlockCarryMetadata;
 import wtfcore.items.ItemMetadataSubblock;
 import wtfcore.proxy.ClientProxy;
 import wtfcore.utilities.BlockInfo;
 import wtfcore.utilities.BlockSets;
-import wtfcore.utilities.UBCblocks;
 import wtfcore.utilities.BlockSets.Modifier;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import cavebiomes.CaveBiomes;
 import cavebiomes.WTFCaveBiomesConfig;
-import cavebiomes.proxy.CBClientProxy;
+import cavebiomes.renderers.RenderRegisterer;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -33,28 +30,38 @@ import net.minecraft.world.World;
 
 public class BlockMagmaCrust extends ChildBlockCarryMetadata implements IAlphaMaskedBlock{
 
-	public static Block stoneMagmaCrust;
-	public static Block igneousMagmaCrust;
-	public static Block metamorphicMagmaCrust;
-	public ResourceLocation resourceDomain;
+		public ResourceLocation resourceDomain;
 	public ResourceLocation textureLocation;
-	private int numSubBlocks;
+
 
 	private IIcon[] textures;
+	protected String[] textureNames;
+	protected String[] parentLocations;
 
-	public BlockMagmaCrust(Block block, int subblocks)
+	public BlockMagmaCrust(Block block, String[] stoneNames, String domain)
 	{
 		super(block);
 		this.setCreativeTab(CaveBiomes.tabCaveDecorations);
-		this.numSubBlocks=subblocks;
+		this.loadTextureStrings(stoneNames, domain);
 		if (WTFCaveBiomesConfig.lavacrustGlow){
 			this.setLightLevel(0.2F);// THIS HAS TO BE KEPT AS A FLOAT
 		}
 	}
+	
+	public void loadTextureStrings(String[] stoneNames, String domain){
+		textureNames = new String [stoneNames.length];
+		parentLocations = new String [stoneNames.length];
 
-	public static Block registerMagmaCrust(Block block, String name, int subblocks){
-		Block blockToRegister = new BlockMagmaCrust(block, subblocks).setBlockName(name);
-		GameRegistry.registerBlock(blockToRegister, ItemMetadataSubblock.class, name);
+		for (int loop = 0; loop < stoneNames.length; loop++){
+			textureNames[loop] = stoneNames[loop]+"_lavacrust";
+			parentLocations[loop] = domain+":"+stoneNames[loop];
+		}
+	}
+
+	public static Block registerMagmaCrust(Block block, String unlocalisedName, String[] stoneNames, String domain){
+		unlocalisedName = unlocalisedName+"_lavacrust";
+		Block blockToRegister = new BlockMagmaCrust(block, stoneNames, domain).setBlockName(unlocalisedName);
+		GameRegistry.registerBlock(blockToRegister, ItemMetadataSubblock.class, unlocalisedName);
 		
 		BlockSets.blockTransformer.put(new BlockInfo(block, 0, Modifier.stoneMagmaCrust), blockToRegister);
 		BlockSets.meltBlocks.add(blockToRegister);
@@ -62,50 +69,13 @@ public class BlockMagmaCrust extends ChildBlockCarryMetadata implements IAlphaMa
 		return blockToRegister;
 	}
 
-	public static void register(){
-
-		stoneMagmaCrust = registerMagmaCrust(Blocks.stone, "stone_lavacrust", 0);
-
-		if (Loader.isModLoaded("UndergroundBiomes")){
-			igneousMagmaCrust = registerMagmaCrust(UBCblocks.IgneousStone, "igneous_lavacrust", 8);
-			metamorphicMagmaCrust = registerMagmaCrust(UBCblocks.MetamorphicStone, "metamorphic_lavacrust", 8);
-		}
-	}
-
 	@Override
 	public void registerBlockIcons(IIconRegister iconRegister){
-
-		String maskType = "lavacrust";
-
 		textures = new IIcon[16];
-
-		if (this.parentBlock == Blocks.stone) {
-			String textureName = "stone_lavacrust";
-			this.textures[0] = iconRegister.registerIcon(CaveBiomes.modid+":" + textureName);
-			ClientProxy.registerBlockOverlay(textureName, "minecraft:cobblestone", maskType, CaveBiomes.alphaMaskDomain, true);
-
+		for (int loop = 0; loop < textureNames.length; loop++){
+			textures[loop] = iconRegister.registerIcon(CaveBiomes.modid +":"+ textureNames[loop]);
+			ClientProxy.registerBlockOverlay(textureNames[loop], parentLocations[loop], "lavacrust",  CaveBiomes.alphaMaskDomain, true);
 		}
-
-		if (Loader.isModLoaded("UndergroundBiomes") && (parentBlock == UBCblocks.IgneousStone || parentBlock == UBCblocks.MetamorphicStone)){
-			for (int metaloop=0; metaloop < 8; metaloop++){
-				String textureName = null;
-				String stoneType = null;
-				if (this.parentBlock == UBCblocks.IgneousStone){
-					stoneType = UBCblocks.IgneousStoneList[metaloop];
-					textureName = stoneType+"_lavacrust";
-
-				}
-				else if (this.parentBlock == UBCblocks.MetamorphicStone){
-					stoneType = UBCblocks.MetamorphicStoneList[metaloop];
-					textureName = stoneType+"_lavacrust";
-				}
-
-				this.textures[metaloop]= iconRegister.registerIcon(CaveBiomes.modid + ":"+ textureName);
-				ClientProxy.registerBlockOverlay(textureName, "undergroundbiomes:"+stoneType, maskType, CaveBiomes.alphaMaskDomain, true);
-			}
-
-		}
-
 	}
 
     @Override
@@ -117,7 +87,7 @@ public class BlockMagmaCrust extends ChildBlockCarryMetadata implements IAlphaMa
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List list)
 	{
-		for (int i = 0; i < numSubBlocks; ++i)
+		for (int i = 0; i < textureNames.length; ++i)
 		{
 			list.add(new ItemStack(item, 1, i));
 		}
@@ -149,7 +119,7 @@ public class BlockMagmaCrust extends ChildBlockCarryMetadata implements IAlphaMa
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int getRenderType(){
-		return CBClientProxy.MagmaCrustRenderType;
+		return RenderRegisterer.MagmaCrustRenderType;
 	}
 	@Override
 	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int meta) {
@@ -161,7 +131,7 @@ public class BlockMagmaCrust extends ChildBlockCarryMetadata implements IAlphaMa
     public void randomDisplayTick(World world, int x, int y, int z, Random random)
     {
         if (!WTFCaveBiomesConfig.lavacrustAnimations){return;}
-		int l;
+		//int l;
 
         double d5;
         double d6;

@@ -71,7 +71,7 @@ public class VanillaGen {
 	 **/
 	public void freezeBlock(World world, int x, int y, int z){
 		//Add a method to generate frozen fences, torches, and rails
-		if (world.getBlock(x,y,z).renderAsNormalBlock()){
+		if (world.getBlock(x,y,z).renderAsNormalBlock() && world.isAirBlock(x,y+1,z)){
 			setBlockWithoutNotify(world, x, y+1, z, CaveBlocks.IcePatch, 0);
 		}
 	}

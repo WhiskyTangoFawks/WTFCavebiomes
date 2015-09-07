@@ -31,7 +31,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
 
-public class UBCMossyStone extends ChildBlockCarryMetadata implements IAlphaMaskedBlock
+public class MossyStone extends ChildBlockCarryMetadata implements IAlphaMaskedBlock
 {
 
 	protected String[] textureNames;
@@ -41,21 +41,17 @@ public class UBCMossyStone extends ChildBlockCarryMetadata implements IAlphaMask
 	public static Block MossyIgneous;
 	public static Block MossyMetamorphic;
 	public static Block MossySedimentary;
-	public static Block MossyDirt;
+	
 
 	public static Block MossyIgneousCobble;
 	public static Block MossyMetamorphicCobble;
 	public static Block blockToRegister;
 	int parentMeta;
 
-	public static String[] vanillaStone = {"stone"};
-	public static String[] vanillaDirt = {"dirt", "coarse_dirt", "podzol"};
-
-
 	static Block childBlockToRegister;
 	private IIcon[] textures;
 
-	protected UBCMossyStone(Block block, String[] stoneNames, String domain) {
+	protected MossyStone(Block block, String[] stoneNames, String domain) {
 		super(block);
 		this.loadTextureStrings(stoneNames, domain);
 		this.setCreativeTab(CaveBiomes.tabCaveDecorations);
@@ -71,46 +67,24 @@ public class UBCMossyStone extends ChildBlockCarryMetadata implements IAlphaMask
 		}
 	}
 
-	public static Block registerMossyBlock(Block block, String stoneGeoType, String[] stoneNames, String domain){
+	public static Block registerMossyBlock(Block block, String unlocalisedName, String[] stoneNames, String domain){
 
-		String name = "mossy_"+stoneGeoType;
-		blockToRegister = new UBCMossyStone(block, stoneNames, domain).setBlockName(name);
+		String name = "mossy_"+unlocalisedName;
+		blockToRegister = new MossyStone(block, stoneNames, domain).setBlockName(name);
 		GameRegistry.registerBlock(blockToRegister, ItemMetadataSubblock.class, name);
 		BlockSets.blockTransformer.put(new BlockInfo(block, 0, BlockSets.Modifier.MossyStone), blockToRegister);
 
 		return blockToRegister;
 	}
-	public static Block registerMossyCobble(Block block, String stoneGeoType, String[] stoneNames, String domain){
+	public static Block registerMossyCobble(Block block, String unlocalisedName, String[] stoneNames, String domain){
 
-		String name = "mossy_"+stoneGeoType;
-		blockToRegister = new UBCMossyStone(block, stoneNames, domain).setBlockName(name);
+		String name = "mossy_"+unlocalisedName;
+		blockToRegister = new MossyStone(block, stoneNames, domain).setBlockName(name);
 		GameRegistry.registerBlock(blockToRegister, ItemMetadataSubblock.class, name);
 		BlockSets.blockTransformer.put(new BlockInfo(block, 0, BlockSets.Modifier.mossy_cobblestone), blockToRegister);
+		BlockSets.addDefaultFallingBlock(blockToRegister, 1);
 
 		return blockToRegister;
-	}
-
-
-	public static void register(){
-
-		MossyDirt = registerMossyBlock(Blocks.dirt, "dirt", vanillaDirt, "minecraft");
-		MossyStone = registerMossyBlock(Blocks.stone, "stone", vanillaStone, "minecraft");
-
-
-		if (Loader.isModLoaded("UndergroundBiomes")){
-			MossyIgneousCobble = registerMossyCobble(UBCblocks.IgneousCobblestone, "igneous_cobblestone", UBCblocks.IgneousCobblestoneList, "undergroundbiomes");
-			MossyMetamorphicCobble = registerMossyCobble(UBCblocks.MetamorphicCobblestone, "metamorphic_cobblestone", UBCblocks.MetamorphicCobblestoneList, "undergroundbiomes");
-			MossyIgneous = registerMossyBlock(UBCblocks.IgneousStone, "igneous_stone", UBCblocks.IgneousStoneList, "undergroundbiomes");
-			MossyMetamorphic = registerMossyBlock(UBCblocks.MetamorphicStone, "metamorphic_stone", UBCblocks.MetamorphicStoneList, "undergroundbiomes");
-			MossySedimentary = registerMossyBlock(UBCblocks.SedimentaryStone, "sedimentary_stone", UBCblocks.SedimentaryStoneList, "undergroundbiomes");
-		}
-		
-
-
-		BlockSets.addDefaultFallingBlock(UBCMossyStone.MossyIgneousCobble, 1);
-		BlockSets.addDefaultFallingBlock(UBCMossyStone.MossyMetamorphicCobble, 1);
-		BlockSets.addDefaultFallingBlock(UBCMossyStone.MossyDirt, 1);
-		
 	}
 
     @Override
