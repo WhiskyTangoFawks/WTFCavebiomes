@@ -1,5 +1,9 @@
-package cavebiomes.blocks;
+package cavebiomes.utilities;
 
+import cavebiomes.blocks.BlockMagmaCrust;
+import cavebiomes.blocks.BlockSpeleothems;
+import cavebiomes.blocks.DrippingBlock;
+import cavebiomes.blocks.MossyStone;
 import net.minecraft.block.Block;
 import wtfcore.utilities.BlockInfo;
 import wtfcore.utilities.BlockSets;

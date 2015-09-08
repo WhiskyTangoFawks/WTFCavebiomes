@@ -1,8 +1,8 @@
 package cavebiomes;
 
 import cavebiomes.blocks.CaveBlocks;
-import cavebiomes.blocks.StoneRegister;
 import cavebiomes.utilities.BiomeAndHeight;
+import cavebiomes.utilities.StoneRegister;
 import cavebiomes.worldgeneration.CaveType;
 import cavebiomes.worldgeneration.CaveTypeRegister;
 import cavebiomes.worldgeneration.dungeontypes.DungeonType;

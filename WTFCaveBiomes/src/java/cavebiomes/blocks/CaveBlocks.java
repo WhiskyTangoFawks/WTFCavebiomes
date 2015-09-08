@@ -5,6 +5,7 @@ import cavebiomes.blocks.customplants.Foxfire;
 import cavebiomes.blocks.customplants.CinderShroom;
 import cavebiomes.blocks.customplants.PlantsCavePlants;
 import cavebiomes.items.ItemMoss;
+import cavebiomes.utilities.StoneRegister;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import wtfcore.utilities.BlockSets;
@@ -39,7 +40,6 @@ public class CaveBlocks
 		Foxfire.register();
 		ItemMoss.register();
 	
-
 		IcePatch = new IcePatch().setBlockName("ice_patch");
 		GameRegistry.registerBlock(IcePatch, "ice_patch");
 
@@ -84,6 +84,7 @@ public class CaveBlocks
 			sedimentary.drippingLava=false;
 			sedimentary.register();
 		}
+		
 		
 	}
 	
