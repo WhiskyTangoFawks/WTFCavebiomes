@@ -6,17 +6,14 @@ import wtfcore.blocks.ChildBlockCarryMetadata;
 import wtfcore.items.ItemMetadataSubblock;
 import wtfcore.utilities.BlockInfo;
 import wtfcore.utilities.BlockSets;
-import wtfcore.utilities.UBCblocks;
 import cavebiomes.CaveBiomes;
 import cavebiomes.WTFCaveBiomesConfig;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -78,7 +75,7 @@ public class DrippingBlock extends ChildBlockCarryMetadata{
 	@SideOnly(Side.CLIENT)
 	    public void randomDisplayTick(World world, int x, int y, int z, Random random)
 	    {
-	        int l;
+	        //int l;
 
 	        double d5;
 	        double d6;

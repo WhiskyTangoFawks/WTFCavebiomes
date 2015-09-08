@@ -27,16 +27,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class UBCSand extends BlockGravel{
-
-	//private Block parentBlock;
-	//private int parentMeta;
 	private IIcon[] textures;
 	public static Block sedimentarySand;
-
+	public static String[] SedimentarySandTextures = new String[8];
 
 	public UBCSand() {
-		//this.parentMeta = meta;
-		//this.parentBlock = block;
 		this.setCreativeTab(CaveBiomes.tabCaveDecorations);
 		this.blockHardness = 0.5F;
 		this.setStepSound(soundTypeGravel);
@@ -125,6 +120,7 @@ public class UBCSand extends BlockGravel{
 
 		for (int metaloop=0; metaloop < 8; metaloop++){
 			this.textures[metaloop]= iconRegister.registerIcon(CaveBiomes.modid + ":" + UBCblocks.SedimentaryStoneList[metaloop]+"_sand");
+			SedimentarySandTextures[metaloop] =  UBCblocks.SedimentaryStoneList[metaloop]+"_sand";
 		}
 	}
 

@@ -1,14 +1,12 @@
 package cavebiomes.blocks;
 
 import java.util.HashMap;
-import cavebiomes.WTFCaveBiomesConfig;
 import cavebiomes.blocks.customplants.Foxfire;
 import cavebiomes.blocks.customplants.CinderShroom;
 import cavebiomes.blocks.customplants.PlantsCavePlants;
 import cavebiomes.items.ItemMoss;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import wtfcore.utilities.BlockInfo;
 import wtfcore.utilities.BlockSets;
 import wtfcore.utilities.UBCblocks;
 import cpw.mods.fml.common.Loader;
@@ -27,7 +25,6 @@ public class CaveBlocks
 	public static Block GlowstoneStalactite;
 	public static Block Roots;
 	public static Block CaveOrchid;
-	public static Block caveLilyPad;
 	public static Block PlantMoss;
 	public static Block frozenRoots;
 	public static Block MossyDirt;
@@ -35,12 +32,9 @@ public class CaveBlocks
 	//Method to call registry of Blocks
 	public static void BlockRegister()
 	{
-		BlockIcicle.register();
-		
+		BlockIcicle.register();	
 		UBCSand.register();
-		
 		CinderShroom.register();
-
 		BlockRoots.registerRoots();
 		Foxfire.register();
 		ItemMoss.register();
@@ -64,11 +58,11 @@ public class CaveBlocks
 		
 		DrippingBlock.registerDrippingBlock(Blocks.dirt, 0, BlockSets.Modifier.waterDrippingStone,1, "dripping_water_dirt" );
 		
-		StoneRegister stone = getStoneRegister(Blocks.stone, Blocks.cobblestone, "stone", "stone", "minecraft");
+		StoneRegister stone = getStoneRegister(Blocks.stone, Blocks.cobblestone, "stone", "stone", "cobblestone", "minecraft");
 		stone.mossyCobble = false;
 		stone.register();
 		
-		StoneRegister sand = getStoneRegister(Blocks.sandstone, Blocks.sand, "sandstone", "sand", "minecraft");
+		StoneRegister sand = getStoneRegister(Blocks.sandstone, Blocks.sand, "sandstone", "sand", "sand", "minecraft");
 		sand.mossyStone=false;
 		sand.mossyCobble=false;
 		sand.lavacrust=false;
@@ -78,13 +72,14 @@ public class CaveBlocks
 		
 		if (Loader.isModLoaded("UndergroundBiomes")){
 			
-			StoneRegister igneous = getStoneRegister(UBCblocks.IgneousStone, UBCblocks.IgneousCobblestone, "igneous", UBCblocks.IgneousStoneList, "undergroundbiomes");
+			StoneRegister igneous = getStoneRegister(UBCblocks.IgneousStone, UBCblocks.IgneousCobblestone, "igneous", UBCblocks.IgneousStoneList, UBCblocks.IgneousCobblestoneList, "undergroundbiomes");
 			igneous.register();
 			
-			StoneRegister metamorphic = getStoneRegister(UBCblocks.MetamorphicStone, UBCblocks.MetamorphicCobblestone, "metamorphic", UBCblocks.MetamorphicStoneList, "undergroundbiomes");
+			StoneRegister metamorphic = getStoneRegister(UBCblocks.MetamorphicStone, UBCblocks.MetamorphicCobblestone, "metamorphic", UBCblocks.MetamorphicStoneList, UBCblocks.MetamorphicCobblestoneList, "undergroundbiomes");
 			metamorphic.register();
 			
-			StoneRegister sedimentary = getStoneRegister(UBCblocks.SedimentaryStone, UBCSand.sedimentarySand, "sedimentary", UBCblocks.SedimentaryStoneList, "undergroundbiomes");
+			StoneRegister sedimentary = getStoneRegister(UBCblocks.SedimentaryStone, UBCSand.sedimentarySand, "sedimentary", UBCblocks.SedimentaryStoneList, UBCSand.SedimentarySandTextures, "undergroundbiomes");
+			sedimentary.mossyCobble = false;
 			sedimentary.lavacrust = false;
 			sedimentary.drippingLava=false;
 			sedimentary.register();
@@ -92,11 +87,11 @@ public class CaveBlocks
 		
 	}
 	
-	public static StoneRegister getStoneRegister(Block stone, Block cobblestone, String unlocalisedName, String[] stoneNames, String domain){
-		return new StoneRegister(stone, cobblestone, unlocalisedName, stoneNames, domain);
+	public static StoneRegister getStoneRegister(Block stone, Block cobblestone, String unlocalisedName, String[] stoneNames, String[] cobbleNames, String domain){
+		return new StoneRegister(stone, cobblestone, unlocalisedName, stoneNames, cobbleNames, domain);
 	}
-	public static StoneRegister getStoneRegister(Block stone, Block cobblestone, String unlocalisedName, String stoneNames, String domain){
-		return new StoneRegister(stone, cobblestone, unlocalisedName, stoneNames, domain);
+	public static StoneRegister getStoneRegister(Block stone, Block cobblestone, String unlocalisedName, String stoneNames, String cobbleNames, String domain){
+		return new StoneRegister(stone, cobblestone, unlocalisedName, stoneNames, cobbleNames, domain);
 	}
 	
 	

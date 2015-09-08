@@ -1,16 +1,13 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
-import java.util.ArrayList;
 import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import wtfcore.utilities.BlockSets;
 import cavebiomes.blocks.CaveBlocks;
-import cavebiomes.blocks.MossyStone;
 import cavebiomes.worldgeneration.CaveType;
 import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
 public class CaveTypeForest extends CaveType{
 

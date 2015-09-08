@@ -4,7 +4,6 @@ import wtfcore.blocks.IAlphaMaskedBlock;
 import wtfcore.blocks.ChildBlockCarryMetadata;
 import wtfcore.items.ItemMetadataSubblock;
 import wtfcore.proxy.ClientProxy;
-import wtfcore.utilities.UBCblocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,15 +16,12 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cavebiomes.CaveBiomes;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSpeleothems extends ChildBlockCarryMetadata implements IAlphaMaskedBlock
 {
-
-	//public static String stonetype;
 	public  Block parentBlock;
 	public static  Block blockToRegister;
 	protected int speleothemType;
@@ -46,10 +42,6 @@ public class BlockSpeleothems extends ChildBlockCarryMetadata implements IAlphaM
 	public static final int stalagmitelargetip = 6;
 
 	public static String[] formationList ={"stalactite_small", "stalactite_base", "stalactite_tip", "column", "stalagmite_small", "stalagmite_base", "stalagmite_tip"};
-	//public static String[] vanillaStone = {"stone"};
-	//public static String[] vanillaSandstone = {"sand"};
-	
-
 
 	protected BlockSpeleothems(Block block,int type, String[] stoneNames, String domain) {
 		super(block);
@@ -58,8 +50,6 @@ public class BlockSpeleothems extends ChildBlockCarryMetadata implements IAlphaM
 		this.speleothemType = type;
 		this.loadTextureStrings(stoneNames, domain);
 	}
-
-
 
 	public static void registerSpeleothemSet(Block block, String unlocalisedName, String[] stoneNames, String domain){
 

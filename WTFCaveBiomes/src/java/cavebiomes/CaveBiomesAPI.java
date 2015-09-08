@@ -1,5 +1,7 @@
 package cavebiomes;
 
+import cavebiomes.blocks.CaveBlocks;
+import cavebiomes.blocks.StoneRegister;
 import cavebiomes.utilities.BiomeAndHeight;
 import cavebiomes.worldgeneration.CaveType;
 import cavebiomes.worldgeneration.CaveTypeRegister;
@@ -8,8 +10,6 @@ import cavebiomes.worldgeneration.dungeontypes.DungeonTypeRegister;
 import net.minecraft.block.Block;
 import net.minecraft.world.biome.BiomeGenBase;
 import wtfcore.WTFCore;
-import wtfcore.utilities.BlockInfo;
-import wtfcore.utilities.BlockSets;
 
 public class CaveBiomesAPI {
 
@@ -65,13 +65,19 @@ public class CaveBiomesAPI {
 		}
 
 	}
-	/**
-	 * Adds a stone-cobblestone pairing, which generates all subsequent blocks, and adds them to the requisite hashmaps
-	 * @param dungeon
-	 * @param biometype: the type of biome you wish it to spawn in
-	 */
-	public static void addStoneAndCobble(Block stone, Block cobblestone, String stoneGeoType, String[] stoneNames, String domain){
-
+/**
+ * This method returns a wrapper method of the information you give it, with a set of boolean variables
+ * To cancel the generation of a type of block, set it's boolean in the returned wrapper to false, all are true by default
+ * Then call the blocks register() method, to create and register all the child block types
+ * 
+ * @param Block stone
+ * @param Block cobblestone
+ * @param String unlocalisedName: this is the base string that will be used to create the unlocalised names of the block- it doesn't have to match the actual unlocalised name of either stone or cobblestone blocks
+ * @param stoneNames: A string array containing the texture names for the all metadata versions of the block
+ * @param domain: the mod domain that the block comes from
+ */
+	public static StoneRegister getStoneInfo(Block stone, Block cobblestone, String unlocalisedName, String[] stoneTextureNames, String[] cobbleTextureNames, String domain){
+		return CaveBlocks.getStoneRegister(stone, cobblestone, unlocalisedName, stoneTextureNames, cobbleTextureNames, domain);
 	}
 
 	
