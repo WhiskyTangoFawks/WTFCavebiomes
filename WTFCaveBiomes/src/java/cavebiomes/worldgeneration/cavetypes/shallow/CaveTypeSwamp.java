@@ -2,19 +2,23 @@ package cavebiomes.worldgeneration.cavetypes.shallow;
 
 import java.util.ArrayList;
 import java.util.Random;
-import wtfcore.utilities.BlockSets;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import wtfcore.api.BlockSets;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 import cavebiomes.blocks.CaveBlocks;
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
 public class CaveTypeSwamp extends CaveType {
 
-	public CaveTypeSwamp(String name, int cavedepth, DungeonSet swampSet) {
-		super(name, cavedepth, swampSet);
+	
+	public final String	name = "Swamp";
+	
+	public CaveTypeSwamp(int cavedepth, DungeonSet swampSet) {
+		super(cavedepth, swampSet);
 	}
 
 
@@ -48,7 +52,7 @@ public class CaveTypeSwamp extends CaveType {
 		BlockSets.Modifier addonblock = swampBlock[random.nextInt(swampBlock.length)];
 
 		if (height < 9 ){
-			if (IsBlockSurrounded(world, x, y, z)){
+			if (gen.IsBlockSurrounded(world, x, y, z)){
 				gen.setFluid(world, x, y, z, Blocks.water, addonblock);
 				if (random.nextInt(8)==0 && Blocks.waterlily.canBlockStay(world,  x,  y+1,  z)){
 					gen.setBlockWithoutNotify(world, x, y+1, z, Blocks.waterlily, 0);
@@ -56,7 +60,7 @@ public class CaveTypeSwamp extends CaveType {
 			}
 		}
 		else{
-			if (shouldGenFloorAddon() && addonblock == null){
+			if (shouldGenFloorAddon(random) && addonblock == null){
 				gen.genStalagmite(world, x, y, z, depth);
 			}
 		}

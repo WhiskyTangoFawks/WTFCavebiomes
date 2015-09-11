@@ -1,6 +1,8 @@
 package cavebiomes.worldgeneration;
 
 import java.util.HashMap;
+
+import cavebiomes.api.CaveType;
 import cavebiomes.utilities.BiomeAndHeight;
 import cavebiomes.worldgeneration.cavetypes.deep.CaveTypeDeepIce;
 import cavebiomes.worldgeneration.cavetypes.deep.CaveTypeVolcanic;
@@ -36,30 +38,30 @@ public class CaveTypeRegister {
 	//carved stone, carved sandstone
 
 	//shallow caves
-	public static CaveType normalShallow = new CaveTypeNormalShallow("Normal", 1, DungeonTypeRegister.defaultSet);
-	public static CaveType wetShallow =new CaveTypeWetShallow ("WetShallow", 1, DungeonTypeRegister.wetSet);
-	public static CaveType swamp = new CaveTypeSwamp ("Swamp", 1, DungeonTypeRegister.swampSet);
-	public static CaveType sandyShallow = new CaveTypeSandy ("Sandy",1, DungeonTypeRegister.desertSet);
-	public static CaveType jungleVolcano = new CaveTypeJungleVolcano ("Jungle",1, DungeonTypeRegister.jungleSet);
-	public static CaveType mountains = new CaveTypeMountain ("Mountains",1, DungeonTypeRegister.mountainSet);
-	public static CaveType iceMountain = new CaveTypeIceMountain ("IceMountains",1, DungeonTypeRegister.icemountainSet);
-	public static CaveType iceShallow = new CaveTypeShallowIce ("Ice",1, DungeonTypeRegister.coldSet);
-	public static CaveType fungal = new CaveTypeFungal ("Fungal",1, DungeonTypeRegister.swampSet);
-	public static CaveType plains = new CaveTypePlains ("Plains",1, DungeonTypeRegister.defaultSet);
-	public static CaveType coniferous = new CaveTypeConifer ("Coniferous",1, DungeonTypeRegister.forestSet);
-	public static CaveType forest = new CaveTypeForest("Forest", 1, DungeonTypeRegister.forestSet);
+	public static CaveType normalShallow = new CaveTypeNormalShallow(1, DungeonTypeRegister.defaultSet);
+	public static CaveType wetShallow =new CaveTypeWetShallow (1, DungeonTypeRegister.wetSet);
+	public static CaveType swamp = new CaveTypeSwamp (1, DungeonTypeRegister.swampSet);
+	public static CaveType sandyShallow = new CaveTypeSandy (1, DungeonTypeRegister.desertSet);
+	public static CaveType jungleVolcano = new CaveTypeJungleVolcano (1, DungeonTypeRegister.jungleSet);
+	public static CaveType mountains = new CaveTypeMountain (1, DungeonTypeRegister.mountainSet);
+	public static CaveType iceMountain = new CaveTypeIceMountain (1, DungeonTypeRegister.icemountainSet);
+	public static CaveType iceShallow = new CaveTypeShallowIce (1, DungeonTypeRegister.coldSet);
+	public static CaveType fungal = new CaveTypeFungal (1, DungeonTypeRegister.swampSet);
+	public static CaveType plains = new CaveTypePlains (1, DungeonTypeRegister.defaultSet);
+	public static CaveType coniferous = new CaveTypeConifer (1, DungeonTypeRegister.forestSet);
+	public static CaveType forest = new CaveTypeForest(1, DungeonTypeRegister.forestSet);
 
 	// mid caves
-	public static CaveType normalMid = new CaveTypeNormalMid("NormalMid", 2, DungeonTypeRegister.defaultSet);
-	public static CaveType wetMid = new CaveTypeWetMid ("WetMid", 2, DungeonTypeRegister.wetSet);
-	public static CaveType iceMid = new CaveTypeMidIce ("MidIce", 2, DungeonTypeRegister.coldSet);
-	public static CaveType desertMid = new CaveTypeDesertMid ("DesertMid", 2, DungeonTypeRegister.desertSet);
+	public static CaveType normalMid = new CaveTypeNormalMid(2, DungeonTypeRegister.defaultSet);
+	public static CaveType wetMid = new CaveTypeWetMid (2, DungeonTypeRegister.wetSet);
+	public static CaveType iceMid = new CaveTypeMidIce (2, DungeonTypeRegister.coldSet);
+	public static CaveType desertMid = new CaveTypeDesertMid (2, DungeonTypeRegister.desertSet);
 
 	//Deep caves
-	public static CaveType wetDeep = new CaveTypeWetDeep ("WetDeep", 3, DungeonTypeRegister.wetSet);
-	public static CaveType iceDeep = new CaveTypeDeepIce ("DeepIce", 3, DungeonTypeRegister.coldSet);
+	public static CaveType wetDeep = new CaveTypeWetDeep (3, DungeonTypeRegister.wetSet);
+	public static CaveType iceDeep = new CaveTypeDeepIce (3, DungeonTypeRegister.coldSet);
 	//public static CaveType desertDeep = new CaveTypeDesertDeep ("DesertDeep", 3, volcaniclist);
-	public static CaveType volcanic = new CaveTypeVolcanic ("Volcanic", 3,DungeonTypeRegister. volcanicSet);
+	public static CaveType volcanic = new CaveTypeVolcanic (3,DungeonTypeRegister. volcanicSet);
 
 
 

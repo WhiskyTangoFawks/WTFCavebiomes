@@ -2,18 +2,21 @@ package cavebiomes.worldgeneration.cavetypes.shallow;
 
 import java.util.ArrayList;
 import java.util.Random;
-import wtfcore.utilities.BlockSets;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import wtfcore.api.BlockSets;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 
 public class CaveTypeJungleVolcano extends CaveType{
 
-	public CaveTypeJungleVolcano(String name, int cavedepth, DungeonSet jungleSet) {
-		super(name, cavedepth, jungleSet);
+	public final String	name = "Jungle";
+	
+	public CaveTypeJungleVolcano(int cavedepth, DungeonSet jungleSet) {
+		super(cavedepth, jungleSet);
 	}
 	BlockSets.Modifier[] stonemodifier = {BlockSets.Modifier.stoneMagmaCrust, BlockSets.Modifier.cobblestone};
 
@@ -40,7 +43,7 @@ public class CaveTypeJungleVolcano extends CaveType{
 		}
 		else {
 			if (height < -1){
-				if (IsBlockSurrounded(world, x, y, z)){
+				if (gen.IsBlockSurrounded(world, x, y, z)){
 					gen.setFluid(world, x, y, z, Blocks.lava);
 				}
 
@@ -50,7 +53,7 @@ public class CaveTypeJungleVolcano extends CaveType{
 			}
 
 			else {
-				if (this.shouldGenFloorAddon()){
+				if (this.shouldGenFloorAddon(random)){
 					gen.genStalagmite(world, x, y, z, depth);
 
 				}

@@ -4,15 +4,17 @@ import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import wtfcore.utilities.BlockSets;
+import wtfcore.api.BlockSets;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
 import cavebiomes.blocks.CaveBlocks;
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
 
 public class CaveTypeForest extends CaveType{
 
-	public CaveTypeForest(String name, int cavedepth, DungeonSet forestSet) {
-		super(name, cavedepth, forestSet);
+	public final String	name = "Forest";
+	
+	public CaveTypeForest(int cavedepth, DungeonSet forestSet) {
+		super(cavedepth, forestSet);
 	}
 
 	BlockSets.Modifier[] blockarray = {null, null, null, BlockSets.Modifier.MossyStone, BlockSets.Modifier.mossy_cobblestone};
@@ -40,7 +42,7 @@ public class CaveTypeForest extends CaveType{
 		else{
 
 			gen.transformBlock(world, x, y, z, blockarray[random.nextInt(blockarray.length)]);
-			if (shouldGenFloorAddon()){
+			if (shouldGenFloorAddon(random)){
 				gen.genStalagmite(world, x, y, z, depth);
 			}
 		}

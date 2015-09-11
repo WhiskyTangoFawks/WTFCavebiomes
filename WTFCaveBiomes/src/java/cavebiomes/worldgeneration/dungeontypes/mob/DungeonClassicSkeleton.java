@@ -1,9 +1,10 @@
 package cavebiomes.worldgeneration.dungeontypes.mob;
 
 import java.util.Random;
+
+import cavebiomes.api.DungeonType;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
 public class DungeonClassicSkeleton extends DungeonType{
 

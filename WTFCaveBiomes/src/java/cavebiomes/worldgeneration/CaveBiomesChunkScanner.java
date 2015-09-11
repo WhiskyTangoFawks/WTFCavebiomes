@@ -4,19 +4,31 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 import cavebiomes.WTFCaveBiomesConfig;
+import cavebiomes.api.CaveType;
+import cavebiomes.utilities.gencores.GenCoreProvider;
+import cavebiomes.utilities.gencores.VanillaGen;
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
+import wtfcore.WTFCore;
 import wtfcore.WorldGenListener;
+import wtfcore.api.BlockSets;
 import wtfcore.utilities.CavePosition;
 import wtfcore.worldgen.OverworldScanner;
 
-public class CaveBiomesWorldScanner extends OverworldScanner{
+public class CaveBiomesChunkScanner extends OverworldScanner{
 
+	public VanillaGen gen = GenCoreProvider.getGenCore();
+	
 	@Override
 	public void generate(World world, Random rand, int chunkX, int chunkZ)
 	{		
 		ArrayList<CavePosition> cavepositions = new ArrayList<CavePosition>();
 		ArrayList<CavePosition> dungeonposition = new ArrayList<CavePosition>();
 
+		Chunk chunk = world.getChunkFromBlockCoords(chunkX, chunkZ);
+
+		
 		int lastY = 70;
 
 		int surfaceaverage = 0;
@@ -26,16 +38,9 @@ public class CaveBiomesWorldScanner extends OverworldScanner{
 			int x = chunkX + xloop;
 			for (int zloop = 0; zloop < 16; zloop++){
 
-				int z = chunkZ + zloop;
-				
-				
-				
-				
-				
-				int y = scanForSurface(world, x, lastY, z);
-				
+				int z = chunkZ + zloop;	
+				int y = scanForSurface(chunk, x, lastY, z);
 				lastY = y;
-
 				surfaceaverage += y;
 
 				int ceiling = -1;
@@ -43,7 +48,7 @@ public class CaveBiomesWorldScanner extends OverworldScanner{
 
 				while (y > 10){
 
-					if (world.isAirBlock(x, y, z)){
+					if (isAirAndCheck(chunk, x, y, z)){
 
 						if (!wasAir && ceiling == -1){
 							ceiling = y + 1;
@@ -92,17 +97,17 @@ public class CaveBiomesWorldScanner extends OverworldScanner{
 
 				if (position.floor < deepmax){
 					if (rand.nextInt(deeptype.DungeonWeight) == 1){
-						deeptype.generateDungeon(world, rand, position.x, position.floor+5+rand.nextInt(3), position.z, position.ceiling, position.floor);
+						CaveGen.generateDungeon(deeptype, world, rand, position.x, position.z, position.ceiling, position.floor);
 					}
 				}
 				else if (position.floor < midmax ){
 					if (rand.nextInt(midtype.DungeonWeight) == 1){
-						midtype.generateDungeon(world, rand, position.x,  position.floor+5+rand.nextInt(3), position.z, position.ceiling, position.floor);
+						CaveGen.generateDungeon(midtype, world, rand, position.x, position.z, position.ceiling, position.floor);
 					}
 				}
 				else {
 					if (rand.nextInt(shallowtype.DungeonWeight) == 1){
-						shallowtype.generateDungeon(world, rand, position.x,  position.floor+5+rand.nextInt(3), position.z, position.ceiling, position.floor);
+						CaveGen.generateDungeon(shallowtype, world, rand, position.x,  position.z, position.ceiling, position.floor);
 					}
 				}
 			}
@@ -115,16 +120,37 @@ public class CaveBiomesWorldScanner extends OverworldScanner{
 
 			if (position.floor < deepmax){
 
-				deeptype.generate(world, rand, position.x, position.floor, position.ceiling, position.z);
+				CaveGen.generateCaveType(deeptype, world, rand, position.x, position.floor, position.ceiling, position.z);
 			}
 			else if (position.floor < midmax){
-				midtype.generate(world, rand, position.x, position.floor, position.ceiling, position.z);
+				CaveGen.generateCaveType(midtype, world, rand, position.x, position.floor, position.ceiling, position.z);
 			}
 			else {
-				shallowtype.generate(world, rand, position.x, position.floor, position.ceiling, position.z);
+				CaveGen.generateCaveType(shallowtype, world, rand, position.x, position.floor, position.ceiling, position.z);
 			}
 		}
 
 	}
-
+	
+	public boolean isAirAndCheck(Chunk chunk, int x, int y, int z){
+		Block block = chunk.getBlock(x & 15, y, z & 15);
+		
+		if (BlockSets.genReplace.containsKey(block)){
+			gen.replaceBlockDuringGen(chunk, block, x, y, z);
+			//WTFCore.log.info("Replaced");
+			return false;
+		}
+		return block.isAir(chunk.worldObj, x, y, z);
+	}
+	
+	public boolean isSurfaceAndCheck(Chunk chunk, int x, int y, int z){
+		Block block = chunk.getBlock(x&15, y, z&15);
+		if (BlockSets.genReplace.containsKey(block)){
+			gen.replaceBlockDuringGen(chunk, block, x, y, z);
+			
+		}
+		return BlockSets.surfaceBlocks.contains(block);
+	}
+	
+	
 }

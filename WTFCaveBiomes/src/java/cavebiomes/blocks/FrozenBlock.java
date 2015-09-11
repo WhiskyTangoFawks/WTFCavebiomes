@@ -21,7 +21,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.util.ForgeDirection;
-import wtfcore.utilities.BlockSets;
+import wtfcore.api.BlockSets;
 
 public class FrozenBlock extends BlockPackedIce// implements AlphaMaskedBlock
 {

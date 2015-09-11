@@ -5,10 +5,13 @@ import cavebiomes.blocks.BlockSpeleothems;
 import cavebiomes.blocks.DrippingBlock;
 import cavebiomes.blocks.MossyStone;
 import net.minecraft.block.Block;
-import wtfcore.utilities.BlockInfo;
-import wtfcore.utilities.BlockSets;
+import wtfcore.api.BlockInfo;
+import wtfcore.api.BlockSets;
+import wtfcore.api.IStoneRegister;
+import wtfcore.utilities.LoadBlockSets;
 
-public class StoneRegister {
+
+public class StoneRegister implements IStoneRegister {
 
 	private Block stone;
 	private Block cobblestone;
@@ -76,6 +79,7 @@ public class StoneRegister {
 		this.domain = domain;
 	}
 
+	@Override
 	public void register(){
 		
 		
@@ -91,7 +95,7 @@ public class StoneRegister {
 		
 		//Falling hashset, requires WTFTweaks to be present to function
 		if (cobbleFall){
-			BlockSets.addDefaultFallingBlock(cobblestone, 1);
+			LoadBlockSets.addDefaultFallingBlock(cobblestone, 1);
 		}
 
 		//Mossy Stone
@@ -121,6 +125,8 @@ public class StoneRegister {
 		//The boolean for these is part of the dripping class- it's passed along through the register
 		DrippingBlock.registerDrippingStoneSet(stone, unlocalisedName, stoneTextureNames.length, drippingWater, drippingLava);
 
+		
+		BlockSets.stoneRegisters.put(this.unlocalisedName, this);
 	}
 }
 

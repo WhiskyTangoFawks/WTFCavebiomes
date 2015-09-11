@@ -2,14 +2,16 @@ package cavebiomes.worldgeneration.cavetypes.shallow;
 
 import java.util.Random;
 
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
 import net.minecraft.world.World;
 
 public class CaveTypeNormalShallow extends CaveType{
 
-	public CaveTypeNormalShallow(String name, int cavedepth, DungeonSet defaultSet) {
-		super(name, cavedepth, defaultSet);
+	public final String	name = "Default";
+	
+	public CaveTypeNormalShallow(int cavedepth, DungeonSet defaultSet) {
+		super(cavedepth, defaultSet);
 	}
 
 	protected float	ceilingAddonWeight	= 0.3F;
@@ -26,7 +28,7 @@ public class CaveTypeNormalShallow extends CaveType{
 	@Override
 	public void generateFloor(World world, Random random, int x, int y, int z)
 	{
-		if (shouldGenFloorAddon()){
+		if (shouldGenFloorAddon(random)){
 			gen.genStalagmite(world, x, y, z, depth);
 		}
 	}

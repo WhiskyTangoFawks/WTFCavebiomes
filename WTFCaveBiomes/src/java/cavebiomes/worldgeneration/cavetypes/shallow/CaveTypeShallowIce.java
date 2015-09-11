@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.world.World;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 import cavebiomes.blocks.BlockIcicle;
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
 public class CaveTypeShallowIce extends CaveType{
 
-	public CaveTypeShallowIce(String name, int cavedepth,
-			DungeonSet coldSet) {
-		super(name, cavedepth, coldSet);
+	public final String	name = "IceShallow";
+	
+	public CaveTypeShallowIce(int cavedepth, DungeonSet coldSet) {
+		super(cavedepth, coldSet);
 	}
 
 

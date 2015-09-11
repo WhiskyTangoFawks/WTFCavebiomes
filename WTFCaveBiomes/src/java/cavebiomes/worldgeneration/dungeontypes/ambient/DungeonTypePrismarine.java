@@ -1,7 +1,8 @@
 package cavebiomes.worldgeneration.dungeontypes.ambient;
 
 import java.util.Random;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+
+import cavebiomes.api.DungeonType;
 import cpw.mods.fml.common.Loader;
 import ganymedes01.etfuturum.ModBlocks;
 import net.minecraft.block.Block;

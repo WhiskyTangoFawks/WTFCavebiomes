@@ -3,15 +3,16 @@ package cavebiomes.worldgeneration.cavetypes.mid;
 import java.util.ArrayList;
 import java.util.Random;
 
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 import net.minecraft.world.World;
 
 public class CaveTypeNormalMid extends CaveType{
 
-	public CaveTypeNormalMid(String name, int cavedepth, DungeonSet defaultSet) {
-		super(name, cavedepth, defaultSet);
+	public final String	name = "DefaultMid";
+	public CaveTypeNormalMid(int cavedepth, DungeonSet defaultSet) {
+		super(cavedepth, defaultSet);
 	}
 
 
@@ -25,7 +26,7 @@ public class CaveTypeNormalMid extends CaveType{
 	@Override
 	public void generateFloor(World world, Random random, int x, int y, int z)
 	{
-		if (shouldGenFloorAddon()){
+		if (shouldGenFloorAddon(random)){
 			gen.genStalagmite(world, x, y, z, depth);
 		}
 	}

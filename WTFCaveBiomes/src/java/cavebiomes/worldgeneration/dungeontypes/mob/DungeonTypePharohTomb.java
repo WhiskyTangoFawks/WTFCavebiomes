@@ -6,8 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import cavebiomes.WTFCaveBiomesConfig;
+import cavebiomes.api.DungeonType;
 import cavebiomes.entities.Entities;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 import cpw.mods.fml.common.Loader;
 import ganymedes01.etfuturum.ModBlocks;
 

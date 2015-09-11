@@ -2,13 +2,13 @@ package cavebiomes.worldgeneration.dungeontypes.mob;
 
 import java.util.Random;
 
-import wtfcore.utilities.BlockSets;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
+import wtfcore.api.BlockSets;
 import cavebiomes.WTFCaveBiomesConfig;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import cavebiomes.api.DungeonType;
 
 public class DungeonBlaze extends DungeonType{
 

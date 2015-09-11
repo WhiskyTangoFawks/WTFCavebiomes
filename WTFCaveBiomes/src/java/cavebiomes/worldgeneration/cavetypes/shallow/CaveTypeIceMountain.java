@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.world.World;
-import wtfcore.utilities.BlockSets;
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import wtfcore.api.BlockSets;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 
 public class CaveTypeIceMountain extends CaveType{
 
-	public CaveTypeIceMountain(String name, int cavedepth,
-			DungeonSet coldSet) {
-		super(name, cavedepth, coldSet);
+	public final String	name = "IceMountain";
+	
+	public CaveTypeIceMountain(int cavedepth, DungeonSet coldSet) {
+		super(cavedepth, coldSet);
 	}
 
 	@Override
@@ -38,7 +39,7 @@ public class CaveTypeIceMountain extends CaveType{
 			gen.setStoneAddon(world, x, y, z, BlockSets.Modifier.cobblestone);
 			gen.freezeBlock(world, x, y+1, z);
 		}
-		else if (shouldGenFloorAddon()){
+		else if (shouldGenFloorAddon(random)){
 			gen.genStalagmite(world, x, y, z, depth);
 		}
 		else {

@@ -5,15 +5,17 @@ import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import wtfcore.utilities.BlockSets;
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import wtfcore.api.BlockSets;
+import wtfcore.api.BlockSets;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 
 public class CaveTypeVolcanic extends CaveType{
 
-	public CaveTypeVolcanic(String name, int cavedepth,	DungeonSet volcanicSet) {
-		super(name, cavedepth, volcanicSet);
+	public final String	name = "Volcanic";
+	public CaveTypeVolcanic(int cavedepth,	DungeonSet volcanicSet) {
+		super(cavedepth, volcanicSet);
 	}
 
 	BlockSets.Modifier[] blockarray = {BlockSets.Modifier.stoneMagmaCrust, BlockSets.Modifier.cobblestone};
@@ -30,7 +32,7 @@ public class CaveTypeVolcanic extends CaveType{
 		int height = 2*MathHelper.abs_int((MathHelper.abs_int(x/2+z)/2 % 10) -5)-3;
 
 		if (height < -1){
-			if (IsBlockSurrounded(world, x, y, z)){
+			if (gen.IsBlockSurrounded(world, x, y, z)){
 				gen.setFluid(world, x, y, z, Blocks.lava);
 			}
 		}
@@ -41,7 +43,7 @@ public class CaveTypeVolcanic extends CaveType{
 			else if (random.nextBoolean()){
 				gen.transformBlock(world, x, y, z, blockarray[random.nextInt(blockarray.length)]);
 			}
-			else if (shouldGenFloorAddon()){
+			else if (shouldGenFloorAddon(random)){
 				gen.genStalagmite(world, x, y, z, depth);
 			}
 		}

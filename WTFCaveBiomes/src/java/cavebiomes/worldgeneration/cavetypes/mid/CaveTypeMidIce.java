@@ -5,14 +5,15 @@ import java.util.Random;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 
 public class CaveTypeMidIce extends CaveType{
 
-	public CaveTypeMidIce(String name, int cavedepth, DungeonSet coldSet) {
-		super(name, cavedepth, coldSet);
+	public final String	name = "IceMid";
+	public CaveTypeMidIce(int cavedepth, DungeonSet coldSet) {
+		super(cavedepth, coldSet);
 	}
 
 	@Override
@@ -29,7 +30,7 @@ public class CaveTypeMidIce extends CaveType{
 	@Override
 	public void generateFloor(World world, Random random, int x, int y, int z)
 	{
-		if (shouldGenFloorAddon() && random.nextBoolean() == true){
+		if (shouldGenFloorAddon(random) && random.nextBoolean() == true){
 			gen.genStalagmite(world, x, y, z, depth, Blocks.ice);
 		}
 		else {

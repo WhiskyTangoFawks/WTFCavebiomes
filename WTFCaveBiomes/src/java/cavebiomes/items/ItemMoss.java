@@ -1,8 +1,8 @@
 package cavebiomes.items;
 
 
-import wtfcore.utilities.BlockInfo;
-import wtfcore.utilities.BlockSets;
+import wtfcore.api.BlockInfo;
+import wtfcore.api.BlockSets;
 import cavebiomes.CaveBiomes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;

@@ -6,6 +6,7 @@ import cavebiomes.blocks.UBCSand;
 import cavebiomes.entities.SpawnHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
@@ -24,9 +25,9 @@ public class EventListener {
 	public static EntityPlayer thePlayer;
 
 	@SubscribeEvent
-	public void getPlayer (PlayerInteractEvent event){
+	public void getPlayer (PlayerEvent.PlayerLoggedInEvent event){
 		if (WTFCaveBiomesConfig.logDungeons){
-			thePlayer = event.entityPlayer;
+			thePlayer = event.player;
 		}
 	}
 

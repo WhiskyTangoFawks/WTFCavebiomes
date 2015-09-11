@@ -2,8 +2,8 @@ package cavebiomes.worldgeneration.dungeontypes.mob;
 
 import java.util.Random;
 
+import cavebiomes.api.DungeonType;
 import cavebiomes.entities.Entities;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 

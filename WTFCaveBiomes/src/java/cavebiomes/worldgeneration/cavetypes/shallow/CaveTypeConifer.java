@@ -1,19 +1,18 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
-import java.util.ArrayList;
 import java.util.Random;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
 
 public class CaveTypeConifer extends CaveType{
 
-	public CaveTypeConifer(String name, int cavedepth, DungeonSet forestSet) {
-		super(name, cavedepth, forestSet);
+	public final String	name = "Coniferous";
+	
+	public CaveTypeConifer(int cavedepth, DungeonSet forestSet) {
+		super( cavedepth, forestSet);
 	}
 
 	@Override
@@ -29,14 +28,14 @@ public class CaveTypeConifer extends CaveType{
 
 		int height = MathHelper.abs_int((MathHelper.abs_int(x) % 10) -5)+MathHelper.abs_int((MathHelper.abs_int(z) % 10) -5)+ (random.nextInt(3)-7);
 		if (height < 0 ){
-			if (shouldGenFloorAddon()){
+			if (shouldGenFloorAddon(random)){
 				gen.genStalagmite(world, x, y, z, depth);
 			}
 		}
 		else {
 			gen.replaceBlock(world, x, y, z, Blocks.dirt, 2);
 
-			if (shouldGenFloorAddon()){
+			if (shouldGenFloorAddon(random)){
 				if (MathHelper.abs_int(x+y)%100 < 4){
 				gen.setBlockWithoutNotify(world, x, y+1, z, Blocks.brown_mushroom, 0);
 				}

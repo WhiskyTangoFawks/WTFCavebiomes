@@ -3,15 +3,17 @@ package cavebiomes.worldgeneration.cavetypes.shallow;
 import java.util.ArrayList;
 import java.util.Random;
 import net.minecraft.world.World;
-import wtfcore.utilities.BlockSets;
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import wtfcore.api.BlockSets;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 
 public class CaveTypeMountain extends CaveType{
 
-	public CaveTypeMountain(String name, int cavedepth,	DungeonSet defaultSet) {
-		super(name, cavedepth, defaultSet);
+	public final String	name = "Mountain";
+	
+	public CaveTypeMountain(int cavedepth,	DungeonSet defaultSet) {
+		super(cavedepth, defaultSet);
 	}
 
 	@Override
@@ -30,7 +32,7 @@ public class CaveTypeMountain extends CaveType{
 			gen.setStoneAddon(world, x, y, z, BlockSets.Modifier.cobblestone);
 		}
 		else {
-			if (shouldGenFloorAddon()){
+			if (shouldGenFloorAddon(random)){
 				gen.genStalagmite(world, x, y, z, depth);
 			}
 		}

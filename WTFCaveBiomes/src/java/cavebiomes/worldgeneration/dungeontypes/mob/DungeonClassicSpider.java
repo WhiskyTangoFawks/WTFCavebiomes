@@ -1,10 +1,11 @@
 package cavebiomes.worldgeneration.dungeontypes.mob;
 
 import java.util.Random;
+
+import cavebiomes.api.DungeonType;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
-import wtfcore.utilities.BlockSets;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import wtfcore.api.BlockSets;
 
 public class DungeonClassicSpider extends DungeonType{
 

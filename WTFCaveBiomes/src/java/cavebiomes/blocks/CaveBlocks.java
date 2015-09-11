@@ -8,7 +8,7 @@ import cavebiomes.items.ItemMoss;
 import cavebiomes.utilities.StoneRegister;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import wtfcore.utilities.BlockSets;
+import wtfcore.api.BlockSets;
 import wtfcore.utilities.UBCblocks;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;

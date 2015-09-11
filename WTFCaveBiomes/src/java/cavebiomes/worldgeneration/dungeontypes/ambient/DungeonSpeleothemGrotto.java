@@ -2,7 +2,7 @@ package cavebiomes.worldgeneration.dungeontypes.ambient;
 
 import java.util.Random;
 
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import cavebiomes.api.DungeonType;
 import net.minecraft.world.World;
 
 public class DungeonSpeleothemGrotto extends DungeonType{

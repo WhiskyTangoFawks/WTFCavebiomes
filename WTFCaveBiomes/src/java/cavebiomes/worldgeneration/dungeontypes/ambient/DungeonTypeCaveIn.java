@@ -2,11 +2,11 @@ package cavebiomes.worldgeneration.dungeontypes.ambient;
 
 import java.util.Random;
 
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import cavebiomes.api.DungeonType;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
-import wtfcore.utilities.BlockInfo;
-import wtfcore.utilities.BlockSets;
+import wtfcore.api.BlockInfo;
+import wtfcore.api.BlockSets;
 
 public class DungeonTypeCaveIn extends DungeonType {
 

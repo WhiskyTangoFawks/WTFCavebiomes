@@ -4,12 +4,13 @@ package cavebiomes.blocks;
 import java.util.ArrayList;
 import java.util.List;
 import wtfcore.WTFCore;
+import wtfcore.api.BlockInfo;
+import wtfcore.api.BlockSets;
 import wtfcore.blocks.IAlphaMaskedBlock;
 import wtfcore.blocks.ChildBlockCarryMetadata;
 import wtfcore.items.ItemMetadataSubblock;
 import wtfcore.proxy.ClientProxy;
-import wtfcore.utilities.BlockInfo;
-import wtfcore.utilities.BlockSets;
+import wtfcore.utilities.LoadBlockSets;
 import wtfcore.utilities.UBCblocks;
 import cavebiomes.CaveBiomes;
 import cavebiomes.items.ItemMoss;
@@ -82,7 +83,7 @@ public class MossyStone extends ChildBlockCarryMetadata implements IAlphaMaskedB
 		blockToRegister = new MossyStone(block, stoneNames, domain).setBlockName(name);
 		GameRegistry.registerBlock(blockToRegister, ItemMetadataSubblock.class, name);
 		BlockSets.blockTransformer.put(new BlockInfo(block, 0, BlockSets.Modifier.mossy_cobblestone), blockToRegister);
-		BlockSets.addDefaultFallingBlock(blockToRegister, 1);
+		LoadBlockSets.addDefaultFallingBlock(blockToRegister, 1);
 
 		return blockToRegister;
 	}

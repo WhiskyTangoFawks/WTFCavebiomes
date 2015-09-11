@@ -3,8 +3,8 @@ package cavebiomes.worldgeneration.dungeontypes.ambient;
 import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import cavebiomes.api.DungeonType;
 import cavebiomes.blocks.customplants.Foxfire;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 
 public class DungeonTypeFoxfire extends DungeonType {
 	public DungeonTypeFoxfire() {

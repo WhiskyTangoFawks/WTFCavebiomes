@@ -17,9 +17,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
-import wtfcore.utilities.BlockInfo;
-import wtfcore.utilities.BlockSets;
-import wtfcore.utilities.BlockSets.Modifier;
+import wtfcore.api.BlockInfo;
+import wtfcore.api.BlockSets;
+import wtfcore.api.BlockSets.Modifier;
 
 public class CinderShroom extends BlockBush{
 

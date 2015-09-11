@@ -6,15 +6,15 @@ import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 
 public class CaveTypeDesertMid extends CaveType{
 
-	public CaveTypeDesertMid(String name, int cavedepth,
-			DungeonSet desertSet) {
-		super(name, cavedepth, desertSet);
+	public final String	name = "DesertMid";
+	public CaveTypeDesertMid(int cavedepth,	DungeonSet desertSet) {
+		super(cavedepth, desertSet);
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class CaveTypeDesertMid extends CaveType{
 		}
 
 		else {
-			if (shouldGenFloorAddon()){
+			if (shouldGenFloorAddon(random)){
 				gen.genStalagmite(world, x, y, z, depth);
 			}
 		}

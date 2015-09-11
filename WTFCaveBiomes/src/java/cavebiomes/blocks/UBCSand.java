@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import wtfcore.api.BlockInfo;
+import wtfcore.api.BlockSets;
 import wtfcore.items.ItemMetadataSubblock;
-import wtfcore.utilities.BlockInfo;
-import wtfcore.utilities.BlockSets;
 import wtfcore.utilities.UBCblocks;
 import cavebiomes.CaveBiomes;
 import cpw.mods.fml.common.Loader;

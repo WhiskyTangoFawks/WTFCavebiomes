@@ -3,11 +3,12 @@ package cavebiomes.utilities.gencores;
 import java.util.Random;
 
 import cavebiomes.WTFCaveBiomesConfig;
+import cavebiomes.api.GenCoreBase;
 import cavebiomes.blocks.BlockIcicle;
 import cavebiomes.blocks.BlockSpeleothems;
 import cavebiomes.blocks.CaveBlocks;
-import wtfcore.utilities.BlockInfo;
-import wtfcore.utilities.BlockSets;
+import wtfcore.api.BlockInfo;
+import wtfcore.api.BlockSets;
 import cpw.mods.fml.common.Loader;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -17,7 +18,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 
 
-public class VanillaGen {
+public class VanillaGen implements GenCoreBase {
 	public VanillaGen() {
 	}
 	public Random random = new Random();
@@ -36,6 +37,7 @@ public class VanillaGen {
 	/**
 	 **Used to set a block, based on a modifier and the block at the given location
 	 **/
+	@Override
 	public void transformBlock(World world, int x, int y, int z, BlockSets.Modifier modifier){
 		BlockInfo blockandmeta = getBlockToReplace(world, x, y, z);
 		Block blockToSet = BlockSets.blockTransformer.get(new BlockInfo(blockandmeta.block, blockandmeta.meta, modifier));
@@ -46,6 +48,7 @@ public class VanillaGen {
 	/**
 	 **Used to replace a block.  Checks that the block is replaceable first
 	 **/
+	@Override
 	public void replaceBlock(World world, int x, int y, int z, Block block, int metadata){
 		if (BlockSets.ReplaceHashset.contains(world.getBlock(x, y, z))){
 			setBlockWithoutNotify(world,x, y, z, block, metadata);
@@ -54,6 +57,7 @@ public class VanillaGen {
 	/**
 	 **Used to set a block at y+1, based on a modifier and the block at the given location.  e.g. cobblestone boulders
 	 **/
+	@Override
 	public void setStoneAddon(World world, int x, int y, int z, BlockSets.Modifier modifier){
 		BlockInfo blockandmeta = getBlockToReplace(world, x, y, z);
 		Block blockToSet = BlockSets.blockTransformer.get(new BlockInfo(blockandmeta.block, blockandmeta.meta, modifier));
@@ -69,6 +73,7 @@ public class VanillaGen {
 	/**
 	 **Used to set an ice patch above the given block, checks that it's a normal block first
 	 **/
+	@Override
 	public void freezeBlock(World world, int x, int y, int z){
 		//Add a method to generate frozen fences, torches, and rails
 		if (world.getBlock(x,y,z).renderAsNormalBlock() && world.isAirBlock(x,y+1,z)){
@@ -79,6 +84,7 @@ public class VanillaGen {
 	/**
 	 **Sets the block to the fluid
 	 **/
+	@Override
 	public void setFluid(World world, int x, int y, int z, Block fluid) {
 		setFluid(world, x, y, z, fluid, null);
 	}
@@ -86,6 +92,7 @@ public class VanillaGen {
 	/**
 	 **Sets the block to the fluid, and transforms the block below it
 	 **/
+	@Override
 	public void setFluid(World world, int x, int y, int z, Block fluid, BlockSets.Modifier modifier) {
 
 		if (BlockSets.ReplaceHashset.contains(world.getBlock(x, y, z))){
@@ -101,15 +108,18 @@ public class VanillaGen {
 	/**
 	 **used by the cave in dungeon type to get the stone type for UBC compatibility
 	 **/
+	@Override
 	public void genFloatingStone(World world, int x, int y, int z, Block modifier){
 		setBlockWithoutNotify(world, x, y, z, modifier, 0);
 	}
 
 
+	@Override
 	public void genStalagmite(World world, int x, int y, int z, int depth){
 		genStalagmite(world, x, y, z, depth, null);
 	}
 
+	@Override
 	public void genStalagmite(World world, int x, int y, int z, int depth, Block modifier){
 
 		float size = random.nextFloat();
@@ -133,6 +143,7 @@ public class VanillaGen {
 		}
 	}
 
+	@Override
 	public void genStalagmite(World world, int x, int y, int z, Block modifier, int size){
 
 		BlockInfo blockandmetadata= this.getBlockToReplace(world, x, y, z);
@@ -168,10 +179,12 @@ public class VanillaGen {
 
 	}
 
+	@Override
 	public void genStalactite(World world, int x, int y, int z, int depth){
 		genStalactite(world, x, y, z, depth, null);
 	}
 
+	@Override
 	public void genStalactite(World world, int x, int y, int z, int depth, Block modifier){
 		float size = random.nextFloat();
 		switch (depth){
@@ -193,6 +206,7 @@ public class VanillaGen {
 	}
 
 
+	@Override
 	public void genStalactite(World world, int x, int y, int z, int depth, Block modifier, int size){
 		
 		Block down1;
@@ -249,6 +263,7 @@ public class VanillaGen {
 	/**
 	 **Generates an icicle hanging from the ceiling
 	 **/
+	@Override
 	public  void genIcicle (World world, int x, int y, int z){
 		if (random.nextBoolean()){
 			setBlockWithoutNotify(world,x, y, z, BlockIcicle.IcicleLargeBase, 0);
@@ -258,9 +273,30 @@ public class VanillaGen {
 			setBlockWithoutNotify(world,x, y, z, BlockIcicle.IcicleSmall, 0);
 		}
 	}
+
+	/**
+	 * Used to determine if a block is surrounded- any placement of fluids should call this method to prevent flooding
+	 */
+	@Override
+	public boolean IsBlockSurrounded(World world, int x, int y, int z)	{
+		if (!world.isAirBlock(x+1, y, z)){
+			if (!world.isAirBlock(x-1, y, z)){
+				if (!world.isAirBlock(x, y, z+1)){
+					if (!world.isAirBlock(x, y, z-1)){
+						if (!world.isAirBlock(x, y-1, z)){
+							return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 **Generates vines hanging from the ceiling
 	 **/
+	@Override
 	public boolean GenVines(World world, int x, int y, int z)
 	{
 		int metadata = 0;
@@ -298,6 +334,7 @@ public class VanillaGen {
 	/**
 	 **UBC sensitive version of world.getBlock- is overridden in UBCGen if UBC is installed
 	 **/
+	@Override
 	public BlockInfo getBlockToReplace(World world, int x, int y, int z){
 		return new BlockInfo(world.getBlock(x,y,z), world.getBlockMetadata(x,y,z) );
 	}
@@ -305,6 +342,7 @@ public class VanillaGen {
 	/**
 	 **Checks if spawners are enabled, and then generates a mob spawner
 	 **/
+	@Override
 	public void spawnVanillaSpawner(World world, int x, int y, int z, String entityName){
 		if (WTFCaveBiomesConfig.EnableMobSpawners){
 			world.setBlock(x, y, z, Blocks.mob_spawner, 0, 2);
@@ -312,6 +350,7 @@ public class VanillaGen {
 			spawner.func_145881_a().setEntityName(entityName);
 		}
 	}
+	@Override
 	public void spawnRareVanillaSpawner(World world, int x, int y, int z, String entityName){
 		if (WTFCaveBiomesConfig.EnableMobSpawners){
 			world.setBlock(x, y, z, Blocks.mob_spawner, 0, 2);
@@ -329,6 +368,7 @@ public class VanillaGen {
 	/**
 	 **Use instead of world.setBlock, when you don't want it to update adjacent blocks.  non-fluid blocks placed during world generation should use this method.
 	 **/
+	@Override
 	public boolean setBlockWithoutNotify(World world, int x, int y, int z, Block block, int metadata){
 		int flags = 0;
 		Chunk chunk = world.getChunkFromChunkCoords(x >> 4, z >> 4);
@@ -344,10 +384,17 @@ public class VanillaGen {
 			world.capturedBlockSnapshots.remove(blockSnapshot);
 			blockSnapshot = null;
 		}
-		world.theProfiler.startSection("checkLight");
-		world.func_147451_t(x, y, z);
-		world.theProfiler.endSection();
+		//Disabled light updating.  I think.
+		//world.theProfiler.startSection("checkLight");
+		//world.func_147451_t(x, y, z);
+		//world.theProfiler.endSection();
 		return flag;
 	}
 
+	@Override
+	public void replaceBlockDuringGen(Chunk chunk, Block oldBlock, int x, int y, int z){
+		Block newBlock = BlockSets.genReplace.get(oldBlock);
+		setBlockWithoutNotify(chunk.worldObj, x, y, z, newBlock, chunk.getBlockMetadata(x&15, y, z&15));
+	}
+	
 }

@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
-import wtfcore.utilities.BlockSets;
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import wtfcore.api.BlockSets;
+import wtfcore.api.BlockSets;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 
 public class CaveTypeWetDeep extends CaveType{
 
-	public CaveTypeWetDeep(String name, int cavedepth, DungeonSet wetSet) {
-		super(name, cavedepth, wetSet);
+	public final String	name = "WetDeep";
+	public CaveTypeWetDeep(int cavedepth, DungeonSet wetSet) {
+		super(cavedepth, wetSet);
 	}
 
 	BlockSets.Modifier[] blockArray = {null, null, BlockSets.Modifier.cobblestone};
@@ -34,7 +36,7 @@ public class CaveTypeWetDeep extends CaveType{
 	@Override
 	public void generateFloor(World world, Random random, int x, int y, int z)
 	{
-		if (IsBlockSurrounded(world, x, y, z)){
+		if (gen.IsBlockSurrounded(world, x, y, z)){
 			if (random.nextInt(8) == 0){
 				gen.transformBlock(world, x, y, z, BlockSets.Modifier.cobblestone);
 			}

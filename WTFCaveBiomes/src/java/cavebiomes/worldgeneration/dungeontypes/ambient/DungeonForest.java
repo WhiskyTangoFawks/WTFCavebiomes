@@ -1,8 +1,9 @@
 package cavebiomes.worldgeneration.dungeontypes.ambient;
 
 import java.util.Random;
+
+import cavebiomes.api.DungeonType;
 import cavebiomes.blocks.CaveBlocks;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
@@ -10,14 +11,6 @@ public class DungeonForest extends DungeonType {
 	public DungeonForest() {
 		super("Forest");
 	}
-
-	int xMin = -7;
-	int xMax = 7;
-	int yMin = -5;
-	int yMax = -5;
-	int zMin = -7;
-	int zMax = 7;
-
 
 	@Override
 	public void generateCeiling(World world, Random rand, int x, int y, int z){

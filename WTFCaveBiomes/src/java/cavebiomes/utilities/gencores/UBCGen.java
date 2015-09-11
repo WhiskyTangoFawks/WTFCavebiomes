@@ -1,23 +1,19 @@
 package cavebiomes.utilities.gencores;
 
-import java.util.Random;
-import wtfcore.utilities.BlockInfo;
-import wtfcore.utilities.BlockSets;
-import cpw.mods.fml.common.Loader;
+import wtfcore.api.BlockInfo;
+import wtfcore.api.BlockSets;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
-import cavebiomes.WTFCaveBiomesConfig;
-import cavebiomes.blocks.BlockIcicle;
-import cavebiomes.blocks.BlockSpeleothems;
-import cavebiomes.blocks.CaveBlocks;
+import net.minecraft.world.chunk.Chunk;
+import cavebiomes.api.GenCoreBase;
 import exterminatorJeff.undergroundBiomes.api.BlockCodes;
 import exterminatorJeff.undergroundBiomes.api.UBAPIHook;
 import exterminatorJeff.undergroundBiomes.api.UBStrataColumn;
 import exterminatorJeff.undergroundBiomes.api.UBStrataColumnProvider;
 
 
-public class UBCGen extends VanillaGen{
+public class UBCGen extends VanillaGen implements GenCoreBase{
 	public UBCGen() {
 	}
 
@@ -47,7 +43,16 @@ public class UBCGen extends VanillaGen{
 		}
 	}
 
-
-
+	@Override
+	public void replaceBlockDuringGen(Chunk chunk, Block oldBlock, int x, int y, int z){
+		Block newBlock = BlockSets.genReplace.get(oldBlock);
+		if (newBlock==Blocks.stone){
+			BlockInfo ubcblock = getUBCStone(chunk.worldObj,x,y,z);
+			setBlockWithoutNotify(chunk.worldObj, x, y, z, ubcblock.block, ubcblock.meta);
+		}	
+		else {
+			setBlockWithoutNotify(chunk.worldObj, x, y, z, newBlock, chunk.getBlockMetadata(x&15, y, z&15));
+		}
+	}
 
 }

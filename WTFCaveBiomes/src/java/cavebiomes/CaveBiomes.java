@@ -2,11 +2,15 @@ package cavebiomes;
 
 import java.util.Iterator;
 
+import cavebiomes.api.APICaveBiomes;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonType;
 import cavebiomes.blocks.CaveBlocks;
 import cavebiomes.entities.Entities;
 import cavebiomes.proxy.CommonProxy;
 import cavebiomes.renderers.RenderRegisterer;
-import cavebiomes.worldgeneration.CaveBiomesWorldScanner;
+import cavebiomes.utilities.gencores.GenCoreProvider;
+import cavebiomes.worldgeneration.CaveBiomesChunkScanner;
 import cavebiomes.worldgeneration.dungeontypes.DungeonTypeRegister;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -56,6 +60,7 @@ public class CaveBiomes {
 	@EventHandler
 	public void PreInit(FMLPreInitializationEvent preEvent)
 	{
+		APICaveBiomes.CAVEBIOMESAPI = new CaveBiomesAPI();
 		WTFCaveBiomesConfig.customConfig();
 		Entities.RegisterEntityList();
 		proxy.registerRenderers();
@@ -75,11 +80,14 @@ public class CaveBiomes {
 	@EventHandler
 	public void PostInit(FMLPostInitializationEvent postEvent){
 
+		CaveType.gen = GenCoreProvider.getGenCore();
+		DungeonType.gen = GenCoreProvider.getGenCore();
+		
 		//add a config option to allow users to place a the thing in another dimension
 		Iterator<Integer> iterator = WTFCoreConfig.overworlds.iterator();
 		while (iterator.hasNext()){
 			int dimensionID = iterator.next();
-			WorldGenListener.GetScanner.put(dimensionID, new CaveBiomesWorldScanner());
+			WorldGenListener.GetScanner.put(dimensionID, new CaveBiomesChunkScanner());
 			WTFCore.log.info("Adding CaveBiomes Overworld scanner for dimension " + dimensionID);
 		}
 		//Once I do a nether decorator, it goes here

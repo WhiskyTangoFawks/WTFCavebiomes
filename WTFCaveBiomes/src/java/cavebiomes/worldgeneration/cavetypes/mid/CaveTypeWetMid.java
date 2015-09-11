@@ -5,15 +5,16 @@ import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import wtfcore.utilities.BlockSets;
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import wtfcore.api.BlockSets;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 
 public class CaveTypeWetMid  extends CaveType{
 
-	public CaveTypeWetMid(String name, int cavedepth, DungeonSet wetSet) {
-		super(name, cavedepth, wetSet);
+	public final String	name = "WetMid";
+	public CaveTypeWetMid(int cavedepth, DungeonSet wetSet) {
+		super(cavedepth, wetSet);
 	}
 	BlockSets.Modifier[] blockArray = {null, null, BlockSets.Modifier.cobblestone};
 
@@ -38,7 +39,7 @@ public class CaveTypeWetMid  extends CaveType{
 
 		if (height < 9 ){
 
-			if (IsBlockSurrounded(world, x, y, z)){
+			if (gen.IsBlockSurrounded(world, x, y, z)){
 				if (random.nextInt(8) == 0){
 					gen.transformBlock(world, x, y, z, BlockSets.Modifier.cobblestone);
 				}
@@ -48,7 +49,7 @@ public class CaveTypeWetMid  extends CaveType{
 			}
 		}
 		else {
-			if (shouldGenFloorAddon()){
+			if (shouldGenFloorAddon(random)){
 				gen.genStalagmite(world, x, y, z, depth);
 			}
 		}

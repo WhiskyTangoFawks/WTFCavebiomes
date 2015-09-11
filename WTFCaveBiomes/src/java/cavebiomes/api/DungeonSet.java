@@ -1,4 +1,4 @@
-package cavebiomes.worldgeneration.dungeontypes;
+package cavebiomes.api;
 
 import java.util.HashMap;
 import java.util.Random;

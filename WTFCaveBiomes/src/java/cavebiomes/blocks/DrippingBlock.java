@@ -2,10 +2,11 @@ package cavebiomes.blocks;
 
 import java.util.List;
 import java.util.Random;
+
+import wtfcore.api.BlockInfo;
+import wtfcore.api.BlockSets;
 import wtfcore.blocks.ChildBlockCarryMetadata;
 import wtfcore.items.ItemMetadataSubblock;
-import wtfcore.utilities.BlockInfo;
-import wtfcore.utilities.BlockSets;
 import cavebiomes.CaveBiomes;
 import cavebiomes.WTFCaveBiomesConfig;
 import cpw.mods.fml.common.registry.GameRegistry;

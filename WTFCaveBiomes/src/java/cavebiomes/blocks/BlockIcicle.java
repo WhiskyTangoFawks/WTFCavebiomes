@@ -2,9 +2,9 @@ package cavebiomes.blocks;
 
 import java.util.Random;
 
+import wtfcore.api.BlockSets;
 import wtfcore.blocks.IAlphaMaskedBlock;
 import wtfcore.proxy.ClientProxy;
-import wtfcore.utilities.BlockSets;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

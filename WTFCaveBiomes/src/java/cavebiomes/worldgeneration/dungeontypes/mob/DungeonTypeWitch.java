@@ -8,35 +8,38 @@ import cavebiomes.entities.Entities;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
-public class DungeonTypeDerangedGolem extends DungeonType {
+public class DungeonTypeWitch extends DungeonType{
 
-	public DungeonTypeDerangedGolem() {
-		super("DerangedGolem");
-		this.yClearance = 5;
+	public DungeonTypeWitch() {
+		super("Witch");
 	}
-	
-	
-	
+
 	@Override
 	public void generateCeiling(World world, Random rand, int x, int y, int z){
-		gen.setBlockWithoutNotify(world, x, y, z, Blocks.stonebrick,2);
+		gen.setBlockWithoutNotify(world, x, y, z, Blocks.planks,0);
 	}
 
 	@Override
 	public void generateFloor(World world, Random rand, int x, int y, int z){
-		gen.setBlockWithoutNotify(world, x, y, z, Blocks.stonebrick,2);
+		gen.setBlockWithoutNotify(world, x, y, z, Blocks.planks,0);
 	}
 
 	@Override
 	public void generateWalls(World world, Random rand, int x, int y, int z){
-		gen.setBlockWithoutNotify(world, x, y, z, Blocks.stonebrick, 1);
+		gen.setBlockWithoutNotify(world, x, y, z, Blocks.planks,0);
 	}
 
 	@Override
 	public void generateCenter(World world, Random rand, int x, int y, int z, int ceiling, int floor)
 	{
+		gen.setBlockWithoutNotify(world, x, y+1, z, Blocks.brewing_stand, 0);
 		if (WTFCaveBiomesConfig.EnableMobSpawners){
-			gen.setBlockWithoutNotify(world, x, y, z, Entities.spawners.get("DerangedGolem"), 0);
+			gen.setBlockWithoutNotify(world, x, y+2, z, Entities.spawners.get("Witch"), 0);
 		}
 	}
+	
+	public boolean canSpawnHere(World world, int x, int y, int z, int ceiling, int floor) {
+		return y>56;
+	}
+	
 }

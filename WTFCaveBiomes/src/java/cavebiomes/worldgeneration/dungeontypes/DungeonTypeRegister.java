@@ -1,5 +1,7 @@
 package cavebiomes.worldgeneration.dungeontypes;
 
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 import cavebiomes.worldgeneration.dungeontypes.ambient.DungeonCaveOasis;
 import cavebiomes.worldgeneration.dungeontypes.ambient.DungeonForest;
 import cavebiomes.worldgeneration.dungeontypes.ambient.DungeonSpeleothemGrotto;
@@ -23,6 +25,7 @@ import cavebiomes.worldgeneration.dungeontypes.mob.DungeonTypeDerangedGolem;
 import cavebiomes.worldgeneration.dungeontypes.mob.DungeonTypeMummysTomb;
 import cavebiomes.worldgeneration.dungeontypes.mob.DungeonTypePharohTomb;
 import cavebiomes.worldgeneration.dungeontypes.mob.DungeonTypeSkeletonKnight;
+import cavebiomes.worldgeneration.dungeontypes.mob.DungeonTypeWitch;
 
 public class DungeonTypeRegister {
 	

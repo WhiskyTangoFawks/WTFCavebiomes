@@ -2,9 +2,10 @@ package cavebiomes;
 
 import java.io.File;
 
+import cavebiomes.api.ConfigAPI;
 import net.minecraftforge.common.config.Configuration;
 
-public class WTFCaveBiomesConfig {
+public class WTFCaveBiomesConfig{
 
 
 	public static boolean EnableMobSpawners;
@@ -15,7 +16,7 @@ public class WTFCaveBiomesConfig {
 	//public static boolean enableMossyStone;
 	public static int dungeonChance;
 
-	public static int magmaCrustGenRate;
+	//public static int magmaCrustGenRate;
 
 	public static boolean foxfireGlow;
 	public static boolean foxfireAnimations;
@@ -63,5 +64,12 @@ public class WTFCaveBiomesConfig {
 		customMobs = config.get(section5, "Enable replacement of zombies and skeletons with biome specific versions", false).getBoolean();
 
 		config.save();
+		
+		ConfigAPI.EnableMobSpawners = EnableMobSpawners;
+		ConfigAPI.ceilingAddonChance = ceilingAddonChance;
+		ConfigAPI.floorAddonChance = floorAddonChance;
+		ConfigAPI.dungeonChance = dungeonChance;
+		ConfigAPI.generateCaveSubtypes = generateCaveSubtypes;
+		
 	}
 }

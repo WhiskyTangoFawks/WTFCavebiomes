@@ -3,17 +3,19 @@ package cavebiomes.worldgeneration.cavetypes.shallow;
 import java.util.ArrayList;
 import java.util.Random;
 
-import cavebiomes.worldgeneration.CaveType;
-import cavebiomes.worldgeneration.dungeontypes.DungeonSet;
-import cavebiomes.worldgeneration.dungeontypes.DungeonType;
+import cavebiomes.api.CaveType;
+import cavebiomes.api.DungeonSet;
+import cavebiomes.api.DungeonType;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class CaveTypeSandy extends CaveType{
 
-	public CaveTypeSandy(String name, int cavedepth, DungeonSet desertSet) {
-		super(name, cavedepth, desertSet);
+	public final String	name = "Desert";
+	
+	public CaveTypeSandy(int cavedepth, DungeonSet desertSet) {
+		super(cavedepth, desertSet);
 	}
 
 	@Override
@@ -28,7 +30,7 @@ public class CaveTypeSandy extends CaveType{
 		int height = MathHelper.abs_int((MathHelper.abs_int(x+z/3) % 10) -5)/2 + (random.nextInt(3)-2);
 
 		if (height < 0 ){
-			if (shouldGenFloorAddon()){
+			if (shouldGenFloorAddon(random)){
 				gen.genStalagmite(world, x, y, z, depth);
 			}
 		}
