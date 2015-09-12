@@ -8,10 +8,9 @@ import net.minecraft.world.World;
 
 public class CaveTypeNormalShallow extends CaveType{
 
-	public final String	name = "Default";
-	
 	public CaveTypeNormalShallow(int cavedepth, DungeonSet defaultSet) {
-		super(cavedepth, defaultSet);
+		super("DefaultShallow", cavedepth, defaultSet);
+		
 	}
 
 	protected float	ceilingAddonWeight	= 0.3F;

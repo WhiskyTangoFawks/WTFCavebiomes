@@ -23,6 +23,8 @@ public class Entities {
 	
 	public static void RegisterEntityList()
 	{	
+		GameRegistry.registerTileEntity(SpawnerBlockEntity.class, "CustomMobSpawner");
+		
 		registerEntity(ZombieMummy.class, "ZombieMummy");
 		registerEntity(ZombieFrozen.class, "ZombieFrozen");
 		registerEntity(ZombiePharoh.class, "ZombiePharoh");
@@ -50,6 +52,7 @@ public class Entities {
 	public static void registerSpawner(String name){
 		Block spawner = new SpawnerBlock(name).setBlockName(name+"Spawner");
 		GameRegistry.registerBlock(spawner, name+"Spawner");
+		
 		spawners.put(name, spawner);
 	}
 

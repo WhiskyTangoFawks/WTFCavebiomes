@@ -82,7 +82,7 @@ public class DrippingBlock extends ChildBlockCarryMetadata{
 	        double d6;
 	        double d7;
 
-	        if (random.nextInt(20) < dripFreq && world.isAirBlock(x, y-1, z) && WTFCaveBiomesConfig.enableDrippingBlocks)
+	        if (random.nextInt(20) < dripFreq && world.getBlock(x, y-1, z).isOpaqueCube() && WTFCaveBiomesConfig.enableDrippingBlocks)
 	        {
 	            d5 = x + random.nextFloat();
 	            d6 = y - 0.05D;

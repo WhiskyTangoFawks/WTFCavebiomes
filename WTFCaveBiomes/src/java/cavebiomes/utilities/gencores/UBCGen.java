@@ -2,11 +2,11 @@ package cavebiomes.utilities.gencores;
 
 import wtfcore.api.BlockInfo;
 import wtfcore.api.BlockSets;
+import wtfcore.api.GenCoreBase;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
-import cavebiomes.api.GenCoreBase;
 import exterminatorJeff.undergroundBiomes.api.BlockCodes;
 import exterminatorJeff.undergroundBiomes.api.UBAPIHook;
 import exterminatorJeff.undergroundBiomes.api.UBStrataColumn;

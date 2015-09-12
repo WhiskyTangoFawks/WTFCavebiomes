@@ -10,10 +10,8 @@ import cavebiomes.api.DungeonType;
 
 public class CaveTypeMountain extends CaveType{
 
-	public final String	name = "Mountain";
-	
 	public CaveTypeMountain(int cavedepth,	DungeonSet defaultSet) {
-		super(cavedepth, defaultSet);
+		super( "Mountain", cavedepth, defaultSet);
 	}
 
 	@Override

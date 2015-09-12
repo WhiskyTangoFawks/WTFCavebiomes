@@ -13,9 +13,10 @@ import cavebiomes.api.DungeonType;
 
 public class CaveTypeVolcanic extends CaveType{
 
-	public final String	name = "Volcanic";
+	
 	public CaveTypeVolcanic(int cavedepth,	DungeonSet volcanicSet) {
-		super(cavedepth, volcanicSet);
+		super("Volcanic", cavedepth, volcanicSet);
+
 	}
 
 	BlockSets.Modifier[] blockarray = {BlockSets.Modifier.stoneMagmaCrust, BlockSets.Modifier.cobblestone};

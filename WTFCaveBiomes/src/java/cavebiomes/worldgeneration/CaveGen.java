@@ -30,9 +30,11 @@ public class CaveGen {
 		}
 	}
 
-	public static void generateDungeon(CaveType cavetype, World world, Random random, int x, int floor, int ceiling, int z){
+	public static void generateDungeon(CaveType cavetype, World world, Random random, int x, int z, int ceiling, int floor){
 
+		//WTFCore.log.info("Starting generation for " + cavetype.name);
 		DungeonType dungeon = cavetype.dungeons.getRandomDungeon(random);
+		//WTFCore.log.info("generating " + floor + " " + ceiling);
 		Block modifier;
 		int spawnCounter = 0;
 
@@ -41,6 +43,7 @@ public class CaveGen {
 		//Get X
 		int y = floor + (ceiling-floor)/2;
 		int xpos = x+1;
+		//WTFCore.log.info("x scan");
 		for (int loop = 0; world.isAirBlock(xpos, y, z) && loop < dungeon.dungeonMaxSize ; loop++){
 			xpos++;
 		}
@@ -51,7 +54,7 @@ public class CaveGen {
 		int xrange = (xpos-xneg);
 		if (xrange < dungeon.xClearance){return;}
 		x=xneg+xrange/2;
-
+		//WTFCore.log.info("z scan");
 		//Get z
 		int zpos = z+1;
 		for (int loop = 0; world.isAirBlock(x, y, zpos) && loop < dungeon.dungeonMaxSize; loop++){
@@ -65,12 +68,14 @@ public class CaveGen {
 		if (zrange < dungeon.zClearance){return;}
 		z=zneg+zrange/2;
 		//get Y
+		//WTFCore.log.info("y scan");
 		int ypos = y+1;
 		for (int loop = 0; world.isAirBlock(x, ypos, z) && loop < dungeon.dungeonMaxSize; loop++){
 			ypos++;
 		}
 		int yneg = y-1;
-		while (world.isAirBlock(x, yneg, z)){
+		while (world.isAirBlock(x, yneg, z) && y > 0){
+			//WTFCore.log.info(yneg);
 			yneg--;
 		}
 		int yrange = (ypos-yneg);
@@ -79,12 +84,14 @@ public class CaveGen {
 		floor = yneg;
 		ceiling = ypos;
 		dungeon.wallStripe =y+1;
-
+		//WTFCore.log.info("y scan finished");
 		if (!dungeon.canSpawnHere(world, x, y, z, ceiling, floor)){return;}
 
 		if (BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(x, z), Type.SNOWY)){modifier =  Blocks.ice;}
 		else {modifier=null;}
 
+		//WTFCore.log.info("Dungeon Space scan finished, and continuing to spawn");
+		
 		if(WTFCaveBiomesConfig.logDungeons){
 			if (EventListener.thePlayer != null){
 				EventListener.thePlayer.addChatMessage(new ChatComponentText("Spawning " + dungeon.name + " @ " + x + " " + y + " " + z));

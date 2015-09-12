@@ -12,9 +12,9 @@ import cavebiomes.api.DungeonType;
 
 public class CaveTypeWetMid  extends CaveType{
 
-	public final String	name = "WetMid";
+	
 	public CaveTypeWetMid(int cavedepth, DungeonSet wetSet) {
-		super(cavedepth, wetSet);
+		super( "WetMid",cavedepth, wetSet);
 	}
 	BlockSets.Modifier[] blockArray = {null, null, BlockSets.Modifier.cobblestone};
 

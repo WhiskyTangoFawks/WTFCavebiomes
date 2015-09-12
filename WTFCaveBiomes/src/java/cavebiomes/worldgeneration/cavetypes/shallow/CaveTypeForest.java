@@ -11,10 +11,8 @@ import cavebiomes.blocks.CaveBlocks;
 
 public class CaveTypeForest extends CaveType{
 
-	public final String	name = "Forest";
-	
 	public CaveTypeForest(int cavedepth, DungeonSet forestSet) {
-		super(cavedepth, forestSet);
+		super("Forest", cavedepth, forestSet);
 	}
 
 	BlockSets.Modifier[] blockarray = {null, null, null, BlockSets.Modifier.MossyStone, BlockSets.Modifier.mossy_cobblestone};

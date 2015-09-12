@@ -12,11 +12,9 @@ import cavebiomes.api.DungeonSet;
 import cavebiomes.api.DungeonType;
 
 public class CaveTypeWetShallow extends CaveType {
-
-	public final String	name = "WetShallow";
 	
 	public CaveTypeWetShallow(int cavedepth, DungeonSet wetSet) {
-		super(cavedepth, wetSet);
+		super("WetShallow", cavedepth, wetSet);
 	}
 
 	@Override

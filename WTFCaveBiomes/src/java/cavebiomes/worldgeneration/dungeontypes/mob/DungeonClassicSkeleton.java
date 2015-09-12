@@ -4,7 +4,9 @@ import java.util.Random;
 
 import cavebiomes.api.DungeonType;
 import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
+import wtfcore.WTFCore;
 
 public class DungeonClassicSkeleton extends DungeonType{
 
@@ -30,7 +32,7 @@ public class DungeonClassicSkeleton extends DungeonType{
 	@Override
 	public void generateCenter(World world, Random rand, int x, int y, int z, int ceiling, int floor)
 	{
-		gen.spawnVanillaSpawner(world, x, floor+1, z, "Skeleton");
+		gen.spawnVanillaSpawner(world, x, floor, z, "Skeleton");
 	}
 
 

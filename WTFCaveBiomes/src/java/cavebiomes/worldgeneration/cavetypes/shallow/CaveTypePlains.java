@@ -12,10 +12,8 @@ import cavebiomes.api.DungeonType;
 
 public class CaveTypePlains extends CaveType{
 
-	public final String	name = "Plains"
-			+ "";
 	public CaveTypePlains(int cavedepth, DungeonSet defaultSet) {
-		super(cavedepth, defaultSet);
+		super("Plains", cavedepth, defaultSet);
 	}
 
 

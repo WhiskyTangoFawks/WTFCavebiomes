@@ -15,10 +15,8 @@ import cavebiomes.blocks.CaveBlocks;
 public class CaveTypeSwamp extends CaveType {
 
 	
-	public final String	name = "Swamp";
-	
 	public CaveTypeSwamp(int cavedepth, DungeonSet swampSet) {
-		super(cavedepth, swampSet);
+		super("Swamp", cavedepth, swampSet);
 	}
 
 

@@ -10,9 +10,10 @@ import net.minecraft.world.World;
 
 public class CaveTypeNormalMid extends CaveType{
 
-	public final String	name = "DefaultMid";
+	
 	public CaveTypeNormalMid(int cavedepth, DungeonSet defaultSet) {
-		super(cavedepth, defaultSet);
+		super("DefaultMid", cavedepth, defaultSet);
+		
 	}
 
 

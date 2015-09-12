@@ -8,6 +8,8 @@ import cavebiomes.items.ItemMoss;
 import cavebiomes.utilities.StoneRegister;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import wtfcore.InterModBlocks;
+import wtfcore.WTFCore;
 import wtfcore.api.BlockSets;
 import wtfcore.utilities.UBCblocks;
 import cpw.mods.fml.common.Loader;
@@ -97,6 +99,10 @@ public class CaveBlocks
 	
 	
 	public static Block[] getSpeleothemSet(Block block, Block modifier){
+		if (modifier == Blocks.redstone_ore) {
+			WTFCore.log.info("Returning redstone speleothems");
+			return InterModBlocks.unlitRedstoneSpeleothems;
+		}
 		if (modifier == null){
 			return speleothemMap.get(block);
 		}

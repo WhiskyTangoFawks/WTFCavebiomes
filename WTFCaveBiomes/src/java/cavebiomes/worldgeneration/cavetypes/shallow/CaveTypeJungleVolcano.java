@@ -13,10 +13,8 @@ import cavebiomes.api.DungeonType;
 
 public class CaveTypeJungleVolcano extends CaveType{
 
-	public final String	name = "Jungle";
-	
 	public CaveTypeJungleVolcano(int cavedepth, DungeonSet jungleSet) {
-		super(cavedepth, jungleSet);
+		super("Jungle", cavedepth, jungleSet);
 	}
 	BlockSets.Modifier[] stonemodifier = {BlockSets.Modifier.stoneMagmaCrust, BlockSets.Modifier.cobblestone};
 

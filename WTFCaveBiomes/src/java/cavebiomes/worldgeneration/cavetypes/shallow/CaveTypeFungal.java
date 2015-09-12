@@ -12,10 +12,10 @@ import cavebiomes.api.DungeonType;
 
 public class CaveTypeFungal extends CaveType{
 
-	public final String	name = "Fungal";
 	
 	public CaveTypeFungal(int cavedepth, DungeonSet swampSet) {
-		super(cavedepth, swampSet);
+		super("Fungal", cavedepth, swampSet);
+		
 	}
 
 	@Override

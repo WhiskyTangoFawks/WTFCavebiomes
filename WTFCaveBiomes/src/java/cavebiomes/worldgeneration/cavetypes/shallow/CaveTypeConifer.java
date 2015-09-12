@@ -9,10 +9,10 @@ import cavebiomes.api.DungeonSet;
 
 public class CaveTypeConifer extends CaveType{
 
-	public final String	name = "Coniferous";
+	
 	
 	public CaveTypeConifer(int cavedepth, DungeonSet forestSet) {
-		super( cavedepth, forestSet);
+		super("Coniferous", cavedepth, forestSet);
 	}
 
 	@Override

@@ -12,9 +12,10 @@ import cavebiomes.api.DungeonType;
 
 public class CaveTypeDesertMid extends CaveType{
 
-	public final String	name = "DesertMid";
+	 
 	public CaveTypeDesertMid(int cavedepth,	DungeonSet desertSet) {
-		super(cavedepth, desertSet);
+		super("DesertMid", cavedepth, desertSet);
+
 	}
 
 	@Override

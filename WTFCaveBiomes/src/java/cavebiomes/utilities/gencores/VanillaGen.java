@@ -3,12 +3,13 @@ package cavebiomes.utilities.gencores;
 import java.util.Random;
 
 import cavebiomes.WTFCaveBiomesConfig;
-import cavebiomes.api.GenCoreBase;
 import cavebiomes.blocks.BlockIcicle;
 import cavebiomes.blocks.BlockSpeleothems;
 import cavebiomes.blocks.CaveBlocks;
+import wtfcore.WTFCore;
 import wtfcore.api.BlockInfo;
 import wtfcore.api.BlockSets;
+import wtfcore.api.GenCoreBase;
 import cpw.mods.fml.common.Loader;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -347,7 +348,12 @@ public class VanillaGen implements GenCoreBase {
 		if (WTFCaveBiomesConfig.EnableMobSpawners){
 			world.setBlock(x, y, z, Blocks.mob_spawner, 0, 2);
 			TileEntityMobSpawner spawner = (TileEntityMobSpawner)world.getTileEntity(x, y, z);
-			spawner.func_145881_a().setEntityName(entityName);
+			if (spawner != null){
+				spawner.func_145881_a().setEntityName(entityName);
+			}
+			else{
+				WTFCore.log.info("VanillaGen: SpawnVanillaSpawner- failed to set spawner entity");
+			}
 		}
 	}
 	@Override
@@ -370,6 +376,7 @@ public class VanillaGen implements GenCoreBase {
 	 **/
 	@Override
 	public boolean setBlockWithoutNotify(World world, int x, int y, int z, Block block, int metadata){
+		
 		int flags = 0;
 		Chunk chunk = world.getChunkFromChunkCoords(x >> 4, z >> 4);
 		net.minecraftforge.common.util.BlockSnapshot blockSnapshot = null;

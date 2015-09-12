@@ -11,10 +11,8 @@ import cavebiomes.blocks.BlockIcicle;
 
 public class CaveTypeShallowIce extends CaveType{
 
-	public final String	name = "IceShallow";
-	
 	public CaveTypeShallowIce(int cavedepth, DungeonSet coldSet) {
-		super(cavedepth, coldSet);
+		super("IceShallow", cavedepth, coldSet);
 	}
 
 

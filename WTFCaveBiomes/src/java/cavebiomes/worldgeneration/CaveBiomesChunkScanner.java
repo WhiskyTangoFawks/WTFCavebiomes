@@ -28,7 +28,7 @@ public class CaveBiomesChunkScanner extends OverworldScanner{
 
 		Chunk chunk = world.getChunkFromBlockCoords(chunkX, chunkZ);
 
-		
+		//WTFCore.log.info("Scanning chunk");
 		int lastY = 70;
 
 		int surfaceaverage = 0;
@@ -89,6 +89,7 @@ public class CaveBiomesChunkScanner extends OverworldScanner{
 		CaveType deeptype = CaveTypeRegister.GetDeepCaveType(world, chunkX, chunkZ);
 
 
+		//WTFCore.log.info("Dungeon iterating");
 		CavePosition position;
 		if (WTFCaveBiomesConfig.generateCaveSubtypes){
 			Iterator<CavePosition> dungeoniterator = dungeonposition.iterator();
@@ -112,7 +113,7 @@ public class CaveBiomesChunkScanner extends OverworldScanner{
 				}
 			}
 		}
-
+		//WTFCore.log.info("CaveType iterating");
 		Iterator<CavePosition> caveiterator= cavepositions.iterator();
 		while (caveiterator.hasNext()) {
 			position = caveiterator.next();

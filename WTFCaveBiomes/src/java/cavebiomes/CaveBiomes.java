@@ -24,13 +24,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
+import wtfcore.InterModBlocks;
 import wtfcore.WTFCore;
 import wtfcore.WTFCoreConfig;
 import wtfcore.WorldGenListener;
 
 
 
-@Mod(modid = CaveBiomes.modid, name = "WhiskyTangoFox's Cave Biomes", version = "1.34", dependencies = "after:UndergroundBiomes;required-after:WTFCore@[1.6,)")
+@Mod(modid = CaveBiomes.modid, name = "WhiskyTangoFox's Cave Biomes", version = "1.4", dependencies = "after:UndergroundBiomes;required-after:WTFCore@[1.61,)")
 
 
 public class CaveBiomes {
@@ -82,6 +83,7 @@ public class CaveBiomes {
 
 		CaveType.gen = GenCoreProvider.getGenCore();
 		DungeonType.gen = GenCoreProvider.getGenCore();
+		InterModBlocks.gen = GenCoreProvider.getGenCore();
 		
 		//add a config option to allow users to place a the thing in another dimension
 		Iterator<Integer> iterator = WTFCoreConfig.overworlds.iterator();

@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import wtfcore.InterModBlocks;
 import wtfcore.blocks.IAlphaMaskedBlock;
 import wtfcore.items.ItemMetadataSubblock;
 import wtfcore.proxy.ClientProxy;
@@ -64,6 +65,7 @@ public class RedstoneSpeleothem extends BlockSpeleothems implements IAlphaMasked
 
 		if (block == Blocks.redstone_ore){
 			unlitRedstoneSpeleothems = blockArray;
+			InterModBlocks.unlitRedstoneSpeleothems = blockArray;
 		}
 		else if (block == Blocks.lit_redstone_ore){
 			litRedstoneSpeleothems = blockArray;

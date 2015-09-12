@@ -1,8 +1,9 @@
 package cavebiomes.api;
 
-import cavebiomes.utilities.StoneRegister;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.biome.BiomeGenBase;
+import wtfcore.api.IStoneRegister;
 
 public abstract class APICaveBiomes {
 
@@ -38,7 +39,7 @@ public abstract class APICaveBiomes {
 	 * @param stoneNames: A string array containing the texture names for the all metadata versions of the block
 	 * @param domain: the mod domain that the block comes from
 	 */
-	public abstract StoneRegister getStoneInfo(Block stone, Block cobblestone, String unlocalisedName, String[] stoneTextureNames, String[] cobbleTextureNames, String domain);
+	public abstract IStoneRegister getStoneInfo(Block stone, Block cobblestone, String unlocalisedName, String[] stoneTextureNames, String[] cobbleTextureNames, String domain);
 
 
 }

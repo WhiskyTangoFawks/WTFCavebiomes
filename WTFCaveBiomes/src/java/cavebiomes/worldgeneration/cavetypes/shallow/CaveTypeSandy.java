@@ -12,10 +12,8 @@ import net.minecraft.world.World;
 
 public class CaveTypeSandy extends CaveType{
 
-	public final String	name = "Desert";
-	
 	public CaveTypeSandy(int cavedepth, DungeonSet desertSet) {
-		super(cavedepth, desertSet);
+		super("Desert", cavedepth, desertSet);
 	}
 
 	@Override
