@@ -47,6 +47,7 @@ public class DungeonTypePrismarine extends DungeonType {
 		gen.setBlockWithoutNotify(world, x, y, z, lantern, 0);
 		return true;
 	}
+	@Override
 	public boolean canSpawnHere(World world, int x, int y, int z, int ceiling, int floor) {
 		return y < 36;
 	}

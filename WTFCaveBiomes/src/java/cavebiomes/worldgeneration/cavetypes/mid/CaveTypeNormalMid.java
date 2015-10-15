@@ -1,11 +1,9 @@
 package cavebiomes.worldgeneration.cavetypes.mid;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import cavebiomes.api.CaveType;
 import cavebiomes.api.DungeonSet;
-import cavebiomes.api.DungeonType;
 import net.minecraft.world.World;
 
 public class CaveTypeNormalMid extends CaveType{

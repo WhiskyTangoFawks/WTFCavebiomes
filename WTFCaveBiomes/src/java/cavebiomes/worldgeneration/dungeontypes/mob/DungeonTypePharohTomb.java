@@ -52,7 +52,7 @@ public class DungeonTypePharohTomb extends DungeonType{
 		if (WTFCaveBiomesConfig.EnableMobSpawners){
 			if (WTFCaveBiomesConfig.EnableMobSpawners){
 				while (world.isAirBlock(x,  y-1,  z)){y--;}
-				world.setBlock(x, y, z, Entities.spawners.get("ZombiePharoh"), 0, 2);
+				world.setBlock(x, y, z, Entities.CustomMobTypes.Pharoh.getSpawner());
 				
 			}
 

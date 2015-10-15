@@ -55,7 +55,7 @@ public class DungeonTypeRegister {
 	private static DungeonType NetherPortal = new DungeonTypeNetherPortal();
 	//
 	private static DungeonType[] defaultlist= {CaveIn, Grotto, Skeleton, Zombie};
-	private static DungeonType[] forestlist = {Forest, Foxfire, Spider, Witch};
+	private static DungeonType[] forestlist = {Forest, Foxfire, Spider}; // Witch
 	private static DungeonType[] coldlist = {Frozen};
 	private static DungeonType[] wetlist = {Rainstone, Slime, Prismarine};
 	private static DungeonType[] volcaniclist = {MagmaSlime, Cindershroom};

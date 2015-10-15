@@ -3,6 +3,8 @@ package cavebiomes.utilities.gencores;
 import wtfcore.api.BlockInfo;
 import wtfcore.api.BlockSets;
 import wtfcore.api.GenCoreBase;
+import wtfcore.api.OreBlockInfo;
+import wtfcore.blocks.OreChildBlock;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -49,7 +51,13 @@ public class UBCGen extends VanillaGen implements GenCoreBase{
 		if (newBlock==Blocks.stone){
 			BlockInfo ubcblock = getUBCStone(chunk.worldObj,x,y,z);
 			setBlockWithoutNotify(chunk.worldObj, x, y, z, ubcblock.block, ubcblock.meta);
-		}	
+		}
+		else if (newBlock instanceof OreChildBlock){
+			BlockInfo ubcblock = getUBCStone(chunk.worldObj,x,y,z);
+			//NOTE: Using chunk.getMetadata here, if it's not working this might be why
+			Block blockToSet = BlockSets.oreUbifier.get(new OreBlockInfo(oldBlock, chunk.getBlockMetadata(x,y,z), ubcblock.block, 0));
+			setBlockWithoutNotify(chunk.worldObj, x, y, z, blockToSet, ubcblock.meta);
+		}
 		else {
 			setBlockWithoutNotify(chunk.worldObj, x, y, z, newBlock, chunk.getBlockMetadata(x&15, y, z&15));
 		}

@@ -1,13 +1,11 @@
 package cavebiomes.worldgeneration.cavetypes.mid;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import cavebiomes.api.CaveType;
 import cavebiomes.api.DungeonSet;
-import cavebiomes.api.DungeonType;
 
 public class CaveTypeMidIce extends CaveType{
 

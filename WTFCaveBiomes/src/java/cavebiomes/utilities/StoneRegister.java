@@ -116,7 +116,7 @@ public class StoneRegister implements IStoneRegister {
 		}
 		//Lava crust
 		if (lavacrust){
-			BlockMagmaCrust.registerMagmaCrust(cobblestone, unlocalisedName, cobbleTextureNames, domain);
+			BlockMagmaCrust.registerMagmaCrust(stone, unlocalisedName, cobbleTextureNames, domain);
 		}
 		//Speleothems, and frozen speleothems
 		if (speleothems){

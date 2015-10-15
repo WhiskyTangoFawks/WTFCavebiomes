@@ -37,7 +37,7 @@ public class WTFCaveBiomesConfig{
 		config.load();
 		String section1 = "Cave Subtype and Dungeon Generation";
 		EnableMobSpawners = config.get(section1, "EnableMobSpawners", true).getBoolean();
-		dungeonChance = config.get(section1, "Subtype rarity- Set higher for fewer cave subtypes, lower for more", 1000).getInt();
+		dungeonChance = config.get(section1, "Subtype rarity- Set higher for fewer cave subtypes, lower for more", 3000).getInt();
 		logDungeons=config.get(section1, "Log subtypes in chat", false).getBoolean();
 
 		String section2 = "Cave Generation Options";

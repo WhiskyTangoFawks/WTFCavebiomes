@@ -4,9 +4,7 @@ import java.util.Random;
 
 import cavebiomes.api.DungeonType;
 import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
-import wtfcore.WTFCore;
 
 public class DungeonClassicSkeleton extends DungeonType{
 

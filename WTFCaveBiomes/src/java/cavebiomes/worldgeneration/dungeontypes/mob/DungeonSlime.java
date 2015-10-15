@@ -2,11 +2,8 @@ package cavebiomes.worldgeneration.dungeontypes.mob;
 
 import java.util.Random;
 
-import cavebiomes.WTFCaveBiomesConfig;
 import cavebiomes.api.DungeonType;
 import net.minecraft.init.Blocks;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
 
 public class DungeonSlime extends DungeonType{

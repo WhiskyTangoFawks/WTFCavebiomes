@@ -25,6 +25,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class UBCSand extends BlockGravel{
 	private IIcon[] textures;
@@ -50,6 +51,7 @@ public class UBCSand extends BlockGravel{
 			GameRegistry.registerBlock(sedimentarySand, ItemMetadataSubblock.class, "sedimentarySand");
 			
 			BlockSets.blockTransformer.put(new BlockInfo(UBCblocks.SedimentaryStone, 0, BlockSets.Modifier.cobblestone), UBCSand.sedimentarySand);
+			OreDictionary.registerOre("sand", sedimentarySand);
 			
 			//recipes
 			for (int loop = 0; loop < 8; loop++){

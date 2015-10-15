@@ -1,11 +1,9 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import cavebiomes.api.CaveType;
 import cavebiomes.api.DungeonSet;
-import cavebiomes.api.DungeonType;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;

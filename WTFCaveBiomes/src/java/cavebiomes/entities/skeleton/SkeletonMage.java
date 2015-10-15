@@ -1,5 +1,6 @@
 package cavebiomes.entities.skeleton;
 
+import cavebiomes.items.ArmorRegistry;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.ai.EntityAIArrowAttack;
@@ -19,17 +20,16 @@ public class SkeletonMage extends CustomSkeleton implements IRangedAttackMob{
 		texture = new ResourceLocation("textures/entity/skeleton/wither_skeleton.png");
 		type = SkeletonType.MAGE;
 		this.tasks.addTask(4, new EntityAIArrowAttack(this, 1.0D, 20, 60, 15.0F));
-	}
-
-	@Override
-	protected void addRandomArmor()
-	{
-		//ItemStack itemstack = new ItemStack(Items.bow);
-		//itemstack.addEnchantment(Enchantment.flame, 1);
-		//this.setCurrentItemOrArmor(0, itemstack);
 		this.setCurrentItemOrArmor(0, new ItemStack(Item.getItemFromBlock(Blocks.torch)));
+		//this.setCurrentItemOrArmor(4, new ItemStack(Item.getItemFromBlock(Blocks.pumpkin)));
 	}
 
+
+    @Override
+	protected boolean canDespawn()
+    {
+        return false;
+    }
 
 	@Override
 	public void setCombatTask()

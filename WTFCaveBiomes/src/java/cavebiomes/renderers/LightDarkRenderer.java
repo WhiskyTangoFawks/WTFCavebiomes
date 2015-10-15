@@ -1,6 +1,5 @@
 package cavebiomes.renderers;
 
-import cavebiomes.proxy.CBClientProxy;
 import cavebiomes.utilities.ILightDarkBlock;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.EntityRenderer;

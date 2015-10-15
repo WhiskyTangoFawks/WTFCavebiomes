@@ -34,10 +34,11 @@ public class DungeonTypeWitch extends DungeonType{
 	{
 		gen.setBlockWithoutNotify(world, x, y+1, z, Blocks.brewing_stand, 0);
 		if (WTFCaveBiomesConfig.EnableMobSpawners){
-			gen.setBlockWithoutNotify(world, x, y+2, z, Entities.spawners.get("Witch"), 0);
+			gen.setBlockWithoutNotify(world, x, y+2, z, Entities.CustomMobTypes.Witch.getSpawner(), 0);
 		}
 	}
 	
+	@Override
 	public boolean canSpawnHere(World world, int x, int y, int z, int ceiling, int floor) {
 		return y>56;
 	}

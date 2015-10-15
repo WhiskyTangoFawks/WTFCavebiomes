@@ -10,11 +10,10 @@ import cavebiomes.utilities.gencores.VanillaGen;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
-import wtfcore.WTFCore;
-import wtfcore.WorldGenListener;
 import wtfcore.api.BlockSets;
 import wtfcore.utilities.CavePosition;
 import wtfcore.worldgen.OverworldScanner;
+import wtfcore.worldgen.WorldGenListener;
 
 public class CaveBiomesChunkScanner extends OverworldScanner{
 
@@ -68,12 +67,14 @@ public class CaveBiomesChunkScanner extends OverworldScanner{
 						wasAir = false;
 					}
 					y--;
+
 				}
 			}
 		}
 
 		surfaceaverage /= 256;
-		if (surfaceaverage < 64){ surfaceaverage = 64;}
+		//I set this up for some reason, and now I'm not sure what it was, so I'm disabling it to try and prevent dungeon generation above the surface average
+		//if (surfaceaverage < 64){ surfaceaverage = 64;}
 
 		//Additional Generators called herer- such as WTFOres
 		if (WorldGenListener.generator != null){
@@ -95,20 +96,21 @@ public class CaveBiomesChunkScanner extends OverworldScanner{
 			Iterator<CavePosition> dungeoniterator = dungeonposition.iterator();
 			while (dungeoniterator.hasNext()) {
 				position = dungeoniterator.next();
-
-				if (position.floor < deepmax){
-					if (rand.nextInt(deeptype.DungeonWeight) == 1){
-						CaveGen.generateDungeon(deeptype, world, rand, position.x, position.z, position.ceiling, position.floor);
+				if (position.floor < surfaceaverage-5){
+					if (position.floor < deepmax){
+						if (rand.nextInt(deeptype.DungeonWeight) == 1){
+							CaveGen.generateDungeon(deeptype, world, rand, position.x, position.z, position.ceiling, position.floor);
+						}
 					}
-				}
-				else if (position.floor < midmax ){
-					if (rand.nextInt(midtype.DungeonWeight) == 1){
-						CaveGen.generateDungeon(midtype, world, rand, position.x, position.z, position.ceiling, position.floor);
+					else if (position.floor < midmax ){
+						if (rand.nextInt(midtype.DungeonWeight) == 1){
+							CaveGen.generateDungeon(midtype, world, rand, position.x, position.z, position.ceiling, position.floor);
+						}
 					}
-				}
-				else {
-					if (rand.nextInt(shallowtype.DungeonWeight) == 1){
-						CaveGen.generateDungeon(shallowtype, world, rand, position.x,  position.z, position.ceiling, position.floor);
+					else {
+						if (rand.nextInt(shallowtype.DungeonWeight) == 1){
+							CaveGen.generateDungeon(shallowtype, world, rand, position.x,  position.z, position.ceiling, position.floor);
+						}
 					}
 				}
 			}
@@ -133,6 +135,7 @@ public class CaveBiomesChunkScanner extends OverworldScanner{
 
 	}
 	
+	@Override
 	public boolean isAirAndCheck(Chunk chunk, int x, int y, int z){
 		Block block = chunk.getBlock(x & 15, y, z & 15);
 		
@@ -144,6 +147,7 @@ public class CaveBiomesChunkScanner extends OverworldScanner{
 		return block.isAir(chunk.worldObj, x, y, z);
 	}
 	
+	@Override
 	public boolean isSurfaceAndCheck(Chunk chunk, int x, int y, int z){
 		Block block = chunk.getBlock(x&15, y, z&15);
 		if (BlockSets.genReplace.containsKey(block)){

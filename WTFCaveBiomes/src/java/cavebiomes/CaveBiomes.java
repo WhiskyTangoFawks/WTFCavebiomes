@@ -7,6 +7,7 @@ import cavebiomes.api.CaveType;
 import cavebiomes.api.DungeonType;
 import cavebiomes.blocks.CaveBlocks;
 import cavebiomes.entities.Entities;
+import cavebiomes.items.ArmorRegistry;
 import cavebiomes.proxy.CommonProxy;
 import cavebiomes.renderers.RenderRegisterer;
 import cavebiomes.utilities.gencores.GenCoreProvider;
@@ -27,11 +28,11 @@ import net.minecraftforge.common.MinecraftForge;
 import wtfcore.InterModBlocks;
 import wtfcore.WTFCore;
 import wtfcore.WTFCoreConfig;
-import wtfcore.WorldGenListener;
+import wtfcore.worldgen.WorldGenListener;
 
 
 
-@Mod(modid = CaveBiomes.modid, name = "WhiskyTangoFox's Cave Biomes", version = "1.4", dependencies = "after:UndergroundBiomes;required-after:WTFCore@[1.61,)")
+@Mod(modid = CaveBiomes.modid, name = "WhiskyTangoFox's Cave Biomes", version = "1.50", dependencies = "after:UndergroundBiomes;required-after:WTFCore@[1.64,)")
 
 
 public class CaveBiomes {
@@ -66,14 +67,13 @@ public class CaveBiomes {
 		Entities.RegisterEntityList();
 		proxy.registerRenderers();
 		RenderRegisterer.RegisterCustomRenderers();
+		ArmorRegistry.registerArmorTypes();
 	}
 	@EventHandler public void load(FMLInitializationEvent event)
 	{
 
 		CaveBlocks.BlockRegister();
 		MinecraftForge.EVENT_BUS.register(new EventListener());
-		//I was using this to generate magma crust as an ore, but I've now disabled it
-		//GameRegistry.registerWorldGenerator(new WorldGeneration(), 0);
 		DungeonTypeRegister.AddDungeonTypes();
 		//recipes
 

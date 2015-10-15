@@ -45,6 +45,9 @@ public class VanillaGen implements GenCoreBase {
 		if (blockToSet != null){
 			setBlockWithoutNotify(world, x, y, z, blockToSet, blockandmeta.meta);
 		}
+		else {
+			//WTFCore.log.info("No block found for " + modifier);
+		}
 	}
 	/**
 	 **Used to replace a block.  Checks that the block is replaceable first
@@ -327,7 +330,7 @@ public class VanillaGen implements GenCoreBase {
 		}
 		if (spawn)	{
 			for (int loop=0; loop< random.nextInt(4)+3 && world.isAirBlock(x, y-loop, z); loop++ )
-				world.setBlock(x, y-loop, z, Blocks.vine, metadata, 0);
+				world.setBlock(x, y-loop, z, CaveBlocks.lavaVine, metadata, 0);
 		}
 		return spawn;
 	}

@@ -8,13 +8,9 @@ import cavebiomes.EventListener;
 import cavebiomes.WTFCaveBiomesConfig;
 import cavebiomes.api.CaveType;
 import cavebiomes.api.DungeonType;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.BiomeDictionary.Type;
 import wtfcore.WTFCore;
 import wtfcore.utilities.DungeonBlockPosition;
 
@@ -32,23 +28,21 @@ public class CaveGen {
 
 	public static void generateDungeon(CaveType cavetype, World world, Random random, int x, int z, int ceiling, int floor){
 
-		//WTFCore.log.info("Starting generation for " + cavetype.name);
 		DungeonType dungeon = cavetype.dungeons.getRandomDungeon(random);
-		//WTFCore.log.info("generating " + floor + " " + ceiling);
-		Block modifier;
-		int spawnCounter = 0;
 
 		//Step1: loop outwards, and find a rough center of the open space
-
 		//Get X
 		int y = floor + (ceiling-floor)/2;
 		int xpos = x+1;
 		//WTFCore.log.info("x scan");
-		for (int loop = 0; world.isAirBlock(xpos, y, z) && loop < dungeon.dungeonMaxSize ; loop++){
+		boolean stop = false; //I have a canblockseesky for the dungeon generator- it was an attempt to solve the issue of dungeons generating above ground, I've since found a different bug, and have disabled the can see sky, as it shouldn't be necessary, and was very laggy
+		for (int loop = 0;!stop && world.isAirBlock(xpos, y, z) && loop < dungeon.dungeonMaxSize ; loop++){
+			//if (world.canBlockSeeTheSky(xpos, y, z)){stop = true;}
 			xpos++;
 		}
 		int xneg = x-1;
-		for (int loop = 0;world.isAirBlock(xneg, y, z) && loop < dungeon.dungeonMaxSize; loop++){
+		for (int loop = 0;!stop && world.isAirBlock(xneg, y, z) && loop < dungeon.dungeonMaxSize; loop++){
+			//if (world.canBlockSeeTheSky(xneg, y, z)){stop = true;}
 			xneg--;
 		}
 		int xrange = (xpos-xneg);
@@ -57,17 +51,20 @@ public class CaveGen {
 		//WTFCore.log.info("z scan");
 		//Get z
 		int zpos = z+1;
-		for (int loop = 0; world.isAirBlock(x, y, zpos) && loop < dungeon.dungeonMaxSize; loop++){
+		for (int loop = 0;!stop && world.isAirBlock(x, y, zpos) && loop < dungeon.dungeonMaxSize; loop++){
+			//if (world.canBlockSeeTheSky(x, y, zpos)){stop = true;}
 			zpos++;
 		}
 		int zneg = z-1;
-		for (int loop = 0;world.isAirBlock(x, y, zneg) && loop < dungeon.dungeonMaxSize; loop++){
+		for (int loop = 0;!stop && world.isAirBlock(x, y, zneg) && loop < dungeon.dungeonMaxSize; loop++){
+			//if (world.canBlockSeeTheSky(x, y, zneg)){stop = true;}
 			zneg--;
 		}
 		int zrange = (zpos-zneg);
 		if (zrange < dungeon.zClearance){return;}
 		z=zneg+zrange/2;
 		//get Y
+		if (stop){return;} // cancels the dungeon generator if any of the blocks found could see the sky- should cut down on surface dungeons
 		//WTFCore.log.info("y scan");
 		int ypos = y+1;
 		for (int loop = 0; world.isAirBlock(x, ypos, z) && loop < dungeon.dungeonMaxSize; loop++){
@@ -87,16 +84,15 @@ public class CaveGen {
 		//WTFCore.log.info("y scan finished");
 		if (!dungeon.canSpawnHere(world, x, y, z, ceiling, floor)){return;}
 
-		if (BiomeDictionary.isBiomeOfType(world.getBiomeGenForCoords(x, z), Type.SNOWY)){modifier =  Blocks.ice;}
-		else {modifier=null;}
+
 
 		//WTFCore.log.info("Dungeon Space scan finished, and continuing to spawn");
 		
 		if(WTFCaveBiomesConfig.logDungeons){
 			if (EventListener.thePlayer != null){
-				EventListener.thePlayer.addChatMessage(new ChatComponentText("Spawning " + dungeon.name + " @ " + x + " " + y + " " + z));
+				EventListener.thePlayer.addChatMessage(new ChatComponentText("Generating " + dungeon.name + " @ " + x + " " + y + " " + z));
 			}
-			WTFCore.log.info("Spawning " + dungeon.name + " @ " + x + " " + floor + " " + z);
+			WTFCore.log.info("Generating Dungeon " + dungeon.name + " @ " + x + " " + floor + " " + z);
 		}
 
 		//so, it finds all the walls, then draws a box that big to make it's explosion
@@ -164,7 +160,7 @@ public class CaveGen {
 
 		DungeonBlockPosition chunkposition;
 		while (iterator.hasNext()) {
-			chunkposition = (DungeonBlockPosition)iterator.next();
+			chunkposition = iterator.next();
 			int i = chunkposition.chunkPosX;
 			int j = chunkposition.chunkPosY;
 			int k = chunkposition.chunkPosZ;
@@ -198,7 +194,7 @@ public class CaveGen {
 
 		iterator = air.iterator();
 		while (iterator.hasNext()){
-			chunkposition = (DungeonBlockPosition)iterator.next();
+			chunkposition = iterator.next();
 			int i = chunkposition.chunkPosX;
 			int j = chunkposition.chunkPosY;
 			int k = chunkposition.chunkPosZ;

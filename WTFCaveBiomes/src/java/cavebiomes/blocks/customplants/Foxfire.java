@@ -5,7 +5,6 @@ import java.util.Random;
 
 import cavebiomes.CaveBiomes;
 import cavebiomes.WTFCaveBiomesConfig;
-import cavebiomes.proxy.CBClientProxy;
 import cavebiomes.renderers.RenderRegisterer;
 import cavebiomes.utilities.ILightDarkBlock;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -90,7 +89,7 @@ public class Foxfire extends BlockBush implements ILightDarkBlock
 	public void updateTick(World world, int x, int y, int z, Random rand)
     {
 
-    	if (world.getBlockMetadata(x, y, z) < 8 && shouldBeLit(world, x, y, z)){
+    	if (world.getBlockMetadata(x, y, z) < 8 && world.getBlockLightValue(x, y, z) > 4){
 			world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z)+8, 3);
 
 		}
@@ -109,7 +108,6 @@ public class Foxfire extends BlockBush implements ILightDarkBlock
 		//Try to spread
 		if (rand.nextInt(25) == 0)
         {
-			System.out.println("try to grow");
 			ArrayList arraylist = new ArrayList();
         	for (int xloop = -4; xloop < 5; xloop++){
         		for (int zloop = -4; zloop < 5; zloop++){
@@ -136,8 +134,6 @@ public class Foxfire extends BlockBush implements ILightDarkBlock
 	@SideOnly(Side.CLIENT)
     public void randomDisplayTick(World world, int x, int y, int z, Random random)
     {
-
-
         if (WTFCaveBiomesConfig.foxfireAnimations && random.nextInt(10) == 0 && world.getBlockMetadata(x,y,z) > 7 && shouldBeLit(world, x, y, z))
         {
             world.spawnParticle("happyVillager", x + random.nextFloat(), y + 0.5F, z + random.nextFloat(), 0.0D, 0.0D, 0.0D);
@@ -182,14 +178,14 @@ public class Foxfire extends BlockBush implements ILightDarkBlock
 
 		//metadata less than 8 disables the block lighting
 
-
-			int brightness = world.getLightBrightnessForSkyBlocks(x, y, z, 0);
-			if (brightness > 15<<4){//it's outdoors
-				return brightness>>20 > this.daylightThreshold();
-			}
-			else { //it's indoors- no daylight detected
+		//this was using skyblocks, I've changed it to get block light value in an attempt to stop servers from crashing.
+			int brightness = world.getBlock(x, y, z).getLightValue(world, x, y, z);
+			//if (brightness > 15<<4){//it's outdoors
+			//	return brightness>>20 > this.daylightThreshold();
+			//}
+			//else { //it's indoors- no daylight detected
 				return brightness>>4 < torchlightThreshold();
-			}
+			//}
 
 
 

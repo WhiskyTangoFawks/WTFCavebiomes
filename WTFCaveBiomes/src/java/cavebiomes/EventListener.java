@@ -13,7 +13,6 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import wtfcore.utilities.UBCblocks;
 
@@ -34,35 +33,36 @@ public class EventListener {
 	@SubscribeEvent
 	public void SpawnReplacer (LivingSpawnEvent event)
 	{
-		if (WTFCaveBiomesConfig.customMobs && !event.world.isRemote){
-			if (event.entityLiving instanceof EntityZombie){
-				SpawnHandler.zombieSpawn(event);
-			}
-			else if (event.entityLiving instanceof EntitySkeleton){
-				SpawnHandler.skeletonSpawn(event);
+		if (!event.world.isRemote){
+			if (WTFCaveBiomesConfig.customMobs){
+				if (event.entityLiving instanceof EntityZombie){
+					SpawnHandler.zombieSpawn(event);
+				}
+				else if (event.entityLiving instanceof EntitySkeleton){
+					SpawnHandler.skeletonSpawn(event);
+				}
 			}
 		}
-
 	}
 
 
-public static void replaceEntity(Entity oldentity, Entity newentity){
-	newentity.setLocationAndAngles(oldentity.posX, oldentity.posY, oldentity.posZ, oldentity.rotationYaw, oldentity.rotationPitch);
-	oldentity.worldObj.spawnEntityInWorld(newentity);
-	oldentity.setDead();
-}
-
-@SubscribeEvent
-public void yourPlayerHarvestEvent(HarvestDropsEvent event){
-	if (WTFCaveBiomesConfig.enableUBCSand && Loader.isModLoaded("UndergroundBiomes") && event.block == UBCblocks.SedimentaryStone && event.blockMetadata != 4 && event.blockMetadata != 12)
-	{
-		event.drops.clear();
-		int metadata = event.blockMetadata;
-		if (metadata > 7){ metadata = metadata - 8;}
-		event.drops.add(new ItemStack(UBCSand.sedimentarySand, 1, metadata));
+	public static void replaceEntity(Entity oldentity, Entity newentity){
+		newentity.setLocationAndAngles(oldentity.posX, oldentity.posY, oldentity.posZ, oldentity.rotationYaw, oldentity.rotationPitch);
+		oldentity.worldObj.spawnEntityInWorld(newentity);
+		oldentity.setDead();
 	}
-}
 
+	@SubscribeEvent
+	public void yourPlayerHarvestEvent(HarvestDropsEvent event){
+		if (WTFCaveBiomesConfig.enableUBCSand && Loader.isModLoaded("UndergroundBiomes") && event.block == UBCblocks.SedimentaryStone && event.blockMetadata != 4 && event.blockMetadata != 12)
+		{
+			event.drops.clear();
+			int metadata = event.blockMetadata;
+			if (metadata > 7){ metadata = metadata - 8;}
+			event.drops.add(new ItemStack(UBCSand.sedimentarySand, 1, metadata));
+		}
+	}
+	
 
 
 }

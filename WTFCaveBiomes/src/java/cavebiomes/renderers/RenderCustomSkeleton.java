@@ -7,11 +7,12 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderCustomSkeleton extends RenderSkeleton{
 
-
+/*
 	    @Override
 		protected ResourceLocation getEntityTexture(EntitySkeleton entity)
 	    {
 	        CustomSkeleton customentity = (CustomSkeleton) entity;
 	        return customentity.texture;
 	    }
+	    */
 }

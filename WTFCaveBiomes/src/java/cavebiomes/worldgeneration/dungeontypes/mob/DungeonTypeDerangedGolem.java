@@ -15,8 +15,6 @@ public class DungeonTypeDerangedGolem extends DungeonType {
 		this.yClearance = 5;
 	}
 	
-	
-	
 	@Override
 	public void generateCeiling(World world, Random rand, int x, int y, int z){
 		gen.setBlockWithoutNotify(world, x, y, z, Blocks.stonebrick,2);
@@ -35,8 +33,10 @@ public class DungeonTypeDerangedGolem extends DungeonType {
 	@Override
 	public void generateCenter(World world, Random rand, int x, int y, int z, int ceiling, int floor)
 	{
+		
+		
 		if (WTFCaveBiomesConfig.EnableMobSpawners){
-			gen.setBlockWithoutNotify(world, x, y, z, Entities.spawners.get("DerangedGolem"), 0);
+			gen.setBlockWithoutNotify(world, x, y, z, Entities.CustomMobTypes.DerangedGolem.getSpawner(), 0);
 		}
 	}
 }

@@ -1,15 +1,12 @@
 package cavebiomes.worldgeneration.cavetypes.deep;
 
-import java.util.ArrayList;
 import java.util.Random;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import wtfcore.api.BlockSets;
-import wtfcore.api.BlockSets;
 import cavebiomes.api.CaveType;
 import cavebiomes.api.DungeonSet;
-import cavebiomes.api.DungeonType;
 
 public class CaveTypeVolcanic extends CaveType{
 

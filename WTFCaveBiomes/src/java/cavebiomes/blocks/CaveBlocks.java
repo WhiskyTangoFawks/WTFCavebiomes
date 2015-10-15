@@ -2,6 +2,7 @@ package cavebiomes.blocks;
 
 import java.util.HashMap;
 import cavebiomes.blocks.customplants.Foxfire;
+import cavebiomes.blocks.customplants.LavaVine;
 import cavebiomes.blocks.customplants.CinderShroom;
 import cavebiomes.blocks.customplants.PlantsCavePlants;
 import cavebiomes.items.ItemMoss;
@@ -31,6 +32,7 @@ public class CaveBlocks
 	public static Block PlantMoss;
 	public static Block frozenRoots;
 	public static Block MossyDirt;
+	public static Block lavaVine;
 
 	//Method to call registry of Blocks
 	public static void BlockRegister()
@@ -41,6 +43,9 @@ public class CaveBlocks
 		BlockRoots.registerRoots();
 		Foxfire.register();
 		ItemMoss.register();
+		
+		lavaVine = new LavaVine().setBlockName("lava_vine");
+		GameRegistry.registerBlock(lavaVine, "lava_vine");
 	
 		IcePatch = new IcePatch().setBlockName("ice_patch");
 		GameRegistry.registerBlock(IcePatch, "ice_patch");

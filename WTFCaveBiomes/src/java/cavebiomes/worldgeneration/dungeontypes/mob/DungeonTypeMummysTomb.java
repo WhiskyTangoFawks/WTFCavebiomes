@@ -21,8 +21,8 @@ public class DungeonTypeMummysTomb extends DungeonType{
 	public void generateFloor(World world, Random rand, int x, int y, int z){
 		gen.setBlockWithoutNotify(world, x, y, z, Blocks.sandstone,0);
 
-		if (random.nextBoolean()){
-			world.setBlock(x, y+2, z, Entities.spawners.get("ZombieMummy"));
+		if (random.nextBoolean() && random.nextBoolean()){
+			world.setBlock(x, y+2, z, Entities.CustomMobTypes.Mummy.getSpawner());
 		}
 	}
 

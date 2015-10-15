@@ -19,8 +19,7 @@ public class RedstoneSpeleothem extends BlockSpeleothems implements IAlphaMasked
 	private static BlockSpeleothems[] litRedstoneSpeleothems;
 
 
-	protected RedstoneSpeleothem(Block block, int type, String[] stoneNames,
-			String domain) {
+	protected RedstoneSpeleothem(Block block, int type, String[] stoneNames, String domain) {
 		super(block, type, stoneNames, domain);
 		if (this.parentBlock == Blocks.lit_redstone_ore){
 			this.setLightLevel(0.67F);

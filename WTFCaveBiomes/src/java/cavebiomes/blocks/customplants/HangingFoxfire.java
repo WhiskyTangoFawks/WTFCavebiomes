@@ -66,7 +66,7 @@ public class HangingFoxfire extends Foxfire implements ILightDarkBlock{
 					}
 				}
 			}
-			ChunkPosition chunkposition = (ChunkPosition) arraylist.get(rand.nextInt(arraylist.size()));
+			ChunkPosition chunkposition = arraylist.get(rand.nextInt(arraylist.size()));
 			world.setBlock(chunkposition.chunkPosX, chunkposition.chunkPosY, chunkposition.chunkPosZ, this, 0, 2);
 		}
 	}

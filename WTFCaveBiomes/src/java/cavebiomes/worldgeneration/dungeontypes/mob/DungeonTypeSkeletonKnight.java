@@ -21,7 +21,7 @@ public class DungeonTypeSkeletonKnight extends DungeonType{
 	public void generateFloor(World world, Random rand, int x, int y, int z){
 		gen.setBlockWithoutNotify(world, x, y, z, Blocks.stonebrick,0);
 		if (random.nextInt(5) == 0 && spawncounter < 4){
-			world.setBlock(x, y+1, z, Entities.spawners.get("SkeletonMage"));
+			world.setBlock(x, y+1, z, Entities.CustomMobTypes.SkeletonKnight.getSpawner());
 			spawncounter++;
 		}
 	}

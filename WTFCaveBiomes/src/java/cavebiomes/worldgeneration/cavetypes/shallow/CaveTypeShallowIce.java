@@ -1,12 +1,10 @@
 package cavebiomes.worldgeneration.cavetypes.shallow;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.world.World;
 import cavebiomes.api.CaveType;
 import cavebiomes.api.DungeonSet;
-import cavebiomes.api.DungeonType;
 import cavebiomes.blocks.BlockIcicle;
 
 public class CaveTypeShallowIce extends CaveType{

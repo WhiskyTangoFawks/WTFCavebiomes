@@ -102,14 +102,15 @@ public class CaveTypeRegister {
 		if (biomeandheight.depth == BiomeAndHeight.SHALLOW){
 
 			cavetypetoset = normalShallow;
-			if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.OCEAN)){cavetypetoset = wetShallow;}
+			if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.SNOWY)){cavetypetoset = iceShallow;}
+			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.OCEAN)){cavetypetoset = wetShallow;}
 			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.SWAMP)){cavetypetoset = swamp;}
 			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.MESA)){cavetypetoset = plains;}
 			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.SANDY)){cavetypetoset = sandyShallow;}
 			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.JUNGLE)){cavetypetoset = jungleVolcano;}
 			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.MOUNTAIN)){cavetypetoset = mountains;}
 			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.MOUNTAIN)&&BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.SNOWY)){cavetypetoset = iceMountain;}
-			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.SNOWY)){cavetypetoset = iceShallow;}
+			
 			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.MUSHROOM)){cavetypetoset = fungal;}
 			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.PLAINS)){cavetypetoset = plains;}
 			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.FOREST)){
@@ -135,8 +136,8 @@ public class CaveTypeRegister {
 		else if (biomeandheight.depth == BiomeAndHeight.DEEP){
 			//int depth = 3;
 			cavetypetoset = volcanic;
-			if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.OCEAN)){cavetypetoset = wetDeep;}
-			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.SNOWY)){cavetypetoset = iceDeep;}
+			if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.SNOWY)){cavetypetoset = iceDeep;}
+			else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.OCEAN)){cavetypetoset = wetDeep;}
 			//else if (BiomeDictionary.isBiomeOfType(biomeandheight.biome, Type.SANDY)){cavetypetoset = desertDeep;}
 			//add deep sandy
 		}
