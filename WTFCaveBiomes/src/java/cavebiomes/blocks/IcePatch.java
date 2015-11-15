@@ -28,7 +28,12 @@ public class IcePatch extends BlockPackedIce{
 		this.setLightOpacity(0);
 
 	}
-
+	
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+    
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
 	{
@@ -96,6 +101,8 @@ public class IcePatch extends BlockPackedIce{
 		float f = 0.0625F;
 		return AxisAlignedBB.getBoundingBox(p_149668_2_ + this.minX, p_149668_3_ + this.minY, p_149668_4_ + this.minZ, p_149668_2_ + this.maxX, p_149668_3_ + b0 * f, p_149668_4_ + this.maxZ);
 	}
+	
+	
 
 	/**
 	 * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two

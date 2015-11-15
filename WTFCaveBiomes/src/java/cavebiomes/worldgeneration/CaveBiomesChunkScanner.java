@@ -78,7 +78,7 @@ public class CaveBiomesChunkScanner extends OverworldScanner{
 
 		//Additional Generators called herer- such as WTFOres
 		if (WorldGenListener.generator != null){
-			WorldGenListener.generator.generate(world, surfaceaverage, chunkX, chunkZ, rand);
+			WorldGenListener.generator.generate(world, surfaceaverage, chunkX, chunkZ, rand, cavepositions);
 		}
 
 		int deepmax = surfaceaverage/3;

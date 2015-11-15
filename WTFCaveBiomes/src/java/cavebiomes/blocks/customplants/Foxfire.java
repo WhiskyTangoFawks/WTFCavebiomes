@@ -86,42 +86,43 @@ public class Foxfire extends BlockBush implements ILightDarkBlock
      * Ticks the block if it's been scheduled
      */
     @Override
-	public void updateTick(World world, int x, int y, int z, Random rand)
+    public void updateTick(World world, int x, int y, int z, Random rand)
     {
+    	if(!world.isRemote){
+    		if (world.getBlockMetadata(x, y, z) < 8 && world.getBlockLightValue(x, y, z) > 4){
+    			world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z)+8, 3);
 
-    	if (world.getBlockMetadata(x, y, z) < 8 && world.getBlockLightValue(x, y, z) > 4){
-			world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z)+8, 3);
-
-		}
-		else if (world.getBlockMetadata(x, y, z) > 7){
-			//randomly turn off
-			world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z)-8, 3);
-		}
+    		}
+    		else if (world.getBlockMetadata(x, y, z) > 7){
+    			//randomly turn off
+    			world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z)-8, 3);
+    		}
 
 
-		if (world.getBlockLightValue(x, y, z) > 10 || !canBlockStay(world,x,y,z)){
-			world.setBlockToAir(x, y, z);
-			this.dropBlockAsItem(world,x,y,z, world.getBlockMetadata(x, y, z),0);
-			return;
-		}
+    		if (world.getBlockLightValue(x, y, z) > 10 || !canBlockStay(world,x,y,z)){
+    			world.setBlockToAir(x, y, z);
+    			this.dropBlockAsItem(world,x,y,z, world.getBlockMetadata(x, y, z),0);
+    			return;
+    		}
 
-		//Try to spread
-		if (rand.nextInt(25) == 0)
-        {
-			ArrayList arraylist = new ArrayList();
-        	for (int xloop = -4; xloop < 5; xloop++){
-        		for (int zloop = -4; zloop < 5; zloop++){
-        			for (int yloop = 3; yloop > -3 || world.isAirBlock(xloop, y+yloop, z); yloop--){
-        				if (canBlockStay(world, x+xloop, y+yloop+1, z+zloop)){
-        				arraylist.add(new ChunkPosition(x+xloop, y+yloop+1, z+zloop));
-        				}
-        			}
-        		}
-        	}
+    		//Try to spread
+    		if (rand.nextInt(250) == 0)
+    		{
+    			ArrayList arraylist = new ArrayList();
+    			for (int xloop = -4; xloop < 5; xloop++){
+    				for (int zloop = -4; zloop < 5; zloop++){
+    					for (int yloop = 3; yloop > -3 || world.isAirBlock(xloop, y+yloop, z); yloop--){
+    						if (canBlockStay(world, x+xloop, y+yloop+1, z+zloop)){
+    							arraylist.add(new ChunkPosition(x+xloop, y+yloop+1, z+zloop));
+    						}
+    					}
+    				}
+    			}
 
-        ChunkPosition chunkposition = (ChunkPosition) arraylist.get(rand.nextInt(arraylist.size()));
-        world.setBlock(chunkposition.chunkPosX, chunkposition.chunkPosY, chunkposition.chunkPosZ, this, 0, 2);
-        }
+    			ChunkPosition chunkposition = (ChunkPosition) arraylist.get(rand.nextInt(arraylist.size()));
+    			world.setBlock(chunkposition.chunkPosX, chunkposition.chunkPosY, chunkposition.chunkPosZ, this, 0, 2);
+    		}
+    	}
     }
 
     @Override

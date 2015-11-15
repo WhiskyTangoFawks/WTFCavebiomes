@@ -91,7 +91,7 @@ public class StoneRegister implements IStoneRegister {
 			BlockSets.ReplaceHashset.add(stone);
 		}
 		BlockSets.surfaceBlocks.add(stone);
-		BlockSets.surfaceBlocks.add(cobblestone);
+		//BlockSets.surfaceBlocks.add(cobblestone); // DO NOT ADD COBBLESTONE TO THE SURFACE REGISTRAR
 		
 		//Falling hashset, requires WTFTweaks to be present to function
 		if (cobbleFall){

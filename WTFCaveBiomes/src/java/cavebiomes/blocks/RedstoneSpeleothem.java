@@ -7,12 +7,12 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import texturegeneratorlib.TextureGeneratorLib;
 import wtfcore.InterModBlocks;
-import wtfcore.blocks.IAlphaMaskedBlock;
 import wtfcore.items.ItemMetadataSubblock;
-import wtfcore.proxy.ClientProxy;
 
-public class RedstoneSpeleothem extends BlockSpeleothems implements IAlphaMaskedBlock {
+
+public class RedstoneSpeleothem extends BlockSpeleothems {
 
 	private boolean isLit;
 	private static BlockSpeleothems[] unlitRedstoneSpeleothems;
@@ -51,7 +51,7 @@ public class RedstoneSpeleothem extends BlockSpeleothems implements IAlphaMasked
 				frozenstoneNames[loop] = stoneNames[loop]+"_"+formationList[formationTypeLoop];
 			}
 
-			Block frozenBlockToRegister = new FrozenBlock(Blocks.ice, blockToRegister, frozenstoneNames, ClientProxy.overlayDomain).setBlockName("frozen_"+name);
+			Block frozenBlockToRegister = new FrozenBlock(Blocks.ice, blockToRegister, frozenstoneNames, TextureGeneratorLib.overlayDomain).setBlockName("frozen_"+name);
 			GameRegistry.registerBlock(frozenBlockToRegister, ItemMetadataSubblock.class, "frozen_"+name);
 
 			frozenblockArray[formationTypeLoop] = (FrozenBlock) frozenBlockToRegister;
@@ -110,7 +110,7 @@ public class RedstoneSpeleothem extends BlockSpeleothems implements IAlphaMasked
 	    @Override
 		public void updateTick(World world, int x, int y, int z, Random random)
 	    {
-	        if (isLit)
+	        if (!world.isRemote && isLit)
 	        {
 	        	Block blockToSet = unlitRedstoneSpeleothems[this.speleothemType];
 	        	world.setBlock(x, y, z, blockToSet);

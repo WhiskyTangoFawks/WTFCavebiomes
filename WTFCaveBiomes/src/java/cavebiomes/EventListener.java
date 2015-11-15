@@ -5,6 +5,7 @@ import java.util.Random;
 import cavebiomes.blocks.UBCSand;
 import cavebiomes.entities.SpawnHandler;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraft.entity.Entity;
@@ -31,25 +32,18 @@ public class EventListener {
 	}
 
 	@SubscribeEvent
-	public void SpawnReplacer (LivingSpawnEvent event)
+	public void SpawnReplacer (LivingSpawnEvent.CheckSpawn event)
 	{
 		if (!event.world.isRemote){
 			if (WTFCaveBiomesConfig.customMobs){
-				if (event.entityLiving instanceof EntityZombie){
-					SpawnHandler.zombieSpawn(event);
+				if (event.entityLiving instanceof EntityZombie && SpawnHandler.zombieSpawn(event)){
+					event.setResult(Result.DENY);
 				}
-				else if (event.entityLiving instanceof EntitySkeleton){
-					SpawnHandler.skeletonSpawn(event);
+				else if (event.entityLiving instanceof EntitySkeleton && SpawnHandler.skeletonSpawn(event)){
+					event.setResult(Result.DENY);
 				}
 			}
 		}
-	}
-
-
-	public static void replaceEntity(Entity oldentity, Entity newentity){
-		newentity.setLocationAndAngles(oldentity.posX, oldentity.posY, oldentity.posZ, oldentity.rotationYaw, oldentity.rotationPitch);
-		oldentity.worldObj.spawnEntityInWorld(newentity);
-		oldentity.setDead();
 	}
 
 	@SubscribeEvent

@@ -3,13 +3,11 @@ package cavebiomes.blocks;
 
 import java.util.List;
 import java.util.Random;
-import wtfcore.blocks.IAlphaMaskedBlock;
 import wtfcore.api.BlockInfo;
 import wtfcore.api.BlockSets;
 import wtfcore.api.BlockSets.Modifier;
 import wtfcore.blocks.ChildBlockCarryMetadata;
 import wtfcore.items.ItemMetadataSubblock;
-import wtfcore.proxy.ClientProxy;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -27,8 +25,9 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import texturegeneratorlib.TextureGeneratorLib;
 
-public class BlockMagmaCrust extends ChildBlockCarryMetadata implements IAlphaMaskedBlock{
+public class BlockMagmaCrust extends ChildBlockCarryMetadata {
 
 		public ResourceLocation resourceDomain;
 	public ResourceLocation textureLocation;
@@ -74,7 +73,7 @@ public class BlockMagmaCrust extends ChildBlockCarryMetadata implements IAlphaMa
 		textures = new IIcon[16];
 		for (int loop = 0; loop < textureNames.length; loop++){
 			textures[loop] = iconRegister.registerIcon(CaveBiomes.modid +":"+ textureNames[loop]);
-			ClientProxy.registerBlockOverlay(textureNames[loop], parentLocations[loop], "lavacrust",  CaveBiomes.alphaMaskDomain, true);
+			TextureGeneratorLib.registerBlockOverlay(this, textureNames[loop], parentLocations[loop], "lavacrust",  CaveBiomes.alphaMaskDomain, true);
 		}
 	}
 

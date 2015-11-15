@@ -1,11 +1,8 @@
 package cavebiomes.blocks;
 
 import java.util.List;
-
-import wtfcore.blocks.IAlphaMaskedBlock;
 import wtfcore.blocks.ChildBlockCarryMetadata;
 import wtfcore.items.ItemMetadataSubblock;
-import wtfcore.proxy.ClientProxy;
 import cavebiomes.CaveBiomes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -21,8 +18,9 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import texturegeneratorlib.TextureGeneratorLib;
 
-public class BlockRoots extends ChildBlockCarryMetadata implements IAlphaMaskedBlock{
+public class BlockRoots extends ChildBlockCarryMetadata {
 
 
 
@@ -44,7 +42,7 @@ public class BlockRoots extends ChildBlockCarryMetadata implements IAlphaMaskedB
 
 
 		String names[] = {"frozen_roots"};
-		CaveBlocks.frozenRoots = new FrozenBlock(Blocks.ice, CaveBlocks.Roots, names, ClientProxy.overlayDomain).setBlockName(names[0]);
+		CaveBlocks.frozenRoots = new FrozenBlock(Blocks.ice, CaveBlocks.Roots, names, TextureGeneratorLib.overlayDomain).setBlockName(names[0]);
 		GameRegistry.registerBlock(CaveBlocks.frozenRoots, ItemMetadataSubblock.class, names[0]);
 	}
 
@@ -55,7 +53,7 @@ public class BlockRoots extends ChildBlockCarryMetadata implements IAlphaMaskedB
 
 		for (int loop = 0; loop < textureNames.length; loop++){
 			textures[loop] = iconRegister.registerIcon(CaveBiomes.modid+":"+textureNames[loop]);
-			ClientProxy.registerBlockOverlay(textureNames[loop], parentLocations[loop], maskType, CaveBiomes.alphaMaskDomain, true);
+			TextureGeneratorLib.registerBlockOverlay(this, textureNames[loop], parentLocations[loop], maskType, CaveBiomes.alphaMaskDomain, true);
 		}
 	}
 

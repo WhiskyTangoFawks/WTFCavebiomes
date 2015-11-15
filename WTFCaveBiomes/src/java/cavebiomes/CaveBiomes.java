@@ -32,7 +32,7 @@ import wtfcore.worldgen.WorldGenListener;
 
 
 
-@Mod(modid = CaveBiomes.modid, name = "WhiskyTangoFox's Cave Biomes", version = "1.50", dependencies = "after:UndergroundBiomes;required-after:WTFCore@[1.64,)")
+@Mod(modid = CaveBiomes.modid, name = "WhiskyTangoFox's Cave Biomes", version = "1.52", dependencies = "after:UndergroundBiomes;required-after:WTFCore@[1.64,)")
 
 
 public class CaveBiomes {

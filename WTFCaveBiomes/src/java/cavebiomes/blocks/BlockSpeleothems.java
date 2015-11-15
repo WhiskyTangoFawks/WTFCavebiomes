@@ -1,9 +1,7 @@
 package cavebiomes.blocks;
 import java.util.List;
-import wtfcore.blocks.IAlphaMaskedBlock;
 import wtfcore.blocks.ChildBlockCarryMetadata;
 import wtfcore.items.ItemMetadataSubblock;
-import wtfcore.proxy.ClientProxy;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,12 +13,13 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import texturegeneratorlib.TextureGeneratorLib;
 import cavebiomes.CaveBiomes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockSpeleothems extends ChildBlockCarryMetadata implements IAlphaMaskedBlock
+public class BlockSpeleothems extends ChildBlockCarryMetadata
 {
 	public  Block parentBlock;
 	public static  Block blockToRegister;
@@ -68,7 +67,7 @@ public class BlockSpeleothems extends ChildBlockCarryMetadata implements IAlphaM
 				frozenstoneNames[loop] = stoneNames[loop]+"_"+formationList[formationTypeLoop];
 			}
 
-			Block frozenBlockToRegister = new FrozenBlock(Blocks.ice, blockToRegister, frozenstoneNames, ClientProxy.overlayDomain).setBlockName("frozen_"+name);
+			Block frozenBlockToRegister = new FrozenBlock(Blocks.ice, blockToRegister, frozenstoneNames, TextureGeneratorLib.overlayDomain).setBlockName("frozen_"+name);
 			GameRegistry.registerBlock(frozenBlockToRegister, ItemMetadataSubblock.class, "frozen_"+name);
 
 			frozenblockArray[formationTypeLoop] = (FrozenBlock) frozenBlockToRegister;
@@ -130,7 +129,7 @@ public class BlockSpeleothems extends ChildBlockCarryMetadata implements IAlphaM
 
 		for (int loop = 0; loop < textureNames.length; loop++){
 			textures[loop] = iconRegister.registerIcon(CaveBiomes.modid+":"+textureNames[loop]);
-			ClientProxy.registerBlockOverlay(textureNames[loop], parentLocations[loop], maskType[speleothemType], CaveBiomes.alphaMaskDomain, true);
+			TextureGeneratorLib.registerBlockOverlay(this, textureNames[loop], parentLocations[loop], maskType[speleothemType], CaveBiomes.alphaMaskDomain, true);
 		}
 	}
 

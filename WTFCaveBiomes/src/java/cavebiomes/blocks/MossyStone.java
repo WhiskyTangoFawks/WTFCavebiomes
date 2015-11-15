@@ -6,10 +6,8 @@ import java.util.List;
 import wtfcore.WTFCore;
 import wtfcore.api.BlockInfo;
 import wtfcore.api.BlockSets;
-import wtfcore.blocks.IAlphaMaskedBlock;
 import wtfcore.blocks.ChildBlockCarryMetadata;
 import wtfcore.items.ItemMetadataSubblock;
-import wtfcore.proxy.ClientProxy;
 import wtfcore.utilities.LoadBlockSets;
 import cavebiomes.CaveBiomes;
 import cavebiomes.items.ItemMoss;
@@ -28,8 +26,9 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
+import texturegeneratorlib.TextureGeneratorLib;
 
-public class MossyStone extends ChildBlockCarryMetadata implements IAlphaMaskedBlock
+public class MossyStone extends ChildBlockCarryMetadata
 {
 
 	protected String[] textureNames;
@@ -102,7 +101,7 @@ public class MossyStone extends ChildBlockCarryMetadata implements IAlphaMaskedB
 		textures = new IIcon[16];
 		for (int loop = 0; loop < textureNames.length; loop++){
 			textures[loop] = iconRegister.registerIcon(CaveBiomes.modid +":"+ textureNames[loop]);
-			ClientProxy.registerBlockOverlay(textureNames[loop], parentLocations[loop], "moss_overlay", CaveBiomes.overlayDomain, false);
+			TextureGeneratorLib.registerBlockOverlay(this, textureNames[loop], parentLocations[loop], "moss_overlay", CaveBiomes.overlayDomain, false);
 		}
 	}
 	@Override

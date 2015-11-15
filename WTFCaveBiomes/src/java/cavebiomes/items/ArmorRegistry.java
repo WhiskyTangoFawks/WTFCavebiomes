@@ -16,10 +16,10 @@ public class ArmorRegistry {
 	public static Item mummyLeggings;
 	public static Item mummyBoots;
 	
-	public static Item pharohHelmet;
-	public static Item pharohChestplate;
-	public static Item pharohLeggings;
-	public static Item pharohBoots;	
+	public static Item pharaohHelmet;
+	public static Item pharaohChestplate;
+	public static Item pharaohLeggings;
+	public static Item pharaohBoots;	
 
 
 	
@@ -42,17 +42,17 @@ public class ArmorRegistry {
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 2, 15), new Object[]{mummyLeggings});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 1, 15), new Object[]{mummyBoots});
 		
-		pharohHelmet = new CustomArmor(ArmorMaterial.GOLD, 0, "pharoh").setUnlocalizedName("pharoh_helmet");
-		GameRegistry.registerItem(pharohHelmet, "pharoh_helmet"); //0 for helmet
+		pharaohHelmet = new CustomArmor(ArmorMaterial.GOLD, 0, "phaaroh").setUnlocalizedName("pharaoh_helmet");
+		GameRegistry.registerItem(pharaohHelmet, "pharaoh_helmet"); //0 for helmet
 		
-		pharohChestplate = new CustomArmor(ArmorMaterial.GOLD, 1, "pharoh").setUnlocalizedName("pharoh_chestplate");
-		GameRegistry.registerItem(pharohChestplate, "pharoh_chestplate"); // 1 for chestplate
+		pharaohChestplate = new CustomArmor(ArmorMaterial.GOLD, 1, "pharaoh").setUnlocalizedName("pharaoh_chestplate");
+		GameRegistry.registerItem(pharaohChestplate, "pharaoh_chestplate"); // 1 for chestplate
 		
-		pharohLeggings = new CustomArmor(ArmorMaterial.GOLD, 2, "pharoh").setUnlocalizedName("pharoh_leggings");
-		GameRegistry.registerItem(pharohLeggings, "pharoh_leggings"); // 2 for leggings
+		pharaohLeggings = new CustomArmor(ArmorMaterial.GOLD, 2, "pharaoh").setUnlocalizedName("pharaoh_leggings");
+		GameRegistry.registerItem(pharaohLeggings, "pharaoh_leggings"); // 2 for leggings
 		
-		pharohBoots = new CustomArmor(ArmorMaterial.GOLD, 3, "pharoh").setUnlocalizedName("pharoh_boots");
-		GameRegistry.registerItem(pharohBoots, "pharoh_boots"); // 3 for boots
+		pharaohBoots = new CustomArmor(ArmorMaterial.GOLD, 3, "pharaoh").setUnlocalizedName("pharaoh_boots");
+		GameRegistry.registerItem(pharaohBoots, "pharaoh_boots"); // 3 for boots
 
 	}
 	

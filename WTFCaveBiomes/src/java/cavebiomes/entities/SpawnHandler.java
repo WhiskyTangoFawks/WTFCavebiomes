@@ -28,7 +28,7 @@ public class SpawnHandler {
 		oldentity.setDead();
 	}
 
-	public static void zombieSpawn(LivingSpawnEvent event){
+	public static boolean zombieSpawn(LivingSpawnEvent event){
 		EntityZombie oldentity = (EntityZombie) event.entityLiving;
 		if (oldentity.getCanSpawnHere()){
 			BiomeGenBase biome = event.world.getBiomeGenForCoords(MathHelper.floor_float(event.x), MathHelper.floor_float(event.z));
@@ -37,17 +37,20 @@ public class SpawnHandler {
 			if (baseBlock == Blocks.rail){ //zombie miner
 				oldentity.setCurrentItemOrArmor(0, new ItemStack(Items.stone_pickaxe));
 				oldentity.setCurrentItemOrArmor(4, new ItemStack(Items.iron_helmet));
+				return false;
 			}
 			if (BiomeDictionary.isBiomeOfType(biome, Type.SANDY) && !event.world.canBlockSeeTheSky(MathHelper.ceiling_float_int(event.x), MathHelper.ceiling_float_int(event.y), MathHelper.ceiling_float_int(event.z))){
 				replaceEntity(oldentity, Entities.CustomMobTypes.Mummy.getMob(event.world));
+				return true;
 			}
 			//else if (BiomeDictionary.isBiomeOfType(biome, Type.SNOWY)){
 			//	replaceEntity(event.entity, new ZombieFrozen(event.world));
 			//}
 		}
+		return false;
 	}
 
-	public static void skeletonSpawn(LivingSpawnEvent event){
+	public static boolean skeletonSpawn(LivingSpawnEvent event){
 		EntitySkeleton oldentity = (EntitySkeleton) event.entityLiving;
 
 		if (oldentity.getCanSpawnHere()){
@@ -57,22 +60,27 @@ public class SpawnHandler {
 			if (baseBlock == Blocks.stonebrick){
 				if(random.nextInt(5) == 0){
 					replaceEntity(oldentity, new SkeletonMage(event.world));
+					return true;
 				}
 				else if (random.nextInt(3) == 0){//skeleton knight
 					replaceEntity(oldentity, Entities.CustomMobTypes.SkeletonKnight.getMob(event.world));
+					return true;
 				}
 			}
 			else if (baseBlock == Blocks.rail){ //skeleton miner
 				oldentity.setCurrentItemOrArmor(0, new ItemStack(Items.stone_pickaxe));
 				oldentity.setCurrentItemOrArmor(4, new ItemStack(Items.leather_helmet));
+				return false;
 			}
 
 			if (event.y < 40){
 				if(random.nextInt(500) == 0){
 					replaceEntity(oldentity, new SkeletonMage(event.world));
+					return true;
 				}
 				else if (random.nextInt(250) == 0){
 					replaceEntity(oldentity, Entities.CustomMobTypes.SkeletonKnight.getMob(event.world));
+					return true;
 				}
 			}
 
@@ -83,6 +91,7 @@ public class SpawnHandler {
 			//	replaceEntity(event.entity, new SkeletonLava(event.world));
 			//}
 		}
+		return false;
 	}
 
 

@@ -3,8 +3,6 @@ package cavebiomes.blocks;
 import java.util.Random;
 
 import wtfcore.api.BlockSets;
-import wtfcore.blocks.IAlphaMaskedBlock;
-import wtfcore.proxy.ClientProxy;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -15,8 +13,9 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import texturegeneratorlib.TextureGeneratorLib;
 
-public class BlockIcicle extends BlockPackedIce implements IAlphaMaskedBlock{
+public class BlockIcicle extends BlockPackedIce{
 
 	public static Block IcicleSmall;
 	public static Block IcicleLargeBase;
@@ -41,17 +40,17 @@ public class BlockIcicle extends BlockPackedIce implements IAlphaMaskedBlock{
 		String name = "icicle_small";
 		IcicleSmall = new BlockIcicle().setBlockName(name);
 		GameRegistry.registerBlock(IcicleSmall, name);
-		ClientProxy.registerBlockOverlay(name, "minecraft:ice", name, CaveBiomes.alphaMaskDomain, true);
+		TextureGeneratorLib.registerBlockOverlay(IcicleSmall, name, "minecraft:ice", name, CaveBiomes.alphaMaskDomain, true);
 
 		name = "icicle_base";
 		IcicleLargeBase = new BlockIcicle().setBlockName(name);
 		GameRegistry.registerBlock(IcicleLargeBase, name);
-		ClientProxy.registerBlockOverlay(name, "minecraft:ice", name, CaveBiomes.alphaMaskDomain, true);
+		TextureGeneratorLib.registerBlockOverlay(IcicleLargeBase, name, "minecraft:ice", name, CaveBiomes.alphaMaskDomain, true);
 
 		name = "icicle_tip";
 		IcicleLargeTip = new BlockIcicle().setBlockName(name);
 		GameRegistry.registerBlock(IcicleLargeTip, name);
-		ClientProxy.registerBlockOverlay(name, "minecraft:ice", name, CaveBiomes.alphaMaskDomain, true);
+		TextureGeneratorLib.registerBlockOverlay(IcicleLargeTip, name, "minecraft:ice", name, CaveBiomes.alphaMaskDomain, true);
 	}
 
 	@Override

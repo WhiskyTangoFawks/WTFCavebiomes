@@ -95,10 +95,10 @@ public class Entities {
 		@Override
 		public EntityLiving getMob(World world) {
 			EntityLiving mob = new EntityZombie(world);
-			mob.setCurrentItemOrArmor(4, new ItemStack(ArmorRegistry.pharohHelmet));
-			mob.setCurrentItemOrArmor(3, new ItemStack(ArmorRegistry.pharohChestplate));
-			mob.setCurrentItemOrArmor(2, new ItemStack(ArmorRegistry.pharohLeggings));
-			mob.setCurrentItemOrArmor(1, new ItemStack(ArmorRegistry.pharohBoots));
+			mob.setCurrentItemOrArmor(4, new ItemStack(ArmorRegistry.pharaohHelmet));
+			mob.setCurrentItemOrArmor(3, new ItemStack(ArmorRegistry.pharaohChestplate));
+			mob.setCurrentItemOrArmor(2, new ItemStack(ArmorRegistry.pharaohLeggings));
+			mob.setCurrentItemOrArmor(1, new ItemStack(ArmorRegistry.pharaohBoots));
 			mob.setEquipmentDropChance(4, 0F);
 			mob.setEquipmentDropChance(3, 0F);
 			mob.setEquipmentDropChance(2, 0F);

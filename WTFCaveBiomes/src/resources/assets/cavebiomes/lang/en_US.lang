@@ -5,11 +5,12 @@ tile.hanging_foxfire.name=Hanging Foxfire
 tile.icicle_small.name=Icicle
 tile.icicle_base.name=Icicle
 tile.icicle_tip.name=Icicle
-tile.roots.name=Roots
+tile.roots.0.name=Roots
 tile.frozen_roots.name=Frozen Roots
 tile.ice_patch.name=Ice
 tile.glowstone_stalactite_small.name=Glowstone Stalactite
 tile.cave_orchid.name=Cave Orchid
+tile.lava_vine.name=Cave Vines
 
 tile.dripping_water_stone.0.name=Damp Stone
 
@@ -199,6 +200,37 @@ tile.frozen_sandstone_stalagmite_small.0.name=Icy Sandstone Stalagmite
 tile.frozen_sandstone_stalagmite_base.0.name=Icy Sandstone Stalagmite
 tile.frozen_sandstone_stalagmite_tip.0.name=Icy Sandstone Stalagmite
 
+tile.redstone_stalactite_small.0.name=Redstone Stalactite
+tile.redstone_stalactite_base.0.name=Redstone Stalactite
+tile.redstone_stalactite_tip.0.name=Redstone Stalactite
+tile.redstone_column.0.name=Redstone Column
+tile.redstone_stalagmite_small.0.name=Redstone Stalagmite
+tile.redstone_stalagmite_base.0.name=Redstone Stalagmite
+tile.redstone_stalagmite_tip.0.name=Redstone Stalagmite
+
+tile.frozen_redstone_stalactite_small.0.name=Icy Redstone Stalactite
+tile.frozen_redstone_stalactite_base.0.name=Icy Redstone Stalactite
+tile.frozen_redstone_stalactite_tip.0.name=Icy Redstone Stalactite
+tile.frozen_redstone_column.0.name=Icy Redstone Column
+tile.frozen_redstone_stalagmite_small.0.name=Icy Redstone Stalagmite
+tile.frozen_redstone_stalagmite_base.0.name=Icy Redstone Stalagmite
+tile.frozen_redstone_stalagmite_tip.0.name=Icy Redstone Stalagmite
+
+tile.lit_redstone_stalactite_small.0.name=Redstone Stalactite
+tile.lit_redstone_stalactite_base.0.name=Redstone Stalactite
+tile.lit_redstone_stalactite_tip.0.name=Redstone Stalactite
+tile.lit_redstone_column.0.name=Redstone Column
+tile.lit_redstone_stalagmite_small.0.name=Redstone Stalagmite
+tile.lit_redstone_stalagmite_base.0.name=Redstone Stalagmite
+tile.lit_redstone_stalagmite_tip.0.name=Redstone Stalagmite
+
+tile.frozen_lit_redstone_stalactite_small.0.name=Icy Redstone Stalactite
+tile.frozen_lit_redstone_stalactite_base.0.name=Icy Redstone Stalactite
+tile.frozen_lit_redstone_stalactite_tip.0.name=Icy Redstone Stalactite
+tile.frozen_lit_redstone_column.0.name=Icy Redstone Column
+tile.frozen_lit_redstone_stalagmite_small.0.name=Icy Redstone Stalagmite
+tile.frozen_lit_redstone_stalagmite_base.0.name=Icy Redstone Stalagmite
+tile.frozen_lit_redstone_stalagmite_tip.0.name=Icy Redstone Stalagmite
 
 tile.frozen_igneous_stalactite_small.0.name=Icy Red Granite Stalactite
 tile.frozen_igneous_stalactite_base.0.name=Icy Red Granite Stalactite
@@ -504,21 +536,21 @@ tile.frozen_sedimentary_stalagmite_small.2.name=Icy Shale Stalagmite
 tile.frozen_sedimentary_stalagmite_base.2.name=Icy Shale Stalagmite
 tile.frozen_sedimentary_stalagmite_tip.2.name=Icy Shale Stalagmite
 
-tile.siltstone_lavacrust.3.name=Siltstone Lava Crust
-tile.siltstone_stalactite_small.3.name=Siltstone Stalactite
-tile.siltstone_stalactite_base.3.name=Siltstone Stalactite
-tile.siltstone_stalactite_tip.3.name=Siltstone Stalactite
-tile.siltstone_column.3.name=Siltstone Column
-tile.siltstone_stalagmite_small.3.name=Siltstone Stalagmite
-tile.siltstone_stalagmite_base.3.name=Siltstone Stalagmite
-tile.siltstone_stalagmite_tip.3.name=Siltstone Stalagmite
-tile.frozen_siltstone_stalactite_small.3.name=Icy Siltstone Stalactite
-tile.frozen_siltstone_stalactite_base.3.name=Icy Siltstone Stalactite
-tile.frozen_siltstone_stalactite_tip.3.name=Icy Siltstone Stalactite
-tile.frozen_siltstone_column.3.name=Icy Siltstone Column
-tile.frozen_siltstone_stalagmite_small.3.name=Icy Siltstone Stalagmite
-tile.frozen_siltstone_stalagmite_base.3.name=Icy Siltstone Stalagmite
-tile.frozen_siltstone_stalagmite_tip.3.name=Icy Siltstone Stalagmite
+tile.sedimentary_lavacrust.3.name=Siltstone Lava Crust
+tile.sedimentary_stalactite_small.3.name=Siltstone Stalactite
+tile.sedimentary_stalactite_base.3.name=Siltstone Stalactite
+tile.sedimentary_stalactite_tip.3.name=Siltstone Stalactite
+tile.sedimentary_column.3.name=Siltstone Column
+tile.sedimentary_stalagmite_small.3.name=Siltstone Stalagmite
+tile.sedimentary_stalagmite_base.3.name=Siltstone Stalagmite
+tile.sedimentary_stalagmite_tip.3.name=Siltstone Stalagmite
+tile.frozen_sedimentary_stalactite_small.3.name=Icy Siltstone Stalactite
+tile.frozen_sedimentary_stalactite_base.3.name=Icy Siltstone Stalactite
+tile.frozen_sedimentary_stalactite_tip.3.name=Icy Siltstone Stalactite
+tile.frozen_sedimentary_column.3.name=Icy Siltstone Column
+tile.frozen_sedimentary_stalagmite_small.3.name=Icy Siltstone Stalagmite
+tile.frozen_sedimentary_stalagmite_base.3.name=Icy Siltstone Stalagmite
+tile.frozen_sedimentary_stalagmite_tip.3.name=Icy Siltstone Stalagmite
 
 tile.sedimentary_lavacrust.4.name=Lignite Lava Crust
 tile.sedimentary_stalactite_small.4.name=Lignite Stalactite
