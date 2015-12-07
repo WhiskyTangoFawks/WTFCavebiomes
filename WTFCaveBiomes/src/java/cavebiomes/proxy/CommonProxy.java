@@ -1,10 +1,15 @@
 package cavebiomes.proxy;
 
+
 public class CommonProxy {
 
-	public void registerRenderers(){
 
+
+	public void registerRenderers() {
+		// TODO Auto-generated method stub
+		
 	}
+
 
 
 }

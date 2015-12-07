@@ -9,5 +9,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Et-Futurum-master"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Wayne/.gradle/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1492-1.7.10/forgeSrc-1.7.10-10.13.4.1492-1.7.10.jar" sourcepath="C:/Users/Wayne/.gradle/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1492-1.7.10/forgeSrc-1.7.10-10.13.4.1492-1.7.10-sources.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/TextureGenerator"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/WTFTweaks"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
