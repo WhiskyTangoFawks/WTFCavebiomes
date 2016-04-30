@@ -4,6 +4,8 @@ package cavebiomes.renderers;
 import cavebiomes.blocks.FrozenBlock;
 import cavebiomes.proxy.CBClientProxy;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFence;
+import net.minecraft.block.BlockRailBase;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
@@ -22,12 +24,10 @@ public class FrozenBlockRenderer implements ISimpleBlockRenderingHandler {
 		FrozenBlock fblock = (FrozenBlock) block;
 
 		if(CBClientProxy.renderPass == 0){
-			if (fblock.innerBlock.getRenderType() == 1){
-				renderer.renderCrossedSquares(fblock.innerBlock,  x,  y, z);
-			}
+			renderer.renderBlockByRenderType(fblock.innerBlock,  x,  y, z);
 		}
 		else{
-			renderer.renderStandardBlock(block, x, y, z);
+			renderer.renderStandardBlock(fblock.outterBlock,  x,  y, z);
 		}
 		return true;
 	}

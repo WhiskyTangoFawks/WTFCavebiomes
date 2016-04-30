@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Facing;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -54,6 +55,14 @@ public class IcePatch extends BlockPackedIce{
 		}
 	}
 
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
+    {
+        Block block = p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_);
+        return block == this ? false : super.shouldSideBeRendered(p_149646_1_, p_149646_2_, p_149646_3_, p_149646_4_, p_149646_5_);
+    }
+
+	
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z)
 	{

@@ -22,6 +22,7 @@ public class CaveBiomesChunkScanner extends OverworldScanner{
 	@Override
 	public void generate(World world, Random rand, int chunkX, int chunkZ)
 	{		
+		
 		ArrayList<CavePosition> cavepositions = new ArrayList<CavePosition>();
 		ArrayList<CavePosition> dungeonposition = new ArrayList<CavePosition>();
 
@@ -151,6 +152,7 @@ public class CaveBiomesChunkScanner extends OverworldScanner{
 	public boolean isSurfaceAndCheck(Chunk chunk, int x, int y, int z){
 		Block block = chunk.getBlock(x&15, y, z&15);
 		if (BlockSets.genReplace.containsKey(block)){
+			//System.out.println("genReplace contained " + block.getLocalizedName());
 			gen.replaceBlockDuringGen(chunk, block, x, y, z);
 			
 		}

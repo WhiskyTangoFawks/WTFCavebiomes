@@ -5,10 +5,12 @@ import wtfcore.api.BlockSets;
 import wtfcore.api.GenCoreBase;
 import wtfcore.api.OreBlockInfo;
 import wtfcore.blocks.OreChildBlock;
+import wtfcore.utilities.UBCblocks;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import cavebiomes.blocks.UBCSand;
 import exterminatorJeff.undergroundBiomes.api.BlockCodes;
 import exterminatorJeff.undergroundBiomes.api.UBAPIHook;
 import exterminatorJeff.undergroundBiomes.api.UBStrataColumn;
@@ -45,22 +47,6 @@ public class UBCGen extends VanillaGen implements GenCoreBase{
 		}
 	}
 
-	@Override
-	public void replaceBlockDuringGen(Chunk chunk, Block oldBlock, int x, int y, int z){
-		Block newBlock = BlockSets.genReplace.get(oldBlock);
-		if (newBlock==Blocks.stone){
-			BlockInfo ubcblock = getUBCStone(chunk.worldObj,x,y,z);
-			setBlockWithoutNotify(chunk.worldObj, x, y, z, ubcblock.block, ubcblock.meta);
-		}
-		else if (newBlock instanceof OreChildBlock){
-			BlockInfo ubcblock = getUBCStone(chunk.worldObj,x,y,z);
-			//NOTE: Using chunk.getMetadata here, if it's not working this might be why
-			Block blockToSet = BlockSets.oreUbifier.get(new OreBlockInfo(oldBlock, chunk.getBlockMetadata(x,y,z), ubcblock.block, 0));
-			setBlockWithoutNotify(chunk.worldObj, x, y, z, blockToSet, ubcblock.meta);
-		}
-		else {
-			setBlockWithoutNotify(chunk.worldObj, x, y, z, newBlock, chunk.getBlockMetadata(x&15, y, z&15));
-		}
-	}
+
 
 }

@@ -29,6 +29,7 @@ public class WTFCaveBiomesConfig{
 	public static boolean logDungeons;
 	public static boolean customMobs;
 	public static boolean enableUBCSand;
+	public static boolean ReplaceVanillaSand;
 	
 	public static void customConfig() {
 
@@ -54,6 +55,7 @@ public class WTFCaveBiomesConfig{
 		lavacrustGlow = config.get(section3, "Enable Lava Crust Glows", true).getBoolean();
 		lavacrustAnimations = config.get(section3, "Enable Lava Crust Animations", true).getBoolean();
 		enableUBCSand = config.get(section3, "Enable sand for UBC Sedimentary Stones", true).getBoolean();
+		ReplaceVanillaSand = config.get(section3, "Replace Sand with Sedimentary Sand based on UBC stone biomes", true).getBoolean();
 
 		//magmaCrustGenRate =  config.get("Ore style generation", "Generation rate of magma crust as ore- to disable set to 0", 15).getInt();
 

@@ -5,14 +5,19 @@ import cavebiomes.blocks.customplants.Foxfire;
 import cavebiomes.blocks.customplants.LavaVine;
 import cavebiomes.blocks.customplants.CinderShroom;
 import cavebiomes.blocks.customplants.PlantsCavePlants;
+import cavebiomes.blocks.replacers.FrozenFenceReplacer;
+import cavebiomes.blocks.replacers.FrozenTorchReplacer;
 import cavebiomes.items.ItemMoss;
 import cavebiomes.utilities.StoneRegister;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import texturegeneratorlib.TextureGeneratorLib;
 import wtfcore.InterModBlocks;
 import wtfcore.WTFCore;
 import wtfcore.api.BlockSets;
+import wtfcore.items.ItemMetadataSubblock;
 import wtfcore.utilities.UBCblocks;
+import wtftweaks.WTFBlocks;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -33,6 +38,10 @@ public class CaveBlocks
 	public static Block frozenRoots;
 	public static Block MossyDirt;
 	public static Block lavaVine;
+	
+	public static Block frozenFence;
+	public static Block frozenTorch;
+	public static Block frozenRail;
 
 	//Method to call registry of Blocks
 	public static void BlockRegister()
@@ -59,6 +68,24 @@ public class CaveBlocks
 		GameRegistry.registerBlock(CaveOrchid, "cave_orchid");
 		
 		MossyDirt = MossyStone.registerMossyBlock(Blocks.dirt, "dirt", vanillaDirt, "minecraft");
+		
+		
+		String[] frozenfencenames= {"Fence"};
+		frozenFence = new FrozenBlock(Blocks.ice, Blocks.fence, frozenfencenames, TextureGeneratorLib.overlayDomain).setBlockName("frozen_fence");
+		GameRegistry.registerBlock(frozenFence, "frozen_fence");
+		BlockSets.genReplace.put(Blocks.fence, new FrozenFenceReplacer());
+		
+		if (Loader.isModLoaded(WTFCore.WTFTweaks)){
+			String[] frozentorchname= {"torch"};
+			frozenTorch = new FrozenBlock(Blocks.ice, WTFBlocks.finitetorch_unlit, frozentorchname, TextureGeneratorLib.overlayDomain).setBlockName("frozen_torch");
+			GameRegistry.registerBlock(frozenTorch, "frozen_torch");
+			BlockSets.genReplace.put(Blocks.torch, new FrozenTorchReplacer());
+		}
+		
+		String[] frozenrailnames= {"Rail"};
+		frozenRail = new FrozenBlock(IcePatch, Blocks.rail, frozenrailnames, TextureGeneratorLib.overlayDomain).setBlockName("frozen_rail");
+		GameRegistry.registerBlock(frozenRail, "frozen_rail");
+		BlockSets.genReplace.put(Blocks.rail, new FrozenFenceReplacer());
 		
 		RedstoneSpeleothem.registerSpeleothemSet(Blocks.redstone_ore, "redstone_block", vanillaRedstone, "minecraft");
 		RedstoneSpeleothem.registerSpeleothemSet(Blocks.lit_redstone_ore, "redstone_block", vanillaRedstone, "minecraft");

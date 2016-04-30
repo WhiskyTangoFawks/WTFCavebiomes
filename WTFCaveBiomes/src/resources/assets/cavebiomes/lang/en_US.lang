@@ -1,3 +1,4 @@
+itemGroup.CaveDecorations=WTF's CaveBiomes
 item.moss.name=Moss
 tile.CinderShroom.name=CinderShroom
 tile.foxfire.name=Foxfire
@@ -11,6 +12,10 @@ tile.ice_patch.name=Ice
 tile.glowstone_stalactite_small.name=Glowstone Stalactite
 tile.cave_orchid.name=Cave Orchid
 tile.lava_vine.name=Cave Vines
+
+tile.frozen_torch.name=Icy Torch
+tile.frozen_fence.name=Icy Fence
+tile.frozen_rail.name=Icy Rail
 
 tile.dripping_water_stone.0.name=Damp Stone
 

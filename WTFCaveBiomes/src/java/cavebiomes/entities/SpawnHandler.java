@@ -34,7 +34,7 @@ public class SpawnHandler {
 			BiomeGenBase biome = event.world.getBiomeGenForCoords(MathHelper.floor_float(event.x), MathHelper.floor_float(event.z));
 			Block baseBlock = event.world.getBlock(MathHelper.floor_float(event.x), MathHelper.floor_float(event.y)-1, MathHelper.floor_float(event.z));
 
-			if (baseBlock == Blocks.rail){ //zombie miner
+			if (baseBlock.hashCode() == Blocks.rail.hashCode()){ //zombie miner
 				oldentity.setCurrentItemOrArmor(0, new ItemStack(Items.stone_pickaxe));
 				oldentity.setCurrentItemOrArmor(4, new ItemStack(Items.iron_helmet));
 				return false;
@@ -54,10 +54,10 @@ public class SpawnHandler {
 		EntitySkeleton oldentity = (EntitySkeleton) event.entityLiving;
 
 		if (oldentity.getCanSpawnHere()){
-			BiomeGenBase biome = event.world.getBiomeGenForCoords(MathHelper.floor_float(event.x), MathHelper.floor_float(event.z));
+			//BiomeGenBase biome = event.world.getBiomeGenForCoords(MathHelper.floor_float(event.x), MathHelper.floor_float(event.z));
 			Block baseBlock = event.world.getBlock(MathHelper.floor_float(event.x), MathHelper.floor_float(event.y)-1, MathHelper.floor_float(event.z));
 
-			if (baseBlock == Blocks.stonebrick){
+			if (baseBlock.hashCode() == Blocks.stonebrick.hashCode()){
 				if(random.nextInt(5) == 0){
 					replaceEntity(oldentity, new SkeletonMage(event.world));
 					return true;
@@ -67,7 +67,7 @@ public class SpawnHandler {
 					return true;
 				}
 			}
-			else if (baseBlock == Blocks.rail){ //skeleton miner
+			else if (baseBlock.hashCode() == Blocks.rail.hashCode()){ //skeleton miner
 				oldentity.setCurrentItemOrArmor(0, new ItemStack(Items.stone_pickaxe));
 				oldentity.setCurrentItemOrArmor(4, new ItemStack(Items.leather_helmet));
 				return false;

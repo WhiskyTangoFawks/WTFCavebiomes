@@ -11,11 +11,13 @@ import net.minecraft.block.BlockPackedIce;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Facing;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -38,6 +40,7 @@ public class FrozenBlock extends BlockPackedIce// implements AlphaMaskedBlock
 		this.outterBlock = outter;
 		this.innerBlock = inner;
 		this.setStepSound(outter.stepSound);
+		this.setBlockBounds((float)outter.getBlockBoundsMinX(), (float)outter.getBlockBoundsMinY(), (float)outter.getBlockBoundsMinZ(), (float)outter.getBlockBoundsMaxX(), (float)outter.getBlockBoundsMaxY(), (float)outter.getBlockBoundsMaxZ());
 		this.loadTextureStrings(parentNames, domain);
 	}
 
@@ -66,7 +69,20 @@ public class FrozenBlock extends BlockPackedIce// implements AlphaMaskedBlock
 		}
 	}
 	*/
+	
 
+
+	@Override
+    public int onBlockPlaced(World p_149660_1_, int p_149660_2_, int p_149660_3_, int p_149660_4_, int p_149660_5_, float p_149660_6_, float p_149660_7_, float p_149660_8_, int p_149660_9_)
+    {
+        return innerBlock.onBlockPlaced(p_149660_1_, p_149660_2_, p_149660_3_, p_149660_4_, p_149660_5_, p_149660_6_, p_149660_7_, p_149660_8_, p_149660_9_);
+    }
+	
+	@Override
+    public void onBlockPlacedBy(World p_149689_1_, int p_149689_2_, int p_149689_3_, int p_149689_4_, EntityLivingBase p_149689_5_, ItemStack p_149689_6_) {
+		innerBlock.onBlockPlacedBy(p_149689_1_, p_149689_2_, p_149689_3_, p_149689_4_, p_149689_5_, p_149689_6_);
+	}
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List list)

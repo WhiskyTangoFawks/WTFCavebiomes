@@ -42,7 +42,7 @@ public class ArmorRegistry {
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 2, 15), new Object[]{mummyLeggings});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.string, 1, 15), new Object[]{mummyBoots});
 		
-		pharaohHelmet = new CustomArmor(ArmorMaterial.GOLD, 0, "phaaroh").setUnlocalizedName("pharaoh_helmet");
+		pharaohHelmet = new CustomArmor(ArmorMaterial.GOLD, 0, "pharaoh").setUnlocalizedName("pharaoh_helmet");
 		GameRegistry.registerItem(pharaohHelmet, "pharaoh_helmet"); //0 for helmet
 		
 		pharaohChestplate = new CustomArmor(ArmorMaterial.GOLD, 1, "pharaoh").setUnlocalizedName("pharaoh_chestplate");

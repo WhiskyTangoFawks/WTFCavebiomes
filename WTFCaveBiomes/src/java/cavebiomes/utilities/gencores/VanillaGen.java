@@ -10,6 +10,7 @@ import wtfcore.WTFCore;
 import wtfcore.api.BlockInfo;
 import wtfcore.api.BlockSets;
 import wtfcore.api.GenCoreBase;
+import wtfcore.api.Replacer;
 import cpw.mods.fml.common.Loader;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -403,8 +404,9 @@ public class VanillaGen implements GenCoreBase {
 
 	@Override
 	public void replaceBlockDuringGen(Chunk chunk, Block oldBlock, int x, int y, int z){
-		Block newBlock = BlockSets.genReplace.get(oldBlock);
-		setBlockWithoutNotify(chunk.worldObj, x, y, z, newBlock, chunk.getBlockMetadata(x&15, y, z&15));
+		Replacer replacer = BlockSets.genReplace.get(oldBlock);
+		replacer.doReplace(chunk, x, y, z, oldBlock);
+		//setBlockWithoutNotify(chunk.worldObj, x, y, z, newBlock, chunk.getBlockMetadata(x&15, y, z&15));
 	}
 	
 }
